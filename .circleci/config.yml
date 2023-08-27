@@ -89,10 +89,21 @@ jobs:
               # curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=${PNPM_VERSION} sh -
               # curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION="${PNPM_VERSION}" sh -
               # curl -fsSL https://get.pnpm.io/install.sh | export PNPM_VERSION="${PNPM_VERSION}" sh - # that's why they use "env", and not "export"
-              curl -fsSL https://get.pnpm.io/install.sh | tee ./pnpm.installation.script.sh
+              
+              # --- 
+              # see https://github.com/3forges/juste-un-curieux/issues/17#issuecomment-1694600783
+              # - 
+              # curl -fsSL https://get.pnpm.io/install.sh | tee ./pnpm.installation.script.sh
+              # chmod +x ./pnpm.installation.script.sh
+              # export PNPM_VERSION="${PNPM_VERSION}" && ./pnpm.installation.script.sh
+
+
+              chmod +x ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
+
               echo "JBL POINT DEBUG 2 bis"
-              chmod +x ./pnpm.installation.script.sh
-              export PNPM_VERSION="${PNPM_VERSION}" && ./pnpm.installation.script.sh
+              # PNPM_VERSION
+              export PNPM_VERSION="7.5.1"
+              ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
               # 
               
               echo "JBL POINT DEBUG 3"
