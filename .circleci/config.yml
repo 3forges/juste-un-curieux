@@ -80,16 +80,25 @@ jobs:
               source $BASH_ENV
               apt-get update -y && apt-get install -y  bash curl jq wget
               # install pnpm
+              echo "JBL POINT DEBUG 1"
               bash -c 'curl -fsSL https://get.pnpm.io/install.sh | sh -'
+              echo "JBL POINT DEBUG 2"
               # PNPM_VERSION: 7.5.1
               bash -c "curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=${PNPM_VERSION} sh -"
+              echo "JBL POINT DEBUG 3"
               cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a /root/.bashrc
+              echo "JBL POINT DEBUG 4"
               cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a ~/.bashrc
+              echo "JBL POINT DEBUG 5"
               cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a /root/.profile
+              echo "JBL POINT DEBUG 6"
               cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a ~/.profile
+              echo "JBL POINT DEBUG 7"
               cat ./.circleci/assets/pnpm/.bashrc.addon >> "$BASH_ENV"
+              echo "JBL POINT DEBUG 8"
               # install surge
               source $BASH_ENV
+              echo "JBL POINT DEBUG 9"
               pnpm add -g surge
               # bash -c 'pnpm add -g surge'
               pnpm --version
