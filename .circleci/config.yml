@@ -88,9 +88,9 @@ jobs:
               # bash -c "curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION='${PNPM_VERSION}' sh -"
               # curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=${PNPM_VERSION} sh -
               # curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION="${PNPM_VERSION}" sh -
-              curl -fsSL https://get.pnpm.io/install.sh | export PNPM_VERSION="${PNPM_VERSION}"
-              echo "JBL POINT DEBUG 2 bis"
+              # curl -fsSL https://get.pnpm.io/install.sh | export PNPM_VERSION="${PNPM_VERSION}" sh - # that's why they use "env", and not "export"
               curl -fsSL https://get.pnpm.io/install.sh | tee ./pnpm.installation.script.sh
+              echo "JBL POINT DEBUG 2 bis"
               chmod +x ./pnpm.installation.script.sh
               export PNPM_VERSION="${PNPM_VERSION}" && ./pnpm.installation.script.sh
               # 
