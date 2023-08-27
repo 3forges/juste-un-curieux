@@ -81,7 +81,7 @@ jobs:
               apt-get update -y && apt-get install -y  bash curl jq wget
               # install pnpm
               echo "JBL POINT DEBUG 1"
-              bash -c 'curl -fsSL https://get.pnpm.io/install.sh | sh -'
+              # bash -c 'curl -fsSL https://get.pnpm.io/install.sh | sh -'
               echo "JBL POINT DEBUG 2"
               # PNPM_VERSION: 7.5.1
               bash -c "curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=${PNPM_VERSION} sh -"
