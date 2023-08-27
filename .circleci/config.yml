@@ -88,7 +88,7 @@ jobs:
               # bash -c "curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION='${PNPM_VERSION}' sh -"
               # curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=${PNPM_VERSION} sh -
               # curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION="${PNPM_VERSION}" sh -
-              curl -fsSL https://get.pnpm.io/install.sh | export PNPM_VERSION="${PNPM_VERSION}" sh -
+              curl -fsSL https://get.pnpm.io/install.sh | export PNPM_VERSION="${PNPM_VERSION}"
               echo "JBL POINT DEBUG 2 bis"
               curl -fsSL https://get.pnpm.io/install.sh | tee ./pnpm.installation.script.sh
               chmod +x ./pnpm.installation.script.sh
