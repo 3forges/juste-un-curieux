@@ -31,18 +31,21 @@ export default function LogoSVG() {
     return (
         <>
 			
+			<div class={`${tailwindCssAnimation} h-10`} >
+			</div>
 			{// <?xml version="1.0" encoding="utf-8"?>
 			 // <!-- Generator: Adobe Illustrator 24.1.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-			 // 0 0 720 50 4
+			 // 0 0 720 504
 			 // 0 0 540 3 78
-			 // 0 0 270 18 9
 			 // 100 100 540 3 78
 			} 
-				<svg preserveAspectRatio="xMidYMid slice" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-					viewBox="0 0 540 378"  width="25%" height="25%" style="enable-background:new 0 0 540 378;" >
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+					viewBox="0 0 540 378" style="enable-background:new 0 0 540 378;" >
 
+				<g>
 
-						<g fill="rgb(255,96,2)" width="100%" height="100%">
+					<g>
+						<g fill="rgb(255,96,2)">
 							<path d="M357.19,217.7c-9.33,7.89-18.27,13.62-27.36,17.51c-0.18,0.08-0.37,0.17-0.56,0.26
 								c-0.2,0.09-0.49,0.23-0.54,0.24c-2.68,0.49-4.28,2.27-4.76,5.31c-0.57,3.66-1.16,7.31-1.74,10.97c-0.44-0.59-0.86-1.19-1.27-1.8
 								c-3.84-5.57-6.6-11.63-7.87-18.32c-1.27-6.63-0.59-13.07,1.66-19.44c2.52-7.14,3.1-14.5,1.74-21.98
@@ -91,8 +94,8 @@ export default function LogoSVG() {
 								c-0.72-1.29-1.81-1.49-3.28-1.13c0.65,1.11,1.25,2.21,1.92,3.26c4.47,7.02,10.24,12.76,17.22,17.27
 								c0.76,0.49,1.28,0.98,1.35,1.96C391.78,293.29,392.04,294.5,392.28,296z"/>
 						</g>
-
-
+					</g>
+				</g>
 				</svg>
         </>
     )
