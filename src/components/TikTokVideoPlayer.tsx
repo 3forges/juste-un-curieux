@@ -1,9 +1,10 @@
 import { h } from 'preact'
-export interface TikTokPlayerProps {
+export interface TikTokVideoPlayerProps {
     channel: string;
+    video_id: string;
 }
 
-export function TikTokPlayer(props: TikTokPlayerProps) {
+export function TikTokVideoPlayer(props: TikTokVideoPlayerProps) {
 
     /**
      *  CONFIG YOUR FLAVOR
@@ -30,12 +31,12 @@ export function TikTokPlayer(props: TikTokPlayerProps) {
         'embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {' +
         'var player = embed.getPlayer();' +
         ((autoplay) ? 'player.play();' : '') +
-        ((verbose) ? 'console.log("TikTokPlayer: VIDEO_READY");' : '') +
+        ((verbose) ? 'console.log("TikTokVideoPlayer: VIDEO_READY");' : '') +
         '});' +
         'embed.addEventListener(Twitch.Embed.VIDEO_PLAY, () => {' +
         // ONLY LINE ADDED : TWITCH PLAYER OPAQUE WHEN LIVE/VIDEO IS PLAYING
         'document.getElementById("twitch-embed").style.opacity = 1;' +
-        ((verbose) ? 'console.log("TikTokPlayer: VIDEO_PLAY");' : '') +
+        ((verbose) ? 'console.log("TikTokVideoPlayer: VIDEO_PLAY");' : '') +
         '});' +
         '};'
 
@@ -43,9 +44,18 @@ export function TikTokPlayer(props: TikTokPlayerProps) {
         <>
             {//<div id="twitch-embed" class="absolute grid justify-items-center items-center min-w-[80%] min-h-[50%]" style="opacity: 0.3; z-index:5;"></div>
             }
-            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@atef.83/live?is_from_webapp=1&sender_device=pc" data-unique-id="atef.83" data-embed-type="live" style="max-width: 780px; min-width: 288px;" > <section> <a target="_blank" href="https://www.tiktok.com/@atef.83/live?is_from_webapp=1&sender_device=pc">@atef.83</a> </section> </blockquote> 
-            
-            
+            <blockquote class="tiktok-embed" cite={`https://www.tiktok.com/${props.channel || "@scout2015"}/video/${props.video_id || "6718335390845095173"}`} data-video-id={props.video_id || "6718335390845095173"} style="max-width: 605px;min-width: 325px;" >
+                <section>
+                    <a target="_blank" title={`${props.channel || "@scout2015"}`} href={`https://www.tiktok.com/${props.channel || "@scout2015"}?refer=embed"}`}>@scout2015</a>
+
+                    Scramble up ur name &#38; I’ll try to guess it😍❤️
+
+                    <a title="foryoupage" target="_blank" href="https://www.tiktok.com/tag/foryoupage?refer=embed">#foryoupage</a>
+                    <a title="petsoftiktok" target="_blank" href="https://www.tiktok.com/tag/petsoftiktok?refer=embed">#petsoftiktok</a>
+                    <a title="aesthetic" target="_blank" href="https://www.tiktok.com/tag/aesthetic?refer=embed">#aesthetic</a>
+                    <a target="_blank" title="♬ original sound - tiff" href="https://www.tiktok.com/music/original-sound-6689804660171082501?refer=embed">♬ original sound - tiff</a>
+                </section>
+            </blockquote>
             {
                 /**
                  * <script async src="https://www.tiktok.com/embed.js"></script>
@@ -55,7 +65,7 @@ export function TikTokPlayer(props: TikTokPlayerProps) {
                     h(
                     'script',
                     {type: 'text/javascript', 
-                    src: 'https://www.tiktok.com/embed.js',async: true}
+                    src: 'https://www.tiktok.com/embed.js'}
                     )
             }
         </>

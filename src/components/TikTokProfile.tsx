@@ -1,9 +1,9 @@
 import { h } from 'preact'
-export interface TikTokPlayerProps {
+export interface TikTokProfileProps {
     channel: string;
 }
 
-export function TikTokPlayer(props: TikTokPlayerProps) {
+export function TikTokProfile(props: TikTokProfileProps) {
 
     /**
      *  CONFIG YOUR FLAVOR
@@ -30,12 +30,12 @@ export function TikTokPlayer(props: TikTokPlayerProps) {
         'embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {' +
         'var player = embed.getPlayer();' +
         ((autoplay) ? 'player.play();' : '') +
-        ((verbose) ? 'console.log("TikTokPlayer: VIDEO_READY");' : '') +
+        ((verbose) ? 'console.log("TikTokProfile: VIDEO_READY");' : '') +
         '});' +
         'embed.addEventListener(Twitch.Embed.VIDEO_PLAY, () => {' +
         // ONLY LINE ADDED : TWITCH PLAYER OPAQUE WHEN LIVE/VIDEO IS PLAYING
         'document.getElementById("twitch-embed").style.opacity = 1;' +
-        ((verbose) ? 'console.log("TikTokPlayer: VIDEO_PLAY");' : '') +
+        ((verbose) ? 'console.log("TikTokProfile: VIDEO_PLAY");' : '') +
         '});' +
         '};'
 
@@ -43,8 +43,8 @@ export function TikTokPlayer(props: TikTokPlayerProps) {
         <>
             {//<div id="twitch-embed" class="absolute grid justify-items-center items-center min-w-[80%] min-h-[50%]" style="opacity: 0.3; z-index:5;"></div>
             }
-            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@atef.83/live?is_from_webapp=1&sender_device=pc" data-unique-id="atef.83" data-embed-type="live" style="max-width: 780px; min-width: 288px;" > <section> <a target="_blank" href="https://www.tiktok.com/@atef.83/live?is_from_webapp=1&sender_device=pc">@atef.83</a> </section> </blockquote> 
-            
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@atef.83" data-unique-id="atef.83" data-embed-type="creator" style="max-width: 780px; min-width: 288px;" > <section> <a target="_blank" href="https://www.tiktok.com/@scout2015?refer=creator_embed">@atef.83</a> </section> </blockquote> 
+            https://www.tiktok.com/@atef.83/live?is_from_webapp=1&sender_device=pc
             
             {
                 /**
