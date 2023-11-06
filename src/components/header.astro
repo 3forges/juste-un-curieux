@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon";
 import ThemeSwitcher from "~/components/theme-switcher.astro";
 import type { NavItem } from "~/types";
+import HeaderSocials from '~/components/headerSocials.astro'
 // // <Icon name="justincurieux_logo" class="h-10 st6" />
 import LogoSVG from '~/components/LogoSVG'
 // import { useNavigate } from "react-router-dom";
@@ -24,7 +25,7 @@ const navItems: Array<NavItem> = [
   class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-white"
 >
   <a class="flex items-center gap-3 hover:!text-default" href="#">
-    <h1 class="sr-only">Astro</h1>
+    <h1 class="sr-only">Justin Curieux</h1>
     <style type="text/css">
       .st0{display:none;}
       .st1{display:inline;fill:none;stroke:#FF0000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
@@ -38,7 +39,7 @@ const navItems: Array<NavItem> = [
       polygon.logo_livre{stroke: black; fill: black;}
     </style>
     <LogoSVG />
-    <Icon name="wordmark" class="hidden h-4 sm:block" />
+    <Icon name="wordmark" class="p-1 hidden h-4 sm:block" />
   </a>
 
 <!--
@@ -87,6 +88,13 @@ const navItems: Array<NavItem> = [
               </li>
             ))
           }
+
+        <li>
+          <a class="text-sm" href={`#`}>
+            <HeaderSocials />
+          </a>
+        </li>
+          
         </ul>
       </nav>
       <button

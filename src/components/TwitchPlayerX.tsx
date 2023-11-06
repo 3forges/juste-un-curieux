@@ -1,7 +1,7 @@
 import { useState } from 'preact/compat'
 import { TwitchPlayer } from "~/components/TwitchPlayer"; // <TwitchPlayer client:only="preact"/>
 import { PlayLiveButton } from '~/components/PlayLiveButton'
-import { TikTokPlayer } from "~/components/TikTokPlayer"; // <TwitchPlayer client:only="preact"/>
+// import { TikTokPlayer } from "~/components/TikTokPlayer"; // <TwitchPlayer client:only="preact"/>
 
 // RxJS v6+
 import { timer } from 'rxjs';
@@ -65,10 +65,10 @@ export function TwitchPlayerX(props: TwitchPlayerXProps) {
                         {
                         }      
                         {
-                            // displayButton?<></>:<TwitchPlayer channel={props.channel}/>
+                            displayButton?<></>:<TwitchPlayer channel={props.channel}/>
                         }
                         {
-                            displayButton?<></>:<TikTokPlayer channel={props.channel}/>
+                            // displayButton?<></>:<TikTokPlayer channel={props.channel}/>
                         }
             
         </>

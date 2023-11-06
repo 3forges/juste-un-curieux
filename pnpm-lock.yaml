@@ -17,6 +17,9 @@ dependencies:
   heroicons-astro:
     specifier: ^1.0.4
     version: 1.0.4
+  lucide-preact:
+    specifier: ^0.292.0
+    version: 0.292.0(preact@10.17.1)
   micromodal:
     specifier: ^0.4.10
     version: 0.4.10
@@ -2424,6 +2427,14 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
+
+  /lucide-preact@0.292.0(preact@10.17.1):
+    resolution: {integrity: sha512-Z1xv9XQhu7iPqQUfd+c2FgDWo7umScm3SNsF0Bk4fR9scwefizUYS+MjdRYXNHmKZyMYWrsoVnMy9Aft/Mlw7Q==}
+    peerDependencies:
+      preact: ^10.5.13
+    dependencies:
+      preact: 10.17.1
+    dev: false
 
   /magic-string@0.30.3:
     resolution: {integrity: sha512-B7xGbll2fG/VjP+SWg4sX3JynwIU0mjoTc6MPpKNuIvftk6u6vqhDnk1R80b8C2GBR6ywqy+1DcKBrevBg+bmw==}

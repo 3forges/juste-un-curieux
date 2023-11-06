@@ -1,5 +1,5 @@
 // import styles from './LogoSVG.module.css'
-import './LogoSVG.module.css'
+// import './LogoSVG.module.css'
 /**
  * Astro Icon cannot be used into 
  * a React / Preact component, it is 
@@ -23,10 +23,10 @@ export default function LogoSVG() {
 	// const tailwindCssAnimation = `animate-infinite animate-shake animate-duration-[1250ms] animate-delay-150 animate-ease-in`
 	// const tailwindCssAnimation = `animate-once animate-jump animate-duration-[1250ms] animate-delay-[400ms] animate-ease-in`
 	// const tailwindCssAnimation = `animate-none animate-jump animate-duration-[1250ms] animate-delay-[400ms] animate-ease-in`
-	const tailwindCssAnimation = ``
+	const tailwindCssAnimation = `rounded-full hover:shadow-[0_35px_60px_-15px_rgba(200,200,200,0.9)] fill-orange-600`
 	// animate-shake
 	// const tailwindCssAnimation = `animate-infinite animate-spin animate-ease-in-out animate-duration-[1250ms]` // celui là est proche du battement de coeur
-	
+	const justin_curieux_global_alt =`Justin Curieux`
 	
     return (
         <>
@@ -37,9 +37,14 @@ export default function LogoSVG() {
 			 // 0 0 540 3 78
 			 // 0 0 270 18 9
 			 // 100 100 540 3 78
+			 // viewBox="0 0 540 378"  width="25%" height="25%"
+			 // style="enable-background:new 0 0 540 378;"
+			 /**
+			  * --------------------------------------
+			  */
 			} 
-				<svg preserveAspectRatio="xMidYMid slice" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-					viewBox="0 0 540 378"  width="25%" height="25%" style="enable-background:new 0 0 540 378;" >
+				<svg alt={`${justin_curieux_global_alt}`} preserveAspectRatio="xMidYMid slice" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+					viewBox="100 50 540 378" width="100" height="100" className={`${tailwindCssAnimation}`} >
 
 
 						<g fill="rgb(255,96,2)" width="100%" height="100%">
