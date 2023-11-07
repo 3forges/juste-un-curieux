@@ -91,11 +91,17 @@ const navItems: Array<NavItem> = [
             ))
           }
 
-        <li>
-          <a class="text-sm" href={`#`}>
-            <SocialCornerUp client:only="preact" />
-          </a>
-        </li>
+        {/**
+          * ------------------ ------------------ ------------------
+          *   <li>
+          *     <a class="text-sm" href={`#`}>
+          *       <SocialCornerUp urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`} client:only="preact" />
+          *     </a>
+          *   </li> 
+          * 
+          * ------------------ ------------------ ------------------
+          ***/
+         }
           
         </ul>
       </nav>
@@ -107,6 +113,7 @@ const navItems: Array<NavItem> = [
       >
         <Icon pack="mdi" name="menu" class="h-8" />
       </button>
+      <SocialCornerUp urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`} client:only="preact" />
       <ThemeSwitcher />
     </div>
     <div id="menu-modal" class="modal hidden" aria-hidden="true">
@@ -163,7 +170,7 @@ const navItems: Array<NavItem> = [
 
               <li>
                 <a class="text-sm" href={`#`}>
-                  <SocialCornerUp client:only="preact" />
+                  <SocialCornerUp urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`} client:only="preact" />
                 </a>
               </li>
             </ul>
