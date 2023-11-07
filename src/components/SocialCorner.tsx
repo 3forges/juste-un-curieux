@@ -27,10 +27,11 @@ export default function SocialCorner() {
           type="button"
           class="hover:cursor-pointer p-1 relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
           id="user-menu-button"
+          aria-id="user-menu-button"
           aria-expanded="false" 
           aria-haspopup="true">
             <span class="absolute -inset-1.5"></span>
-            <span class="sr-only">Open share menu</span>
+            <span class="sr-only">Open share menu 2</span>
 
             <Share2Icon
               size={48}
