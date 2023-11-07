@@ -48,7 +48,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             onClick={onClickHandler} 
             type="button"
             class="hover:cursor-pointer p-1 relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-            id="user-menu-button"
+            id="user-menu-button-bottom-right"
             aria-expanded="false" 
             aria-haspopup="true">
             <span class="absolute -inset-1.5"></span>
@@ -95,7 +95,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
           {// <!-- Active: "bg-gray-100", Not Active: "" -->
           }
 
-          <a href="#" class="block" role="menuitem" tabIndex={-1} id="user-menu-item-0">
+          <a href="#" class="block" role="menuitem" tabIndex={-1} aria-label="twitch" id="user-menu-item-0">
             <TwitchIcon
               size={48}
               strokeWidth={2}
@@ -106,7 +106,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
               className="h-18 w-18 m-1 p-1 rounded-full"
             />
           </a>
-          <a href="#" class="block" role="menuitem" tabIndex={-1} id="user-menu-item-1">
+          <a href="#" class="block" role="menuitem" tabIndex={-1} aria-label="youtube" id="user-menu-item-1">
             <YoutubeIcon               size={48}
               strokeWidth={2}
               stroke={`currentColor`}
@@ -116,7 +116,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
               className="h-18 w-18 m-1 p-1 rounded-full"
             />
           </a>
-          <a href="#" class="block" role="menuitem" tabIndex={-1} id="user-menu-item-2">
+          <a href="#" class="block" role="menuitem" tabIndex={-1} aria-label="facebook" id="user-menu-item-2">
             <FacebookIcon               size={48}
               strokeWidth={2}
               stroke={`currentColor`}

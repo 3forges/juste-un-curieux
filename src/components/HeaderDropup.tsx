@@ -1,20 +1,23 @@
 import React from "preact/compat";
-import { createPopper } from "@popperjs/core";
+//import { createPopper } from "@popperjs/core";
 
 const Dropdown = ({ color }: any) => {
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef();
   const popoverDropdownRef = React.createRef();
+  /*
   const openDropdownPopover = () => {
     createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
       placement: "top-end"
     });
     setDropdownPopoverShow(true);
   };
+
   const closeDropdownPopover = () => {
     setDropdownPopoverShow(false);
   };
+  */
   // bg colors
   let bgColor;
   color === "white"
