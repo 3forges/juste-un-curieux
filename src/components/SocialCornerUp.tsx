@@ -1,6 +1,7 @@
 // import React from "preact/compat";
-import { TwitchIcon, YoutubeIcon, FacebookIcon,Share2Icon } from 'lucide-preact'
+import { TwitchIcon, YoutubeIcon, FacebookIcon, Share2Icon } from 'lucide-preact'
 import { useState } from 'preact/compat'; // const [isOpen, setIsOpen] = useState<boolean>(true); // onClick={() => props.setIsOpen(true)}
+import Discord from "../assets/social/discord.svg"
 export interface SocialCornerUpProps {
   urlOfLinkToShare: string
   name: string
@@ -14,7 +15,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
     setIsOpen(!isOpen);
   }
   return (
-    <>
+    <> 
       {// <!-- https://github.com/tholman/github-corners -->
       }
 
@@ -69,7 +70,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
           {// <!-- Active: "bg-gray-100", Not Active: "" -->
           }
 
-          <a href="#" role="menuitem" class="block" id={`user-menu-bottom-twitch${name}`}>
+          <a href="https://www.twitch.tv/Justin_Curieux" role="menuitem" class="block" id={`user-menu-bottom-twitch${name}`}>
             <TwitchIcon
               size={48}
               strokeWidth={2}
@@ -81,7 +82,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             />
             <span class="sr-only">twitch</span>
           </a>
-          <a href="#" role="menuitem" class="block" id={`user-menu-bottom-youtube${name}`}>
+          <a href="https://www.facebook.com/justin.curieux/" role="menuitem" class="block" id={`user-menu-bottom-youtube${name}`}>
             <YoutubeIcon
               size={48}
               strokeWidth={2}
@@ -93,8 +94,9 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             />
             <span class="sr-only">youtube</span>
           </a>
-          <a href="#" role="menuitem" class="block" id={`user-menu-bottom-facebook${name}`}>
-            <FacebookIcon               size={48}
+          <a href="https://www.youtube.com/@justincurieux31" role="menuitem" class="block" id={`user-menu-bottom-facebook${name}`}>
+            <FacebookIcon
+              size={48}
               strokeWidth={2}
               stroke={`currentColor`}
               //viewBox={"-6 -6 36 36"}
@@ -103,6 +105,9 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
               className="h-18 w-18 m-1 p-1 rounded-full"
             />
             <span class="sr-only">facebook</span>
+          </a>
+          <a href="https://discord.com/channels/1054405752422420531/1054405753240305736" role="menuitem" class="block" id={`user-menu-bottom-discord${name}`}>
+            <Discord />
           </a>
         </div>
         }
