@@ -1,7 +1,7 @@
 // import React from "preact/compat";
 import { TwitchIcon, YoutubeIcon, FacebookIcon, Share2Icon } from 'lucide-preact'
 import { useState } from 'preact/compat'; // const [isOpen, setIsOpen] = useState<boolean>(true); // onClick={() => props.setIsOpen(true)}
-import Discord from "../assets/social/discord.svg"
+import DiscordIcon from "./DiscordIcon"
 export interface SocialCornerUpProps {
   urlOfLinkToShare: string
   name: string
@@ -106,8 +106,8 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             />
             <span class="sr-only">facebook</span>
           </a>
-          <a href="https://discord.com/channels/1054405752422420531/1054405753240305736" role="menuitem" class="block" id={`user-menu-bottom-discord${name}`}>
-            <Discord />
+          <a href="https://discord.com/channels/1054405752422420531/1054405753240305736" role="menuitem" class="block place-item-center" id={`user-menu-bottom-discord${name}`}>
+            <DiscordIcon fill="#ffffff" />
           </a>
         </div>
         }
