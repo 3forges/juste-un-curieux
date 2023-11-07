@@ -109,7 +109,8 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
           <a href="https://discord.com/channels/1054405752422420531/1054405753240305736" role="menuitem" class="block" id={`user-menu-bottom-discord${name}`}>
             <DiscordIcon 
               fill="#ffffff" 
-              className="h-18 w-18 m-2 p-1 rounded-full"
+              classname="h-18 w-18 m-2 p-1 rounded-full"
+
             />
           </a>
         </div>
