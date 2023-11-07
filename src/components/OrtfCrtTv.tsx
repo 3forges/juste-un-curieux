@@ -5,7 +5,10 @@
 // const tailwindCssAnimated = `animate-none`
 const tailwindCssAnimated = ``
 // animate-rotate-y
+import { Image } from 'astro:assets'
 import styles from '~/components/OrtfCrtTv.module.css';
+import arcTriomphe from "../assets/ortf/ArcdeTriomphe-1.jpg"
+
 
 export interface OrtfCrtTvProps {
 
@@ -16,13 +19,16 @@ export default function OrtfCrtTv () {
     return (<div class={`${tailwindCssAnimated} relative grid justify-items-center items-center bg-black`}>
         {// <!-- CRT DISPLAY -->
         }
+        <Image src={arcTriomphe} alt="Arc de Triomphe, Paris" class="rounded-[50px] filter grayscale blur-[2px] z-1 p-5"/>
+        
+        {/*
         <img src="/ArcdeTriomphe-1.jpg"
             width={'75%'}
             height={'80%'}
             alt="Arc de Triomphe, Paris"
             class="rounded-[50px] filter grayscale blur-[2px] z-1 p-5"
         />
-        
+        */}
         {// <!-- CRT BARS -->
         }
         <div 
