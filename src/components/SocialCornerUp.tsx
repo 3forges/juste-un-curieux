@@ -1,5 +1,6 @@
 // import React from "preact/compat";
 import { TwitchIcon, YoutubeIcon, FacebookIcon,Share2Icon } from 'lucide-preact'
+/*
 import {
   EmailShareButton,
   FacebookShareButton,
@@ -21,6 +22,7 @@ import {
   WhatsappShareButton,
   WorkplaceShareButton
 } from "react-share";
+*/
 
 import { useState } from 'preact/compat'; // const [isOpen, setIsOpen] = useState<boolean>(true); // onClick={() => props.setIsOpen(true)}
 // import styles from '~/components/SocialCornerUp.module.css';
@@ -91,11 +93,11 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
          *   ></div>
          */}
         <div 
-          class="absolute bottom-[75px] xl:bottom-[70px] right-7 md:right-0 lg:right-0 xl:right-0 2xl:right-0 z-10 mt-2 rounded-md bg-orange-500 py-1 shadow-lg ring-1 ring-orange ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex={-1}>
+          class="absolute bottom-[75px] xl:bottom-[70px] right-7 md:right-0 lg:right-0 xl:right-0 2xl:right-0 z-10 mt-2 rounded-md bg-orange-500 py-1 shadow-lg ring-1 ring-orange ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-bottom-button" tabIndex={-1}>
           {// <!-- Active: "bg-gray-100", Not Active: "" -->
           }
 
-          <a href="#" class="block" role="menuitem" tabIndex={-1} aria-label="twitch" id="user-menu-item-0">
+          <a href="#" class="block" role="menuitem" aria-label="twitch" id="user-menu-bottom-twitch">
             <TwitchIcon
               size={48}
               strokeWidth={2}
@@ -106,8 +108,9 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
               className="h-18 w-18 m-1 p-1 rounded-full"
             />
           </a>
-          <a href="#" class="block" role="menuitem" tabIndex={-1} aria-label="youtube" id="user-menu-item-1">
-            <YoutubeIcon               size={48}
+          <a href="#" class="block" role="menuitem" aria-label="youtube" id="user-menu-bottom-youtube">
+            <YoutubeIcon
+              size={48}
               strokeWidth={2}
               stroke={`currentColor`}
               //viewBox={"-6 -6 36 36"}
@@ -116,7 +119,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
               className="h-18 w-18 m-1 p-1 rounded-full"
             />
           </a>
-          <a href="#" class="block" role="menuitem" tabIndex={-1} aria-label="facebook" id="user-menu-item-2">
+          <a href="#" class="block" role="menuitem" aria-label="facebook" id="user-menu-bottom-facebook">
             <FacebookIcon               size={48}
               strokeWidth={2}
               stroke={`currentColor`}
