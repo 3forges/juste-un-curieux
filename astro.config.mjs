@@ -8,9 +8,7 @@ import preact from "@astrojs/preact";
 // https://astro.build/config
 export default defineConfig({
   site: "https://astro-moon-landing.netlify.app/",
-  integrations: [tailwind(), image({
-    serviceEntryPoint: "@astrojs/image/sharp"
-  }), preact()],
+  integrations: [tailwind(), preact()],
   vite: {
     ssr: {
       external: ["svgo"]
