@@ -1,12 +1,10 @@
 ---
-
+import { TwitchIcon, YoutubeIcon, FacebookIcon,Share2Icon } from 'lucide-preact'
 ---
 
 <!-- Profile dropdown -->
 <div class="relative ml-3">
 
-  <div class="absolute top-[125]" >
-  </div>
   <!--
             Dropdown menu, show/hide based on menu state.
 
@@ -17,8 +15,7 @@
               From: "transform opacity-100 scale-100"
               To: "transform opacity-0 scale-95"
           -->
-          <div
-          class="absolute top-[125] right-0 z-10 mt-2 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+        <div class="absolute top-[-150px] ml-4 right-0 z-10 mt-2 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="user-menu-button"
@@ -32,7 +29,7 @@
             tabindex="-1"
             id="user-menu-item-0">Your Profile</a
           >
-          <a
+          <aaccentaccentHeight
             href="#"
             class="block px-4 py-2 text-gray-700 text-sm"
             role="menuitem"
@@ -54,17 +51,19 @@
   <div>
     <button
       type="button"
-      class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+      class="p-2 relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
       id="user-menu-button"
       aria-expanded="false"
       aria-haspopup="true"
     >
       <span class="absolute -inset-1.5"></span>
-      <span class="sr-only">Open user menu</span>
-      <img
-        class="h-8 w-8 rounded-full"
-        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-        alt=""
+      <span class="sr-only">Open share menu</span>
+      
+      <Share2Icon 
+      height={24}
+      width={24}
+      alt="Share"
+      className="h-10 w-10 rounded-full p-6"
       />
     </button>
   </div>

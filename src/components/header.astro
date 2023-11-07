@@ -2,7 +2,9 @@
 import { Icon } from "astro-icon";
 import ThemeSwitcher from "~/components/theme-switcher.astro";
 import type { NavItem } from "~/types";
-import HeaderSocials from '~/components/headerSocials.astro'
+// import HeaderSocials from '~/components/headerSocials.astro'
+import SocialCornerUp from "~/components/SocialCornerUp";
+
 // // <Icon name="justincurieux_logo" class="h-10 st6" />
 import LogoSVG from '~/components/LogoSVG'
 // import { useNavigate } from "react-router-dom";
@@ -22,7 +24,7 @@ const navItems: Array<NavItem> = [
 
 <header
   id="page-header"
-  class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-white"
+  class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-3 py-2 xl:px-8 xl:py-4 sm:px-3 sm:py-2 text-white"
 >
   <a class="flex items-center gap-3 hover:!text-default" href="#">
     <h1 class="sr-only">Justin Curieux</h1>
@@ -91,7 +93,7 @@ const navItems: Array<NavItem> = [
 
         <li>
           <a class="text-sm" href={`#`}>
-            <HeaderSocials />
+            <SocialCornerUp client:only="preact" />
           </a>
         </li>
           
@@ -158,6 +160,12 @@ const navItems: Array<NavItem> = [
                   </li>
                 ))
               }
+
+              <li>
+                <a class="text-sm" href={`#`}>
+                  <SocialCornerUp client:only="preact" />
+                </a>
+              </li>
             </ul>
           </nav>
         </div>
