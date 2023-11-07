@@ -1,2 +1,5 @@
 /// <reference path="../.astro/types.d.ts" />
-/// <reference types="@astrojs/image/client" />
+declare module '*.jpg';
+declare module '*.png';
+declare module '*.PNG';
+declare module '*.JPG';
