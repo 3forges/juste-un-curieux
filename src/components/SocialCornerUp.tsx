@@ -96,7 +96,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
           {// <!-- Active: "bg-gray-100", Not Active: "" -->
           }
 
-          <a href="#" class="block" id="user-menu-bottom-twitch">
+          <a href="#" role="menuitem" class="block" id="user-menu-bottom-twitch">
             <TwitchIcon
               size={48}
               strokeWidth={2}
@@ -107,7 +107,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
               className="h-18 w-18 m-1 p-1 rounded-full"
             />
           </a>
-          <a href="#" class="block" id="user-menu-bottom-youtube">
+          <a href="#" role="menuitem" class="block" id="user-menu-bottom-youtube">
             <YoutubeIcon
               size={48}
               strokeWidth={2}
@@ -118,7 +118,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
               className="h-18 w-18 m-1 p-1 rounded-full"
             />
           </a>
-          <a href="#" class="block" id="user-menu-bottom-facebook">
+          <a href="#" role="menuitem" class="block" id="user-menu-bottom-facebook">
             <FacebookIcon               size={48}
               strokeWidth={2}
               stroke={`currentColor`}
