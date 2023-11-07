@@ -29,9 +29,10 @@ import { useState } from 'preact/compat'; // const [isOpen, setIsOpen] = useStat
 // import SocialCornerUpDrawer from "~/components/SocialCornerUpDrawer";
 export interface SocialCornerUpProps {
   urlOfLinkToShare: string
+  name: string
 }
 
-export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch.tv/Justin_Curieux`}: SocialCornerUpProps) {
+export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch.tv/Justin_Curieux`, name}: SocialCornerUpProps) {
   const [isOpen, setIsOpen] = useState<boolean>(true); // onClick={() => props.setIsOpen(true)}
   setIsOpen(false)
   const onClickHandler = () => {
@@ -50,7 +51,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             onClick={onClickHandler} 
             type="button"
             class="hover:cursor-pointer p-1 relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-            id="user-menu-button-bottom-right"
+            id={`user-menu-button-bottom-right${name}`}
             >
             <span class="absolute -inset-1.5"></span>
             <span class="sr-only">Open share menu</span>
@@ -96,7 +97,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
           {// <!-- Active: "bg-gray-100", Not Active: "" -->
           }
 
-          <a href="#" role="menuitem" class="block" id="user-menu-bottom-twitch">
+          <a href="#" role="menuitem" class="block" id={`user-menu-bottom-twitch${name}`}>
             <TwitchIcon
               size={48}
               strokeWidth={2}
@@ -107,7 +108,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
               className="h-18 w-18 m-1 p-1 rounded-full"
             />
           </a>
-          <a href="#" role="menuitem" class="block" id="user-menu-bottom-youtube">
+          <a href="#" role="menuitem" class="block" id={`user-menu-bottom-youtube${name}`}>
             <YoutubeIcon
               size={48}
               strokeWidth={2}
@@ -118,7 +119,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
               className="h-18 w-18 m-1 p-1 rounded-full"
             />
           </a>
-          <a href="#" role="menuitem" class="block" id="user-menu-bottom-facebook">
+          <a href="#" role="menuitem" class="block" id={`user-menu-bottom-facebook${name}`}>
             <FacebookIcon               size={48}
               strokeWidth={2}
               stroke={`currentColor`}
