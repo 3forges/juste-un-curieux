@@ -2,8 +2,8 @@
 import Ortf from "~/components/ortf.astro";
 // import { TwitchPlayer } from "~/components/TwitchPlayer"; // <TwitchPlayer client:only="preact"/>
 import { TwitchPlayerX } from "~/components/TwitchPlayerX";
-// import GitHubCorner from "./github-corner.astro";
-import GitHubCorner from "~/components/GithubCorner";
+import GitHubCorner from "./github-corner.astro";
+//import GitHubCorner from "~/components/GithubCorner";
 
 // //<GitHubCorner client:only="preact" />
 // import SocialCorner from "~/components/SocialCorner";
@@ -12,7 +12,7 @@ import GitHubCorner from "~/components/GithubCorner";
 ---
 
 <section class="relative h-full bg-black">
-  <GitHubCorner client:only="preact" />
+  <GitHubCorner />
   <div class="relative grid h-full place-items-center sm:grid-cols-1">
     <Ortf />
     <!-- // <TwitchPlayerX client:load /> -->
