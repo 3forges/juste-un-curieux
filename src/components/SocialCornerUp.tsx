@@ -14,6 +14,7 @@ const effet = `transition ease-in-out delay-150 hover:-translate-y-1 hover:scale
 
 export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch.tv/Justin_Curieux`, name, headerHeight = 40 }: SocialCornerUpProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false); // onClick={() => props.setIsOpen(true)}
+  const [isUp, setIsUp] = useState<boolean>(true)
   //const currentColor = "#535353"
   const menuCompo = useRef<any>(null)
 
@@ -30,14 +31,16 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
     const { innerWidth: width, innerHeight: height } = window;
     let scroll = document.body.scrollTop || document.documentElement.scrollTop
     const d = innerHeight - scroll - headerHeight;
-    console.log(d)
-    console.log(menuCompo.current.classList)
+    console.log("scroll: ", d)
+    // console.log(menuCompo.current.classList)
     if (d < 0) {
-      menuCompo.current.classList.remove("bottom-[80px]")
-      menuCompo.current.classList.add("bottom-[-220px]")
+      //menuCompo.current.classList.remove("bottom-[80px]")
+      //menuCompo.current.classList.add("bottom-[-220px]")
+      setIsUp(false)
     } else {
-      menuCompo.current.classList.remove("bottom-[-220px]")
-      menuCompo.current.classList.add("bottom-[80px]")
+      //menuCompo.current.classList.remove("bottom-[-220px]")
+      //menuCompo.current.classList.add("bottom-[80px]")
+      setIsUp(true)
     }
   })
 
@@ -98,7 +101,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
         }
         <div
           ref={menuCompo} 
-          class={`${effet} ${isOpen?`scale-110`:`scale-0`} absolute bottom-[80px] xl:bottom-[80x] z-10 mt-2 rounded-md bg-orange-500 py-1 shadow-lg ring-1 ring-orange ring-opacity-5 focus:outline-none`} role="menu" tabIndex={-1}>
+          class={`${effet} ${isOpen?`scale-110`:`scale-0`} absolute ${isUp?`bottom-[80px] xl:bottom-[80x]`:`bottom-[-225px] xl:bottom-[-225px]`} z-10 mt-2 rounded-md bg-orange-500 py-1 shadow-lg ring-1 ring-orange ring-opacity-5 focus:outline-none`} role="menu" tabIndex={-1}>
           {// <!-- Active: "bg-gray-100", Not Active: "" -->
           }
 
