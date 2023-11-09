@@ -2,18 +2,20 @@
 import { TwitchIcon, YoutubeIcon, FacebookIcon, Share2Icon } from 'lucide-preact'
 import { useState } from 'preact/compat'; // const [isOpen, setIsOpen] = useState<boolean>(true); // onClick={() => props.setIsOpen(true)}
 import DiscordIcon from "./DiscordIcon"
+import './SocialCornerUp.module.css';
+
 export interface SocialCornerUpProps {
   urlOfLinkToShare: string
   name: string
 }
-
-const effet = `transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300`
+// scale-0 transition-all duration-500
+const effet = `transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`
 
 export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch.tv/Justin_Curieux`, name}: SocialCornerUpProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false); // onClick={() => props.setIsOpen(true)}
   //const currentColor = "#535353"
   const onClickHandler = () => {
-    console.info(`DRAWER JUSTIN SOCIAL`)
+    console.info(`>>>SocialCornerUp JUSTIN SOCIAL`)
     setIsOpen(!isOpen);
   }
 
@@ -27,6 +29,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
       }
 
       <div 
+        id={`social_corner_up`}
         onMouseLeave={onLeaveHandler}
         class="relative ml-3 px-2 m-3 mr-6 separateur scroll-ml-14 origin-[right_center] scale-1 transition-all duration-500">
         <div>
