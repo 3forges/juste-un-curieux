@@ -14,7 +14,7 @@ const navOnAirItems: Array<NavItem> = [
 ];
 const navItems: Array<NavItem> = [
   { title: "Bientôt", url: "#features" },
-  { title: "Réseaux Sociaux", url: "#compatibility" },
+  //{ title: "Réseaux Sociaux", url: "#compatibility" },
   { title: "Vidéos", url: "#showcase" },
 ];
 /**
@@ -81,6 +81,7 @@ const navItems: Array<NavItem> = [
               </li>
             ))
           }
+
           {
             navItems.map(({ title, url }) => (
               <li>
@@ -102,7 +103,9 @@ const navItems: Array<NavItem> = [
           * ------------------ ------------------ ------------------
           ***/
          }
-          
+          <li>
+            <SocialCornerUp name="noburger" urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`} client:only="preact" />
+          </li>
         </ul>
       </nav>
       <button
@@ -112,10 +115,7 @@ const navItems: Array<NavItem> = [
         aria-label="Navigation"
       >
         <Icon pack="mdi" name="menu" class="h-8" />
-      </button>
-      <span id="socialContainer">
-        <SocialCornerUp name="noburger" urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`} client:only="preact" />
-      </span>
+      </button>      
       <ThemeSwitcher />
     </div>
     <div id="menu-modal" class="modal hidden" aria-hidden="true">
@@ -169,12 +169,6 @@ const navItems: Array<NavItem> = [
                   </li>
                 ))
               }
-
-              <li>
-                <a class="text-sm" href={`#`}>
-                  <SocialCornerUp name="hamburger" urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`} client:only="preact" />
-                </a>
-              </li>
             </ul>
           </nav>
         </div>
@@ -218,6 +212,7 @@ const navItems: Array<NavItem> = [
     /**
      * => TOGGLE DROPUP TO DROPDOWN
      */
+    
     if (d < 0) {
       console.log("toggle SocialCorner")
       const social: any = document.getElementById('socialContainer')
