@@ -113,7 +113,9 @@ const navItems: Array<NavItem> = [
       >
         <Icon pack="mdi" name="menu" class="h-8" />
       </button>
-      <SocialCornerUp name="hamburger" urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`} client:only="preact" />
+      <span id="socialContainer">
+        <SocialCornerUp name="noburger" urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`} client:only="preact" />
+      </span>
       <ThemeSwitcher />
     </div>
     <div id="menu-modal" class="modal hidden" aria-hidden="true">
@@ -170,7 +172,7 @@ const navItems: Array<NavItem> = [
 
               <li>
                 <a class="text-sm" href={`#`}>
-                  <SocialCornerUp name="noburger" urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`} client:only="preact" />
+                  <SocialCornerUp name="hamburger" urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`} client:only="preact" />
                 </a>
               </li>
             </ul>
@@ -212,6 +214,30 @@ const navItems: Array<NavItem> = [
   document.addEventListener("scroll", () => {
     const d = page.clientHeight - page.scrollTop - header.offsetHeight;
     header.classList.toggle("fixed-header", d < 0);
+
+    /**
+     * => TOGGLE DROPUP TO DROPDOWN
+     */
+    if (d < 0) {
+      console.log("toggle SocialCorner")
+      const social: any = document.getElementById('socialContainer')
+      console.log("child: ", social)
+      console.log(social.children[2].children[0].children[1].role)
+      // social.removeChild(social.children[0]);
+      /*
+      const addComponent: any = document.createElement("SocialCornerUp")
+      addComponent.name="noburger"
+      addComponent.urlOfLinkToShare="https://www.twitch.tv/Justin_Curieux"
+      addComponent.client="preact"
+      social.appendChild(addComponent)
+
+      => FAIL ISLAND & SCRIPT MISSINGS
+      */
+      
+      // social.innerHTML = '<SocialCornerUp name="reburger" urlOfLinkToShare="https://www.twitch.tv/Justin_Curieux" client:only="preact" />'
+      // => FAIL ISLAND & SCRIPT MISSINGS
+    }
+
   });
 
   menu.addEventListener("click", (event) => {

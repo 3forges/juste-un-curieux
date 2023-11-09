@@ -1,39 +1,94 @@
 // import React from "preact/compat";
 import { TwitchIcon, YoutubeIcon, FacebookIcon, Share2Icon } from 'lucide-preact'
-import { useState } from 'preact/compat'; // const [isOpen, setIsOpen] = useState<boolean>(true); // onClick={() => props.setIsOpen(true)}
+import { useState, useRef, useEffect } from 'preact/compat'; // const [isOpen, setIsOpen] = useState<boolean>(true); // onClick={() => props.setIsOpen(true)}
 import DiscordIcon from "./DiscordIcon"
 export interface SocialCornerUpProps {
   urlOfLinkToShare: string
   name: string
 }
 
-const effet = `transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300`
-
 export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch.tv/Justin_Curieux`, name}: SocialCornerUpProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false); // onClick={() => props.setIsOpen(true)}
-  //const currentColor = "#535353"
+  const shareBoxStatus = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (shareBoxStatus.current) {
+      console.log('useEffect: ',shareBoxStatus)
+      //shareBoxStatus.current.classList.add('hidden')
+      shareBoxStatus.current.style.display = 'hidden'
+      console.log('useEffect: ',shareBoxStatus.current.style.display)
+    }
+  }, [shareBoxStatus.current])
   const onClickHandler = () => {
-    console.info(`DRAWER JUSTIN SOCIAL`)
+    //console.info(`DRAWER JUSTIN SOCIAL`)
     setIsOpen(!isOpen);
-  }
 
-  const onLeaveHandler = () => {
-    setIsOpen(false);
-  }
+    if (shareBoxStatus.current) {
+      console.log(shareBoxStatus.current.classList)
+      /*
+      let vis = Array.from(shareBoxStatus.current.classList)
+      console.log(vis)
+      if (vis.indexOf('hidden') !== -1) {
+        shareBoxStatus.current.style.display = 'block'
+        shareBoxStatus.current.classList.remove('hidden')
+        shareBoxStatus.current.classList.add('block')
 
+      } else {
+        shareBoxStatus.current.style.display = 'hidden'
+        shareBoxStatus.current.classList.remove('block')
+        shareBoxStatus.current.classList.add('hidden')
+      }
+      */
+
+
+      if (isOpen) shareBoxStatus.current.style.display = 'block'
+      else shareBoxStatus.current.style.display = 'hidden'
+      let disp = shareBoxStatus.current.style.display
+      console.log("state: ", isOpen)
+      console.log("display: ", disp)
+      /*
+      
+      
+      */
+      //console.log(vis)
+    }
+
+  }
   return (
     <> 
       {// <!-- https://github.com/tholman/github-corners -->
       }
 
-      <div 
-        onMouseLeave={onLeaveHandler}
-        class="relative ml-3 px-2 m-3 mr-6 separateur scroll-ml-14 origin-[right_center] scale-1 transition-all duration-500">
+      <div class="
+        relative 
+        separateur 
+        scroll-ml-14 
+        origin-[right_center] 
+        scale-1 
+        transition-all duration-100
+        cl-auto
+        rounded-full
+        hover:shadow-lg
+        hover:shadow-white
+        hover:bottom-1
+        ">
         <div>
           <button 
             onClick={onClickHandler} 
             type="button"
-            class="hover:cursor-pointer p-1 relative flex rounded-full text-sm focus:outline-none "
+            class="
+              hover:cursor-pointer 
+              p-1 
+              relative 
+              flex 
+              rounded-full 
+              text-sm 
+              outline-none 
+              ring-2 
+              ring-white 
+              focus:ring-offset-2 
+              focus:ring-offset-gray-800
+              "
             id={`user-menu-button-bottom-right${name}`}
             >
             <span class="absolute -inset-1.5"></span>
@@ -73,10 +128,26 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
          *     tabIndex={-1}
          *   ></div>
          */}
-        {// isOpen &&
-        }
+
         <div 
-          class={`${effet} ${isOpen?`scale-110`:`scale-0`} absolute bottom-[80px] xl:bottom-[80x] z-10 mt-2 rounded-md bg-orange-500 py-1 shadow-lg ring-1 ring-orange ring-opacity-5 focus:outline-none`} role="menu" tabIndex={-1}>
+          ref={shareBoxStatus}
+          class={
+            "absolute "+ 
+            "bottom-[80px] xl:bottom-[80px] "+ 
+            "z-10 "+ 
+            "rounded-md "+ 
+            "bg-orange-500  "+  
+            "py-1 "+ 
+            "shadow-lg "+ 
+            "ring-1 "+ 
+            "ring-orange "+ 
+            "ring-opacity-5 "+ 
+            "focus:outline-none "+ 
+            "transition-all "+ 
+            "duration-1000"
+            }
+            role="menu" 
+            tabIndex={-1}>
           {// <!-- Active: "bg-gray-100", Not Active: "" -->
           }
 
@@ -120,11 +191,11 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             <DiscordIcon 
               fill={`currentColor`}
               classname="h-18 w-18 m-2 p-1 rounded-full"
+
             />
-            <span class="sr-only">discord</span>
           </a>
         </div>
-        
+
       </div>
 
     </>
