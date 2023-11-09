@@ -1,27 +1,45 @@
 // import React from "preact/compat";
 import { TwitchIcon, YoutubeIcon, FacebookIcon, Share2Icon } from 'lucide-preact'
-import { useState } from 'preact/compat'; // const [isOpen, setIsOpen] = useState<boolean>(true); // onClick={() => props.setIsOpen(true)}
+import { useState, useRef } from 'preact/compat'; // const [isOpen, setIsOpen] = useState<boolean>(true); // onClick={() => props.setIsOpen(true)}
 import DiscordIcon from "./DiscordIcon"
 import './SocialCornerUp.module.css';
 
 export interface SocialCornerUpProps {
   urlOfLinkToShare: string
   name: string
+  headerHeight: number
 }
 // scale-0 transition-all duration-500
 const effet = `transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`
 
-export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch.tv/Justin_Curieux`, name}: SocialCornerUpProps) {
+export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch.tv/Justin_Curieux`, name, headerHeight = 40 }: SocialCornerUpProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false); // onClick={() => props.setIsOpen(true)}
   //const currentColor = "#535353"
+  const menuCompo = useRef<any>(null)
+
   const onClickHandler = () => {
     console.info(`>>>SocialCornerUp JUSTIN SOCIAL`)
     setIsOpen(!isOpen);
   }
 
   const onLeaveHandler = () => {
-    setIsOpen(false);
+    //setIsOpen(false);
   }
+
+  document.addEventListener("scroll", () => {
+    const { innerWidth: width, innerHeight: height } = window;
+    let scroll = document.body.scrollTop || document.documentElement.scrollTop
+    const d = innerHeight - scroll - headerHeight;
+    console.log(d)
+    console.log(menuCompo.current.classList)
+    if (d < 0) {
+      menuCompo.current.classList.remove("bottom-[80px]")
+      menuCompo.current.classList.add("bottom-[-220px]")
+    } else {
+      menuCompo.current.classList.remove("bottom-[-220px]")
+      menuCompo.current.classList.add("bottom-[80px]")
+    }
+  })
 
   return (
     <> 
@@ -29,7 +47,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
       }
 
       <div 
-        id={`social_corner_up`}
+         id={`social_corner_up`}
         onMouseLeave={onLeaveHandler}
         class="relative ml-3 px-2 m-3 mr-6 separateur scroll-ml-14 origin-[right_center] scale-1 transition-all duration-500">
         <div>
@@ -78,7 +96,8 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
          */}
         {// isOpen &&
         }
-        <div 
+        <div
+          ref={menuCompo} 
           class={`${effet} ${isOpen?`scale-110`:`scale-0`} absolute bottom-[80px] xl:bottom-[80x] z-10 mt-2 rounded-md bg-orange-500 py-1 shadow-lg ring-1 ring-orange ring-opacity-5 focus:outline-none`} role="menu" tabIndex={-1}>
           {// <!-- Active: "bg-gray-100", Not Active: "" -->
           }

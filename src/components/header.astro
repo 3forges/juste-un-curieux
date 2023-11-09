@@ -104,7 +104,13 @@ const navItems: Array<NavItem> = [
           ***/
          }
           <li>
-            <SocialCornerUp name="noburger" urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`} client:only="preact" />
+            <span id="socialContainer">
+              <SocialCornerUp 
+                headerHeight={40}
+                name="noburger" 
+                urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`} 
+                client:only="preact" />
+            </span>
           </li>
         </ul>
       </nav>
@@ -217,7 +223,7 @@ const navItems: Array<NavItem> = [
       console.log("toggle SocialCorner")
       const social: any = document.getElementById('socialContainer')
       console.log("child: ", social)
-      console.log(social.children[2].children[0].children[1].role)
+      console.log(social.children[2].children[0].children[1].classList)
       // social.removeChild(social.children[0]);
       /*
       const addComponent: any = document.createElement("SocialCornerUp")
