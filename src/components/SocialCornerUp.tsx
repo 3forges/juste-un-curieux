@@ -3,6 +3,7 @@ import { TwitchIcon, YoutubeIcon, FacebookIcon, Share2Icon } from 'lucide-preact
 import { useState, useRef } from 'preact/compat'; // const [isOpen, setIsOpen] = useState<boolean>(true); // onClick={() => props.setIsOpen(true)}
 import DiscordIcon from "./DiscordIcon"
 import './SocialCornerUp.module.css';
+import { useEffect } from 'preact/hooks'
 
 export interface SocialCornerUpProps {
   urlOfLinkToShare: string
@@ -27,22 +28,25 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
     //setIsOpen(false);
   }
 
-  document.addEventListener("scroll", () => {
-    const { innerWidth: width, innerHeight: height } = window;
-    let scroll = document.body.scrollTop || document.documentElement.scrollTop
-    const d = innerHeight - scroll - headerHeight;
-    console.log("scroll: ", d)
-    // console.log(menuCompo.current.classList)
-    if (d < 0) {
-      //menuCompo.current.classList.remove("bottom-[80px]")
-      //menuCompo.current.classList.add("bottom-[-220px]")
-      setIsUp(false)
-    } else {
-      //menuCompo.current.classList.remove("bottom-[-220px]")
-      //menuCompo.current.classList.add("bottom-[80px]")
-      setIsUp(true)
-    }
-  })
+  useEffect(() => {
+    document.addEventListener("scroll", () => {
+      const { innerWidth: width, innerHeight: height } = window;
+      let scroll = document.body.scrollTop || document.documentElement.scrollTop
+      console.log(`menuCompo.height : ${menuCompo.current.clientHeight}`, menuCompo)
+      const d = innerHeight - scroll - headerHeight - menuCompo.current.clientHeight;
+      console.log("scroll: ", d)
+      // console.log(menuCompo.current.classList)
+      if (d < 0) {
+        //menuCompo.current.classList.remove("bottom-[80px]")
+        //menuCompo.current.classList.add("bottom-[-220px]")
+        setIsUp(false)
+      } else {
+        //menuCompo.current.classList.remove("bottom-[-220px]")
+        //menuCompo.current.classList.add("bottom-[80px]")
+        setIsUp(true)
+      }
+    })
+  }, [])
 
   return (
     <> 
