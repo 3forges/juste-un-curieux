@@ -2,24 +2,16 @@
 import { Icon } from "astro-icon";
 import ThemeSwitcher from "~/components/theme-switcher.astro";
 import type { NavItem } from "~/types";
-// import HeaderSocials from '~/components/headerSocials.astro'
 import SocialCornerUp from "~/components/SocialCornerUp";
-
-// // <Icon name="justincurieux_logo" class="h-10 st6" />
 import LogoSVG from '~/components/LogoSVG'
-// import { useNavigate } from "react-router-dom";
-// const navigate = useNavigate();
+
 const navOnAirItems: Array<NavItem> = [
   { title: "ON AIR", url: "#" },
 ];
 const navItems: Array<NavItem> = [
   { title: "Bientôt", url: "#features" },
-  //{ title: "Réseaux Sociaux", url: "#compatibility" },
   { title: "Vidéos", url: "#showcase" },
 ];
-/**
- * <!-- animate-typing example : https://play.tailwindcss.com/q6LZjWKr97  -->
- */
 ---
 
 <header
@@ -44,15 +36,6 @@ const navItems: Array<NavItem> = [
     <Icon name="wordmark" class="p-1 hidden h-4 sm:block" />
   </a>
 
-<!--
-<button type="button" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Purple to Blue</button>
-<button type="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Cyan to Blue</button>
-<button type="button" class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Green to Blue</button>
-<button type="button" class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Purple to Pink</button>
-<button type="button" class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Pink to Orange</button>
-<button type="button" class="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Teal to Lime</button>
-<button type="button" class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Red to Yellow</button>
--->
   <div>
     <div class="flex items-center gap-6">
       <nav class="hidden sm:block">
@@ -92,25 +75,12 @@ const navItems: Array<NavItem> = [
             ))
           }
 
-        {/**
-          * ------------------ ------------------ ------------------
-          *   <li>
-          *     <a class="text-sm" href={`#`}>
-          *       <SocialCornerUp urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`} client:only="preact" />
-          *     </a>
-          *   </li> 
-          * 
-          * ------------------ ------------------ ------------------
-          ***/
-         }
           <li>
-            <span id="socialContainer">
-              <SocialCornerUp 
-                headerHeight={117}
-                name="noburger" 
-                urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`} 
-                client:only="preact" />
-            </span>
+            <SocialCornerUp 
+              name="noburger" 
+              urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`} 
+              client:only="preact" 
+            />
           </li>
         </ul>
       </nav>
@@ -200,6 +170,7 @@ const navItems: Array<NavItem> = [
   invariant(openNavButton, "openNavButton should not be null");
   invariant(closeNavButton, "closeNavButton should not be null");
 
+  // EVERY LISTENER INTO window.addEventListener("load", ... ) ??
   const openMenu = () => {
     MicroModal.show(menuModalId, { disableScroll: true });
   };
@@ -214,37 +185,19 @@ const navItems: Array<NavItem> = [
   document.addEventListener("scroll", () => {
     const d = page.clientHeight - page.scrollTop - header.offsetHeight;
     header.classList.toggle("fixed-header", d < 0);
-
-    /**
-     * => TOGGLE DROPUP TO DROPDOWN
-     */
-    
-    if (d < 0) {
-      console.log("toggle SocialCorner")
-      const social: any = document.getElementById('socialContainer')
-      console.log("child: ", social)
-      console.log(social.children[2].children[0].children[1].classList)
-      // social.removeChild(social.children[0]);
-      /*
-      const addComponent: any = document.createElement("SocialCornerUp")
-      addComponent.name="noburger"
-      addComponent.urlOfLinkToShare="https://www.twitch.tv/Justin_Curieux"
-      addComponent.client="preact"
-      social.appendChild(addComponent)
-
-      => FAIL ISLAND & SCRIPT MISSINGS
-      */
-      
-      // social.innerHTML = '<SocialCornerUp name="reburger" urlOfLinkToShare="https://www.twitch.tv/Justin_Curieux" client:only="preact" />'
-      // => FAIL ISLAND & SCRIPT MISSINGS
-    }
-
   });
 
   menu.addEventListener("click", (event) => {
     if ((event.target as HTMLElement).tagName === "A") {
       closeMenu();
     }
+  });
+
+  // FORCE BAR SYNCH ONLOAD
+  window.addEventListener("load", () => {
+    const d = page.clientHeight - page.scrollTop - header.offsetHeight;
+    header.classList.toggle("fixed-header", d < 0);
+    console.log("loaded")
   });
 </script>
 
