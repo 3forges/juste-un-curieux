@@ -17,6 +17,7 @@ const effet: string = `
   transform-gpu
 `
 
+const iconSize: number = 48
 export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch.tv/Justin_Curieux`, name }: SocialCornerUpProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isUp, setIsUp] = useState<boolean>(true)
@@ -96,7 +97,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[-22px] right-[20px]`}
             id={`user-menu-bottom-twitch${name}`}>
             <TwitchIcon
-              size={48}
+              size={iconSize}
               strokeWidth={2}
               stroke={`currentColor`}
               viewBox={"-2 -4 32 32"}
@@ -109,7 +110,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[8px] right-[-10px]`}
             id={`user-menu-bottom-youtube${name}`}>
             <YoutubeIcon
-              size={48}
+              size={iconSize}
               strokeWidth={2}
               stroke={`currentColor`}
               viewBox={"-2 -4 32 32"}
@@ -122,7 +123,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[8px] right-[-50px]`}
             id={`user-menu-bottom-facebook${name}`}>
             <FacebookIcon
-              size={48}
+              size={iconSize}
               strokeWidth={2}
               stroke={`currentColor`}
               viewBox={"-2 -4 32 32"}
@@ -135,7 +136,11 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[-22px] right-[-80px]`}
             id={`user-menu-bottom-discord${name}`}>
             <DiscordIcon 
-              fill={`currentColor`}
+              strokeWidth={2}
+              stroke={`currentColor`}
+              size={`${iconSize-5}px`}
+              viewBox={"-2 -4 32 32"}
+              alt="Share"
               classname="h-18 w-18 m-2 p-1 rounded-full"
             />
             <span class="sr-only">discord</span>
