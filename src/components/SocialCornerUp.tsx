@@ -3,7 +3,6 @@ import { useState, useRef } from 'preact/compat'
 import { TwitchIcon, YoutubeIcon, FacebookIcon, Share2Icon } from 'lucide-preact'
 import DiscordIcon from "./DiscordIcon"
 
-
 export interface SocialCornerUpProps {
   urlOfLinkToShare: string
   name: string
@@ -29,11 +28,11 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
   }
 
   function evalscroll() {
-    const { innerWidth: width, innerHeight: height } = window;
+    //const { innerHeight: height } = window;
     let scroll = document.body.scrollTop || document.documentElement.scrollTop
-    // 88 = <li><share></li> height
-    // 30 = fixed
-    const d = innerHeight - scroll - menuCompo.current.clientHeight - 88 - 30
+    const headerHeight = document.querySelector('#page-header')?.clientHeight || 0
+    // console.log(menuCompo.current.clientHeight, headerHeight, scroll)
+    const d = innerHeight - scroll - headerHeight
     if (d < 0) setIsUp(false)
     else setIsUp(true)
   }
@@ -42,8 +41,6 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
     document.addEventListener("scroll", evalscroll)
     evalscroll()
   })
-
-  // ${isUp?`bottom-[90px] xl:bottom-[90px]`:`bottom-[-235px] xl:bottom-[-235px]`} 
 
   return (
     <> 
@@ -103,7 +100,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             <span class="sr-only">twitch</span>
           </a>
           <a href="https://www.facebook.com/justin.curieux/" role="menuitem" 
-            class={`absolute rotate-[${isUp?`-15deg`:`-180deg`}] bottom-[-30px] right-[-10px]`}
+            class={`absolute rotate-[${isUp?`-15deg`:`180deg`}] bottom-[-30px] right-[-10px]`}
             id={`user-menu-bottom-youtube${name}`}>
             <YoutubeIcon
               size={48}
@@ -116,7 +113,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             <span class="sr-only">youtube</span>
           </a>
           <a href="https://www.youtube.com/@justincurieux31" role="menuitem" 
-            class={`absolute rotate-[${isUp?`15deg`:`-180deg`}] bottom-[-30px] right-[-50px]`}
+            class={`absolute rotate-[${isUp?`15deg`:`180deg`}] bottom-[-30px] right-[-50px]`}
             id={`user-menu-bottom-facebook${name}`}>
             <FacebookIcon
               size={48}
@@ -129,7 +126,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             <span class="sr-only">facebook</span>
           </a>
           <a href="https://discord.com/channels/1054405752422420531/1054405753240305736" role="menuitem" 
-            class={`absolute rotate-[${isUp?`70deg`:`-180deg`}] bottom-[-60px] right-[-80px]`}
+            class={`absolute rotate-[${isUp?`70deg`:`180deg`}] bottom-[-60px] right-[-80px]`}
             id={`user-menu-bottom-discord${name}`}>
             <DiscordIcon 
               fill={`currentColor`}
