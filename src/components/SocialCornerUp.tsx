@@ -1,7 +1,8 @@
-import { TwitchIcon, YoutubeIcon, FacebookIcon, Share2Icon } from 'lucide-preact'
-import { useState, useRef } from 'preact/compat'
-import DiscordIcon from "./DiscordIcon"
 import { useEffect } from 'preact/hooks'
+import { useState, useRef } from 'preact/compat'
+import { TwitchIcon, YoutubeIcon, FacebookIcon, Share2Icon } from 'lucide-preact'
+import DiscordIcon from "./DiscordIcon"
+
 
 export interface SocialCornerUpProps {
   urlOfLinkToShare: string

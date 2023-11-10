@@ -4,6 +4,8 @@ import ThemeSwitcher from "~/components/theme-switcher.astro";
 import type { NavItem } from "~/types";
 import SocialCornerUp from "~/components/SocialCornerUp";
 import LogoSVG from '~/components/LogoSVG'
+import { TwitchIcon, YoutubeIcon, FacebookIcon, Share2Icon } from 'lucide-preact'
+import DiscordIcon from "./DiscordIcon"
 
 const navOnAirItems: Array<NavItem> = [
   { title: "ON AIR", url: "#" },
@@ -111,7 +113,7 @@ const navItems: Array<NavItem> = [
             <Icon name="logomark" class="h-16" />
           </div>
           <nav>
-            <ul class="flex flex-col">
+            <ul class="flex flex-col place-items-center">
               {
                 navOnAirItems.map(({ title, url }) => (
                   <li>
@@ -122,8 +124,6 @@ const navItems: Array<NavItem> = [
                           <span class="animate-infinite animate-jump animate-duration-[2000ms] relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
                         </span> 
                       </span>
-                      
-                      
                       <span class="pl-4 pr-5 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l ">
                         
                         <div class="animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5 text-small text-white font-bold" >
@@ -145,6 +145,61 @@ const navItems: Array<NavItem> = [
                   </li>
                 ))
               }
+              <li>
+                <a class="block py-4 text-center text-xl">
+                  Reseaux
+                </a>
+              </li>
+              <ul>
+              <li><a href="https://www.twitch.tv/Justin_Curieux" role="menuitem" 
+              class={`block bottom-[-60px] right-[20px] text-center`}
+              id={`user-menu-bottom-twitch`}>
+              <span class="flex items-center flex-row"><TwitchIcon
+                size={48}
+                strokeWidth={2}
+                stroke={`currentColor`}
+                viewBox={"-2 -4 32 32"}
+                alt="Share"
+                className="h-18 w-18 m-1 p-1 rounded-full items-center"
+              />
+              twitch</span>
+            </a></li>
+            <li><a href="https://www.facebook.com/justin.curieux/" role="menuitem" 
+              class={`block bottom-[-30px] right-[-10px] text-center`}
+              id={`user-menu-bottom-youtube`}>
+              <span class="flex items-center flex-row"><YoutubeIcon
+                size={48}
+                strokeWidth={2}
+                stroke={`currentColor`}
+                viewBox={"-2 -4 32 32"}
+                alt="Share"
+                className="h-18 w-18 m-1 p-1 rounded-full"
+              />
+              youtube</span>
+            </a></li>
+            <li><a href="https://www.youtube.com/@justincurieux31" role="menuitem" 
+              class={`block bottom-[-30px] right-[-50px] text-center`}
+              id={`user-menu-bottom-facebook`}>
+              <span class="flex items-center flex-row"><FacebookIcon
+                size={48}
+                strokeWidth={2}
+                stroke={`currentColor`}
+                viewBox={"-2 -4 32 32"}
+                alt="Share"
+                className="h-18 w-18 m-1 p-1 rounded-full"
+              />
+              facebook</span>
+            </a></li>
+            <li><a href="https://discord.com/channels/1054405752422420531/1054405753240305736" role="menuitem" 
+              class={`block bottom-[-60px] right-[-80px] text-center`}
+              id={`user-menu-bottom-discord`}>
+              <span class="flex items-center flex-row"><DiscordIcon 
+                fill={`currentColor`}
+                classname="h-18 w-18 m-2 p-1 rounded-full"
+              />
+              discord</span>
+            </a></li>
+            </ul>
             </ul>
           </nav>
         </div>
