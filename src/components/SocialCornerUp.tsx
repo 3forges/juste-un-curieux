@@ -9,13 +9,12 @@ export interface SocialCornerUpProps {
 }
 
 const effet: string = `
-  transition-scale
+  origin-bottom-center
   ease-in-out 
   delay-50 
-  hover:-translate-y-1 
-  hover:scale-110 
-  duration-200
-  origin-bottom-center
+  duration-500
+  transition-rotate
+  transform-gpu
 `
 
 export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch.tv/Justin_Curieux`, name }: SocialCornerUpProps) {
@@ -49,7 +48,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
          id={`social_corner_up`}
         class={`
           relative 
-          ml-3 px-2 m-3 mr-6 
+          ml-6 px-2 m-3 mr-6 
           separateur 
           scroll-ml-14 
         `}
@@ -81,16 +80,15 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             right-[38px]
             bottom-[38px]
             flex
-            ${effet} 
-            ${isOpen?`scale-110`:`scale-0`} 
             z-10 
             mt-2 
             bg-transparent 
             py-1 
-            transition-rotate
-            duration-300
-            ${isUp?`rotate-[0deg] bottom-[90px]`:`rotate-[-180deg] bottom-[-30px]`}
-            transform-gpu
+            hover:-translate-y-1 
+            hover:scale-110 
+            ${effet} 
+            ${isOpen?`scale-110`:`scale-0`} 
+            ${isUp?`rotate-[0deg]`:`rotate-[-180deg]`}
           `} 
           role="menu" 
           tabIndex={-1}
