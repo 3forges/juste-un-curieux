@@ -88,7 +88,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
           tabIndex={-1}
         >
           <a href="https://www.twitch.tv/Justin_Curieux" role="menuitem" 
-            class={`absolute rotate-[${isUp?`-70deg`:`180deg`}] bottom-[-60px] right-[20px]`}
+            class={`absolute rotate-[${isUp?`-70deg`:`-180deg`}] bottom-[-60px] right-[20px]`}
             id={`user-menu-bottom-twitch${name}`}>
             <TwitchIcon
               size={48}
@@ -101,7 +101,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             <span class="sr-only">twitch</span>
           </a>
           <a href="https://www.facebook.com/justin.curieux/" role="menuitem" 
-            class={`absolute rotate-[${isUp?`-15deg`:`180deg`}] bottom-[-30px] right-[-10px]`}
+            class={`absolute rotate-[${isUp?`-15deg`:`-180deg`}] bottom-[-30px] right-[-10px]`}
             id={`user-menu-bottom-youtube${name}`}>
             <YoutubeIcon
               size={48}
@@ -114,7 +114,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             <span class="sr-only">youtube</span>
           </a>
           <a href="https://www.youtube.com/@justincurieux31" role="menuitem" 
-            class={`absolute rotate-[${isUp?`15deg`:`180deg`}] bottom-[-30px] right-[-50px]`}
+            class={`absolute rotate-[${isUp?`15deg`:`-180deg`}] bottom-[-30px] right-[-50px]`}
             id={`user-menu-bottom-facebook${name}`}>
             <FacebookIcon
               size={48}
@@ -127,7 +127,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             <span class="sr-only">facebook</span>
           </a>
           <a href="https://discord.com/channels/1054405752422420531/1054405753240305736" role="menuitem" 
-            class={`absolute rotate-[${isUp?`70deg`:`180deg`}] bottom-[-60px] right-[-80px]`}
+            class={`absolute rotate-[${isUp?`70deg`:`-180deg`}] bottom-[-60px] right-[-80px]`}
             id={`user-menu-bottom-discord${name}`}>
             <DiscordIcon 
               fill={`currentColor`}
