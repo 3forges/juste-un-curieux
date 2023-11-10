@@ -9,7 +9,7 @@ export interface SocialCornerUpProps {
 }
 
 const effet: string = `
-  transition-all
+  transition-scale
   ease-in-out 
   delay-50 
   hover:-translate-y-1 
@@ -47,7 +47,12 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
     <> 
       <div 
          id={`social_corner_up`}
-        class="relative ml-3 px-2 m-3 mr-6 separateur scroll-ml-14 origin-center scale-1 transition-all duration-500"
+        class={`
+          relative 
+          ml-3 px-2 m-3 mr-6 
+          separateur 
+          scroll-ml-14 
+        `}
       >
         <div>
           <button 
@@ -74,6 +79,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             absolute 
             origin-bottom
             right-[38px]
+            bottom-[38px]
             flex
             ${effet} 
             ${isOpen?`scale-110`:`scale-0`} 
@@ -81,6 +87,8 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             mt-2 
             bg-transparent 
             py-1 
+            transition-rotate
+            duration-300
             ${isUp?`rotate-[0deg] bottom-[90px]`:`rotate-[-180deg] bottom-[-30px]`}
             transform-gpu
           `} 
@@ -88,7 +96,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
           tabIndex={-1}
         >
           <a href="https://www.twitch.tv/Justin_Curieux" role="menuitem" 
-            class={`absolute rotate-[${isUp?`-70deg`:`-180deg`}] bottom-[-60px] right-[20px]`}
+            class={`absolute rotate-[${isUp?`-70deg`:`-180deg`}] bottom-[-22px] right-[20px]`}
             id={`user-menu-bottom-twitch${name}`}>
             <TwitchIcon
               size={48}
@@ -101,7 +109,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             <span class="sr-only">twitch</span>
           </a>
           <a href="https://www.facebook.com/justin.curieux/" role="menuitem" 
-            class={`absolute rotate-[${isUp?`-15deg`:`-180deg`}] bottom-[-30px] right-[-10px]`}
+            class={`absolute rotate-[${isUp?`-15deg`:`-180deg`}] bottom-[8px] right-[-10px]`}
             id={`user-menu-bottom-youtube${name}`}>
             <YoutubeIcon
               size={48}
@@ -114,7 +122,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             <span class="sr-only">youtube</span>
           </a>
           <a href="https://www.youtube.com/@justincurieux31" role="menuitem" 
-            class={`absolute rotate-[${isUp?`15deg`:`-180deg`}] bottom-[-30px] right-[-50px]`}
+            class={`absolute rotate-[${isUp?`15deg`:`-180deg`}] bottom-[8px] right-[-50px]`}
             id={`user-menu-bottom-facebook${name}`}>
             <FacebookIcon
               size={48}
@@ -127,7 +135,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             <span class="sr-only">facebook</span>
           </a>
           <a href="https://discord.com/channels/1054405752422420531/1054405753240305736" role="menuitem" 
-            class={`absolute rotate-[${isUp?`70deg`:`-180deg`}] bottom-[-60px] right-[-80px]`}
+            class={`absolute rotate-[${isUp?`70deg`:`-180deg`}] bottom-[-22px] right-[-80px]`}
             id={`user-menu-bottom-discord${name}`}>
             <DiscordIcon 
               fill={`currentColor`}
