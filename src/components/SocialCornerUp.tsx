@@ -9,13 +9,17 @@ export interface SocialCornerUpProps {
 }
 
 const fixedElementSwitcher: string = '#page-header'
+const socials = [
+
+]
+
 
 const effet: string = `
   transition-all
   origin-bottom-center
   ease-in-out 
   delay-50 
-  duration-500
+  duration-300
   transform-gpu
 `
 
