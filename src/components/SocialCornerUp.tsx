@@ -8,6 +8,8 @@ export interface SocialCornerUpProps {
   name: string
 }
 
+const fixedElementSwitcher: string = '#page-header'
+
 const effet: string = `
   transition-all
   origin-bottom-center
@@ -31,7 +33,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
   function evalscroll() {
     //const { innerHeight: height } = window;
     let scroll = document.body.scrollTop || document.documentElement.scrollTop
-    const headerHeight = document.querySelector('#page-header')?.clientHeight || 0
+    const headerHeight = document.querySelector(fixedElementSwitcher)?.clientHeight || 0
     // console.log(menuCompo.current.clientHeight, headerHeight, scroll)
     const d = innerHeight - scroll - headerHeight
     if (d < 0) setIsUp(false)
