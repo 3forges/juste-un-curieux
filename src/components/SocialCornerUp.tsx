@@ -13,7 +13,6 @@ const effet: string = `
   ease-in-out 
   delay-50 
   duration-500
-  transition-rotate
   transform-gpu
 `
 
@@ -68,7 +67,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
               stroke={`currentColor`}
               viewBox={"-2 -4 32 32"}
               alt="Share"
-              className="h-18 w-18 m-1 p-1 rounded-full"
+              className="h-18 w-18 m-1 p-1 rounded-full z-10"
             />
           </button>
         </div>
@@ -84,8 +83,7 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             mt-2 
             bg-transparent 
             py-1 
-            hover:-translate-y-1 
-            hover:scale-110 
+            hover:scale-125
             ${effet} 
             ${isOpen?`scale-110`:`scale-0`} 
             ${isUp?`rotate-[0deg]`:`rotate-[-180deg]`}
