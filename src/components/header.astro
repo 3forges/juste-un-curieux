@@ -3,13 +3,11 @@ import { Icon } from "astro-icon";
 import ThemeSwitcher from "~/components/theme-switcher.astro";
 import type { NavItem } from "~/types";
 import SocialCornerUp from "~/components/SocialCornerUp";
-import LogoSVG from '~/components/LogoSVG'
-import { Share2Icon } from 'lucide-preact'
-import { socials } from "./SocialList"
+import LogoSVG from "~/components/LogoSVG";
+import { Share2Icon } from "lucide-preact";
+import { socials } from "./SocialList";
 
-const navOnAirItems: Array<NavItem> = [
-  { title: "ON AIR", url: "#" },
-];
+const navOnAirItems: Array<NavItem> = [{ title: "ON AIR", url: "#" }];
 const navItems: Array<NavItem> = [
   { title: "Bientôt", url: "#features" },
   { title: "Vidéos", url: "#showcase" },
@@ -18,24 +16,67 @@ const navItems: Array<NavItem> = [
 
 <header
   id="page-header"
-  class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-3 py-2 xl:px-8 xl:py-4 sm:px-3 sm:py-2 text-white"
+  class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-3 py-2 text-white sm:px-3 sm:py-2 xl:px-8 xl:py-4"
 >
   <a class="flex items-center gap-3 hover:!text-default" href="#">
     <h1 class="sr-only">Justin Curieux</h1>
     <style type="text/css">
-      .st0{display:none;}
-      .st1{display:inline;fill:none;stroke:#FF0000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-      .st2{display:inline;fill:#FF0000;}
-      .st3{display:inline;fill:none;stroke:#FF0000;stroke-width:13;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-      .st4{display:inline;}
-      .st5{display:inline;fill:none;stroke:#FF0000;stroke-width:14.22;stroke-miterlimit:10;}
-      .st6{fill:#FF5D01;}
-      .logo_livre{display:inline;fill:none;stroke:#FF0000;stroke-width:14.22;stroke-miterlimit:10;}
-      path.logo_livre{stroke: black; fill: black;}
-      polygon.logo_livre{stroke: black; fill: black;}
+      .st0 {
+        display: none;
+      }
+      .st1 {
+        display: inline;
+        fill: none;
+        stroke: #ff0000;
+        stroke-width: 15;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+      }
+      .st2 {
+        display: inline;
+        fill: #ff0000;
+      }
+      .st3 {
+        display: inline;
+        fill: none;
+        stroke: #ff0000;
+        stroke-width: 13;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+      }
+      .st4 {
+        display: inline;
+      }
+      .st5 {
+        display: inline;
+        fill: none;
+        stroke: #ff0000;
+        stroke-width: 14.22;
+        stroke-miterlimit: 10;
+      }
+      .st6 {
+        fill: #ff5d01;
+      }
+      .logo_livre {
+        display: inline;
+        fill: none;
+        stroke: #ff0000;
+        stroke-width: 14.22;
+        stroke-miterlimit: 10;
+      }
+      path.logo_livre {
+        stroke: black;
+        fill: black;
+      }
+      polygon.logo_livre {
+        stroke: black;
+        fill: black;
+      }
     </style>
     <LogoSVG />
-    <Icon name="wordmark" class="p-1 hidden h-4 sm:block" />
+    <Icon name="wordmark" class="hidden h-5 sm:block" />
   </a>
 
   <div>
@@ -43,24 +84,24 @@ const navItems: Array<NavItem> = [
     <div class="flex items-center gap-6">
       <nav class="hidden sm:block">
         <ul class="flex items-center gap-6">
-          { navOnAirItems.map(({ title, url }) => (
-            <li>
-              <a href={url} class="inline-flex overflow-hidden text-white bg-gray-900 rounded group">
-                <span class="px-3.5 py-2 text-white bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 flex items-center justify-center">
-                  <span class="animate-infinite animate-jump animate-duration-[2000ms] relative flex h-3 w-3">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                    <span class="animate-infinite animate-jump animate-duration-[2000ms] relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                  </span> 
+          {
+            navOnAirItems.map(({ title, url }) => (
+              <li class="group m-4 inline-flex overflow-hidden rounded bg-gray-900 text-white">
+                <span class="flex items-center justify-center bg-gradient-to-r from-teal-200 to-lime-200 px-3.5 py-2 text-white hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200">
+                  <span class="relative flex animate-jump animate-duration-[2000ms] animate-infinite ">
+                    <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75" />
+                    <span class="relative inline-flex h-3 w-3 animate-jump rounded-full bg-red-500 animate-duration-[2000ms] animate-infinite" />
+                  </span>
                 </span>
-                <span class="pl-4 pr-5 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l ">
-                  <div class="animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5 text-small text-white font-bold" >
+                <span class="bg-gradient-to-r from-purple-500 to-pink-500 py-2.5 pl-4 pr-5 hover:bg-gradient-to-l ">
+                  <div class="text-small animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5 font-bold text-white">
                     <span class="text-small text-transparent">- . </span>
                     {title}
                   </div>
                 </span>
-              </a>
-            </li>
-          ))}
+              </li>
+            ))
+          }
 
           {
             navItems.map(({ title, url }) => (
@@ -73,10 +114,10 @@ const navItems: Array<NavItem> = [
           }
 
           <li class="sm:mr-4">
-            <SocialCornerUp 
-              name="noburger" 
-              urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`} 
-              client:only="preact" 
+            <SocialCornerUp
+              name="noburger"
+              urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`}
+              client:only="preact"
             />
           </li>
         </ul>
@@ -111,22 +152,24 @@ const navItems: Array<NavItem> = [
           </div>
           <nav>
             <ul class="flex flex-col place-items-center">
-              { navOnAirItems.map(({ title, url }) => (
+              {
+                navOnAirItems.map(({ title, url }) => (
                   <li>
-                    <a href={url} class="inline-flex overflow-hidden text-white bg-gray-900 rounded group">
-                      <span class="px-3.5 py-2 text-white bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 flex items-center justify-center">
-                        <span class="animate-infinite animate-jump animate-duration-[2000ms] relative flex h-3 w-3">
-                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                          <span class="animate-infinite animate-jump animate-duration-[2000ms] relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                        </span> 
+                    <a
+                      href={url}
+                      class="group inline-flex overflow-hidden rounded bg-gray-900 text-white"
+                    >
+                      <span class="flex items-center justify-center bg-gradient-to-r from-teal-200 to-lime-200 px-3.5 py-2 text-white hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200">
+                        <span class="relative flex h-3 w-3 animate-jump animate-duration-[2000ms] animate-infinite">
+                          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75" />
+                          <span class="relative inline-flex h-3 w-3 animate-jump rounded-full bg-red-500 animate-duration-[2000ms] animate-infinite" />
+                        </span>
                       </span>
-                      <span class="pl-4 pr-5 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l ">
-                        
-                        <div class="animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5 text-small text-white font-bold" >
+                      <span class="bg-gradient-to-r from-purple-500 to-pink-500 py-2.5 pl-4 pr-5 hover:bg-gradient-to-l ">
+                        <div class="text-small animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5 font-bold text-white">
                           <span class="text-small text-transparent">- . </span>
                           {title}
                         </div>
-                        
                       </span>
                     </a>
                   </li>
@@ -142,7 +185,7 @@ const navItems: Array<NavItem> = [
                 ))
               }
               <li class="block py-4 text-center text-xl">
-                <span class="flex items-center flex-row">
+                <span class="flex flex-row items-center">
                   <Share2Icon
                     size={36}
                     strokeWidth={3}
@@ -155,27 +198,32 @@ const navItems: Array<NavItem> = [
                 </span>
               </li>
               <ul>
-                {socials.map((item) => {
-                  return(
-                    <li>
-                      <a href={item.link} role="menuitem" 
-                        class={`block text-center`}
-                        id={`user-menu-bottom-${item.label}`}>
-                        <span class="flex items-center flex-row">
-                          <item.icon
-                            size={48}
-                            strokeWidth={2}
-                            stroke={`currentColor`}
-                            viewBox={"-2 -4 32 32"}
-                            alt="Share"
-                            className="h-18 w-18 m-1 p-1 rounded-full items-center"
-                          />
-                          {item.label}
-                        </span>
-                      </a>
-                    </li>
-                  )
-                })}
+                {
+                  socials.map((item) => {
+                    return (
+                      <li>
+                        <a
+                          href={item.link}
+                          role="menuitem"
+                          class={`block text-center`}
+                          id={`user-menu-bottom-${item.label}`}
+                        >
+                          <span class="flex flex-row items-center">
+                            <item.icon
+                              size={48}
+                              strokeWidth={2}
+                              stroke={`currentColor`}
+                              viewBox={"-2 -4 32 32"}
+                              alt="Share"
+                              className="h-18 w-18 m-1 items-center rounded-full p-1"
+                            />
+                            {item.label}
+                          </span>
+                        </a>
+                      </li>
+                    );
+                  })
+                }
               </ul>
             </ul>
           </nav>
