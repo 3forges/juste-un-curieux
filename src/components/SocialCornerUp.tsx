@@ -1,9 +1,7 @@
 import { useEffect } from 'preact/hooks'
 import { useState, useRef } from 'preact/compat'
-//import { Share2Icon } from 'lucide-preact'
+import { Share2Icon } from 'lucide-preact'
 import { socials, social } from "./SocialList"
-import { TwitchIcon, YoutubeIcon, FacebookIcon, Share2Icon, LucideIcon } from 'lucide-preact'
-import DiscordIcon from "./DiscordIcon"
 export interface SocialCornerUpProps {
   urlOfLinkToShare: string
   name: string
@@ -101,7 +99,7 @@ export default function SocialCornerUp( { urlOfLinkToShare, name }: SocialCorner
                 target="_blank"
                 role="menuitem" 
                 class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] ${item.bottom} ${item.right}`}
-                id={`user-menu-bottom-twitch${name}`}>
+                id={`user-menu-bottom-${item.label}-${name}`}>
                 <item.icon
                   size={(item.label !== "Discord")?iconSize:iconSize-5}
                   strokeWidth={2}
@@ -115,7 +113,6 @@ export default function SocialCornerUp( { urlOfLinkToShare, name }: SocialCorner
             )
           })}
           </>
-          
         </div>        
       </div>
     </>
