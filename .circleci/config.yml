@@ -11,7 +11,9 @@ parameters:
   pokus_nodejs_version:
     type: string
     # default: "18.17.1"
-    default: "lts-bullseye"
+    # default: "lts-bullseye"
+    # default: "lts-bookworm"
+    default: "21.1.0-bookworm"
   ci_workspace_root:
     type: string
     default: "/.ci.workspace"

@@ -1,10 +1,12 @@
 import { useEffect } from 'preact/hooks'
 import { useState, useRef } from 'preact/compat'
 import { Share2Icon } from 'lucide-preact'
-import { socials, social } from "./SocialList"
+//import { socials, Social } from "./SocialList"
+import type { Social } from "./SocialList"
 export interface SocialCornerUpProps {
   urlOfLinkToShare: string
   name: string
+  socialMenuItems: Social[]
 }
 
 /**
@@ -22,7 +24,7 @@ const effet: string = `
 const iconSize: number = 48
 const socialAsAList: boolean = true
 
-export default function SocialCornerUp( { urlOfLinkToShare, name }: SocialCornerUpProps) {
+export default function SocialCornerUp( { urlOfLinkToShare, name, socialMenuItems }: SocialCornerUpProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isUp, setIsUp] = useState<boolean>(true)
   const menuCompo = useRef<HTMLDivElement>(null)
@@ -92,7 +94,7 @@ export default function SocialCornerUp( { urlOfLinkToShare, name }: SocialCorner
           role="menu" 
           tabIndex={-1}
         >
-          {socialAsAList && socials.map((item: social) => {
+          {socialAsAList && socialMenuItems.map((item: Social) => {
             return (
               <a 
                 href={`${item.link}?${urlOfLinkToShare}`}
