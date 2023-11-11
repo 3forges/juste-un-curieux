@@ -4,28 +4,22 @@
  *  height="1em"
  *  viewBox="0 0 640 512">
  */
-export interface DiscordIconProps {
-  size?: string,
-  viewBox?: string,
-  stroke?: string,
-  classname?: string,
-  strokeWidth?: number,
-  alt?: string
-}
-const DiscordIcon = ({ 
+import type { LucideIcon, LucideProps } from 'lucide-preact'
+
+const DiscordIcon: LucideIcon = ({ 
     size = "2em",
     viewBox = `0 0 640 512`,
     stroke = "none",
-    classname = "h-18 w-18 m-1 p-1 rounded-full",
+    strokeWidth = 2,
     alt = "Discord"
-}: DiscordIconProps) => { 
+}: LucideProps) => { 
     viewBox = `0 0 640 512`
     return (
     <svg 
         width={`${size}`} 
         height={`${size}`} 
         viewBox={`${viewBox}`} 
-        className={`${classname}`}
+        className = "h-18 w-18 m-1 p-1 rounded-full"
         fill={`${stroke}`} 
         xmlns="http://www.w3.org/2000/svg"
         alt={alt}

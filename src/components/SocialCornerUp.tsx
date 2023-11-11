@@ -1,52 +1,44 @@
 import { useEffect } from 'preact/hooks'
 import { useState, useRef } from 'preact/compat'
-import { TwitchIcon, YoutubeIcon, FacebookIcon, Share2Icon } from 'lucide-preact'
-import DiscordIcon from "./DiscordIcon"
+import { Share2Icon } from 'lucide-preact'
+import { socials, social } from "./SocialList"
 
 export interface SocialCornerUpProps {
   urlOfLinkToShare: string
   name: string
 }
 
-const fixedElementSwitcher: string = '#page-header'
-const socials = [
-
-]
-
-
+/**
+ * SOME CONF
+ */
+const fixedElementHeight: number = document.querySelector('#page-header')?.clientHeight || 0
 const effet: string = `
   transition-all
   origin-bottom-center
   ease-in-out 
-  delay-50 
   duration-300
   transform-gpu
 `
-
 const iconSize: number = 48
-export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch.tv/Justin_Curieux`, name }: SocialCornerUpProps) {
+
+export default function SocialCornerUp( { urlOfLinkToShare, name }: SocialCornerUpProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isUp, setIsUp] = useState<boolean>(true)
-  const menuCompo = useRef<any>(null)
+  const menuCompo = useRef<HTMLDivElement>(null)
 
   const onClickHandler = () => {
-    console.info(`>>>SocialCornerUp JUSTIN SOCIAL`)
     setIsOpen(!isOpen);
   }
 
-  function evalscroll() {
-    //const { innerHeight: height } = window;
-    let scroll = document.body.scrollTop || document.documentElement.scrollTop
-    const headerHeight = document.querySelector(fixedElementSwitcher)?.clientHeight || 0
-    // console.log(menuCompo.current.clientHeight, headerHeight, scroll)
-    const d = innerHeight - scroll - headerHeight
-    if (d < 0) setIsUp(false)
-    else setIsUp(true)
+  function onScrolling() {
+    let scroll: number = document.body.scrollTop || document.documentElement.scrollTop
+    const headerHeight: number = fixedElementHeight > 0 ? fixedElementHeight : menuCompo.current?.clientHeight || 0
+    setIsUp( (window.innerHeight - scroll - headerHeight < 0) ? false : true )
   }
 
   useEffect(() => {
-    document.addEventListener("scroll", evalscroll)
-    evalscroll()
+    onScrolling()
+    document.addEventListener("scroll", onScrolling)
   })
 
   return (
@@ -99,6 +91,26 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
           role="menu" 
           tabIndex={-1}
         >
+          {socials.map((item: social) => {
+            return (
+              <a 
+                href={item.link} 
+                role="menuitem" 
+                class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[${item.bottom}px] right-[${item.right}px]`}
+                id={`user-menu-bottom-twitch${item.label}`}>
+                <item.icon
+                  size={iconSize}
+                  strokeWidth={2}
+                  stroke={`currentColor`}
+                  viewBox={"-2 -4 32 32"}
+                  alt="Share"
+                  className="h-18 w-18 m-1 p-1 rounded-full"
+                />
+                <span class="sr-only">{item.label}</span>
+              </a>
+            )
+          })}
+          {/* 
           <a href="https://www.twitch.tv/Justin_Curieux" role="menuitem" 
             class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[-22px] right-[20px]`}
             id={`user-menu-bottom-twitch${name}`}>
@@ -151,8 +163,8 @@ export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch
             />
             <span class="sr-only">discord</span>
           </a>
+  */}
         </div>        
       </div>
     </>
-  );
-}
+  );}
