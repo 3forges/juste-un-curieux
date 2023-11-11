@@ -5,37 +5,37 @@ export interface social {
   link: string
   icon: LucideIcon
   label: string
-  bottom: number
-  right: number
+  bottom: string
+  right: string
 }
 
 export const socials: social[] = [
   {
-    link: "#",
+    link: "https://www.twitch.tv/Justin_Curieux",
     icon: TwitchIcon,
     label: "Twitch",
-    bottom: -22,
-    right: 20
+    bottom: "-bottom-[20px]",
+    right: "right-[20px]"
   },
   {
-    link: "#",
+    link: "https://www.youtube.com/@justincurieux31",
     icon: YoutubeIcon,
     label: "Youtube",
-    bottom: 8,
-    right: -10
+    bottom: "bottom-[10px]",
+    right: "-right-[10px]"
   },
   {
-    link: "#",
+    link: "https://www.facebook.com/justin.curieux/",
     icon: FacebookIcon,
     label: "Facebook",
-    bottom: 8,
-    right: -50
+    bottom: "bottom-[10px]",
+    right: "-right-[50px]"
   },
   {
-    link: "#",
+    link: "https://discord.com/channels/1054405752422420531/1054405753240305736",
     icon: DiscordIcon,
     label: "Discord",
-    bottom: -22,
-    right: -80
+    bottom: "-bottom-[20px]",
+    right: "-right-[80px]"
   },
 ]

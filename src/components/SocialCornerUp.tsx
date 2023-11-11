@@ -1,8 +1,9 @@
 import { useEffect } from 'preact/hooks'
 import { useState, useRef } from 'preact/compat'
-import { Share2Icon } from 'lucide-preact'
+//import { Share2Icon } from 'lucide-preact'
 import { socials, social } from "./SocialList"
-
+import { TwitchIcon, YoutubeIcon, FacebookIcon, Share2Icon, LucideIcon } from 'lucide-preact'
+import DiscordIcon from "./DiscordIcon"
 export interface SocialCornerUpProps {
   urlOfLinkToShare: string
   name: string
@@ -20,6 +21,7 @@ const effet: string = `
   transform-gpu
 `
 const iconSize: number = 48
+const socialAsAList: boolean = true
 
 export default function SocialCornerUp( { urlOfLinkToShare, name }: SocialCornerUpProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -91,79 +93,29 @@ export default function SocialCornerUp( { urlOfLinkToShare, name }: SocialCorner
           role="menu" 
           tabIndex={-1}
         >
-          {socials.map((item: social) => {
+          <>
+          {socialAsAList && socials.map((item: social) => {
             return (
               <a 
                 href={item.link} 
+                target="_blank"
                 role="menuitem" 
-                class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[${item.bottom}px] right-[${item.right}px]`}
-                id={`user-menu-bottom-twitch${item.label}`}>
+                class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] ${item.bottom} ${item.right}`}
+                id={`user-menu-bottom-twitch${name}`}>
                 <item.icon
-                  size={iconSize}
+                  size={(item.label !== "Discord")?iconSize:iconSize-5}
                   strokeWidth={2}
                   stroke={`currentColor`}
                   viewBox={"-2 -4 32 32"}
                   alt="Share"
-                  className="h-18 w-18 m-1 p-1 rounded-full"
+                  className="m-1 p-1 rounded-full focus:border-none"
                 />
                 <span class="sr-only">{item.label}</span>
               </a>
             )
           })}
-          {/* 
-          <a href="https://www.twitch.tv/Justin_Curieux" role="menuitem" 
-            class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[-22px] right-[20px]`}
-            id={`user-menu-bottom-twitch${name}`}>
-            <TwitchIcon
-              size={iconSize}
-              strokeWidth={2}
-              stroke={`currentColor`}
-              viewBox={"-2 -4 32 32"}
-              alt="Share"
-              className="h-18 w-18 m-1 p-1 rounded-full"
-            />
-            <span class="sr-only">twitch</span>
-          </a>
-          <a href="https://www.facebook.com/justin.curieux/" role="menuitem" 
-            class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[8px] right-[-10px]`}
-            id={`user-menu-bottom-youtube${name}`}>
-            <YoutubeIcon
-              size={iconSize}
-              strokeWidth={2}
-              stroke={`currentColor`}
-              viewBox={"-2 -4 32 32"}
-              alt="Share"
-              className="h-18 w-18 m-1 p-1 rounded-full"
-            />
-            <span class="sr-only">youtube</span>
-          </a>
-          <a href="https://www.youtube.com/@justincurieux31" role="menuitem" 
-            class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[8px] right-[-50px]`}
-            id={`user-menu-bottom-facebook${name}`}>
-            <FacebookIcon
-              size={iconSize}
-              strokeWidth={2}
-              stroke={`currentColor`}
-              viewBox={"-2 -4 32 32"}
-              alt="Share"
-              className="h-18 w-18 m-1 p-1 rounded-full"
-            />
-            <span class="sr-only">facebook</span>
-          </a>
-          <a href="https://discord.com/channels/1054405752422420531/1054405753240305736" role="menuitem" 
-            class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[-22px] right-[-80px]`}
-            id={`user-menu-bottom-discord${name}`}>
-            <DiscordIcon 
-              strokeWidth={2}
-              stroke={`currentColor`}
-              size={`${iconSize-5}px`}
-              viewBox={"-2 -4 32 32"}
-              alt="Share"
-              classname="h-18 w-18 m-2 p-1 rounded-full"
-            />
-            <span class="sr-only">discord</span>
-          </a>
-  */}
+          </>
+          
         </div>        
       </div>
     </>

@@ -4,8 +4,8 @@ import ThemeSwitcher from "~/components/theme-switcher.astro";
 import type { NavItem } from "~/types";
 import SocialCornerUp from "~/components/SocialCornerUp";
 import LogoSVG from '~/components/LogoSVG'
-import { TwitchIcon, YoutubeIcon, FacebookIcon, Share2Icon } from 'lucide-preact'
-import DiscordIcon from "./DiscordIcon"
+import { Share2Icon } from 'lucide-preact'
+import { socials, social } from "./SocialList"
 
 const navOnAirItems: Array<NavItem> = [
   { title: "ON AIR", url: "#" },
@@ -39,6 +39,7 @@ const navItems: Array<NavItem> = [
   </a>
 
   <div>
+    <!-- HORIZONTAL MENU -->
     <div class="flex items-center gap-6">
       <nav class="hidden sm:block">
         <ul class="flex items-center gap-6">
@@ -91,6 +92,7 @@ const navItems: Array<NavItem> = [
       <ThemeSwitcher />
     </div>
 
+    <!-- HAMBURGER MENU -->
     <div id="menu-modal" class="modal hidden" aria-hidden="true">
       <div class="fixed inset-0 bg-default px-8 py-4 text-default">
         <div class="space-y-4" role="dialog" aria-modal="true">
@@ -153,6 +155,28 @@ const navItems: Array<NavItem> = [
                 </span>
               </li>
               <ul>
+                {socials.map((item) => {
+                  return(
+                    <li>
+                      <a href={item.link} role="menuitem" 
+                        class={`block text-center`}
+                        id={`user-menu-bottom-${item.label}`}>
+                        <span class="flex items-center flex-row">
+                          <item.icon
+                            size={48}
+                            strokeWidth={2}
+                            stroke={`currentColor`}
+                            viewBox={"-2 -4 32 32"}
+                            alt="Share"
+                            className="h-18 w-18 m-1 p-1 rounded-full items-center"
+                          />
+                          {item.label}
+                        </span>
+                      </a>
+                    </li>
+                  )
+                })}
+                {/* 
                 <li>
                   <a href="https://www.twitch.tv/Justin_Curieux" role="menuitem" 
                     class={`block bottom-[-60px] right-[20px] text-center`}
@@ -220,6 +244,7 @@ const navItems: Array<NavItem> = [
                     </span>
                   </a>
                 </li>
+                 */}
               </ul>
             </ul>
           </nav>
