@@ -1,4 +1,4 @@
-import { TwitchIcon, YoutubeIcon, FacebookIcon, Share2Icon, LucideIcon } from 'lucide-preact'
+import { TwitchIcon, YoutubeIcon, FacebookIcon, LucideIcon } from 'lucide-preact'
 import DiscordIcon from "./DiscordIcon"
 
 export interface social {

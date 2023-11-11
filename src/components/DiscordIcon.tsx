@@ -10,7 +10,6 @@ const DiscordIcon: LucideIcon = ({
     size = 43,
     viewBox = `0 0 640 512`,
     stroke = "none",
-    strokeWidth = 2,
     alt = "Discord"
 }: LucideProps) => { 
     viewBox = `0 0 640 512`
