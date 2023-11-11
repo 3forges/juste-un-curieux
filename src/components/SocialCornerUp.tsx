@@ -10,6 +10,7 @@ export interface SocialCornerUpProps {
 /**
  * SOME CONF
  */
+// querySelector externilastion from preact functions
 const fixedElementHeight: number = document.querySelector('#page-header')?.clientHeight || 0
 const effet: string = `
   transition-all
@@ -91,11 +92,10 @@ export default function SocialCornerUp( { urlOfLinkToShare, name }: SocialCorner
           role="menu" 
           tabIndex={-1}
         >
-          <>
           {socialAsAList && socials.map((item: social) => {
             return (
               <a 
-                href={item.link} 
+                href={`${item.link}?${urlOfLinkToShare}`}
                 target="_blank"
                 role="menuitem" 
                 class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] ${item.bottom} ${item.right}`}
@@ -104,16 +104,16 @@ export default function SocialCornerUp( { urlOfLinkToShare, name }: SocialCorner
                   size={(item.label !== "Discord")?iconSize:iconSize-5}
                   strokeWidth={2}
                   stroke={`currentColor`}
-                  viewBox={"-2 -4 32 32"}
+                  viewBox={(item.label !== "Discord")?"-2 -4 32 32":"0 0 640 512"}
                   alt="Share"
-                  className="m-1 p-1 rounded-full focus:border-none"
+                  className={(item.label !== "Discord")?"m-1 p-1 rounded-full focus:border-none":"m-2 p-2 rounded-full focus:border-none"}
                 />
                 <span class="sr-only">{item.label}</span>
               </a>
             )
           })}
-          </>
         </div>        
       </div>
     </>
-  );}
+  )
+}
