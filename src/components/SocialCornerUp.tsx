@@ -19,7 +19,7 @@ const effet: string = `
   transition-rotate
   origin-bottom-center
   ease-in-out 
-  duration-300
+  duration-700
 `
 const iconSize: number = 48
 const doesButtonRoll = true
@@ -71,7 +71,7 @@ export default function SocialCornerUp( { urlOfLinkToShare, name, menuShareItems
               stroke={`currentColor`}
               viewBox={"-2 -4 32 32"}
               alt="Share"
-              className={`${doesButtonRoll && "transition-rotate duration-300 ease-in-out"} h-18 w-18 m-1 p-1 rounded-full ${isUp && doesButtonRoll?`rotate-[0deg]`:`rotate-[-180deg]`}`}
+              className={`${doesButtonRoll && "transition-rotate duration-700 ease-in-out"} h-18 w-18 m-1 p-1 rounded-full ${isUp && doesButtonRoll?`rotate-[0deg]`:`-rotate-[180deg]`}`}
             />
           </button>
         </div>
