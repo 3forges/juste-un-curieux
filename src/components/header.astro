@@ -5,7 +5,7 @@ import type { NavItem } from "~/types";
 import SocialCornerUp from "~/components/SocialCornerUp";
 import LogoSVG from "~/components/LogoSVG";
 import { Share2Icon } from "lucide-preact";
-import { socials } from "./SocialList";
+import { socials } from "~/content/config";
 
 const navOnAirItems: Array<NavItem> = [{ title: "ON AIR", url: "#" }];
 const navItems: Array<NavItem> = [
@@ -201,6 +201,7 @@ const navItems: Array<NavItem> = [
               <ul>
                 {
                   socials.map((item) => {
+                    console.log(item.returnIcon)
                     return (
                       <li>
                         <a
@@ -211,12 +212,12 @@ const navItems: Array<NavItem> = [
                         >
                           <span class="flex flex-row items-center">
                             <item.returnIcon
-                              size={48}
+                              size={(item.label!="Discord")?48:36}
                               strokeWidth={2}
                               stroke={`currentColor`}
-                              viewBox={"-2 -4 32 32"}
+                              viewBox={(item.label!=="Discord")?"-2 -4 32 32":"0 0 640 512"}
                               alt="Share"
-                              className="h-18 w-18 m-1 items-center rounded-full p-1"
+                              className={(item.label!=="Discord")?"h-20 w-20 m-1 items-center rounded-full p-1":"h-20 w-20 m-5 items-center rounded-full p-5"}
                             />
                             {item.label}
                           </span>
