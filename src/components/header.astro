@@ -14,7 +14,8 @@ const navItems: Array<NavItem> = [
   { title: "Vidéos", url: "#showcase" },
 ];
 ---
-{console.log(socials)}
+{console.log("Astro: ",socials)}
+{ /* console.log("Astro: ",socials[0].returnIcon({})) */ }
 <header
   id="page-header"
   class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-3 py-2 text-white sm:px-3 sm:py-2 xl:px-8 xl:py-4"
@@ -114,7 +115,7 @@ const navItems: Array<NavItem> = [
             ))
           }
 
-          <li class="sm:mr-4">
+          <li class="sm:mr-10">
             <SocialCornerUp
               name="noburger"
               urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`}
@@ -202,7 +203,8 @@ const navItems: Array<NavItem> = [
               <ul>
                 {
                   socials.map((item) => {
-                    console.log(item.returnIcon)
+                    // for astro console log
+                    console.log("returnIcon: ", item.returnIcon())
                     return (
                       <li>
                         <a
@@ -294,7 +296,7 @@ const navItems: Array<NavItem> = [
 <style>
   .fixed-header {
     @apply fixed bottom-auto top-0;
-    @apply transition-all duration-100;
+    @apply transition-all duration-200;
     @apply border-default bg-default text-default;
   }
   .modal.is-open {
