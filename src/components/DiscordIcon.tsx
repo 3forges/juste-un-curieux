@@ -12,6 +12,8 @@ const DiscordIcon: LucideIcon = ({
     stroke = "none",
     alt = "Discord"
 }: LucideProps) => { 
+    // ViewBoxFix for header.astro
+    viewBox = `0 0 640 512`
     return (
     <svg 
         width={`${size}`} 
