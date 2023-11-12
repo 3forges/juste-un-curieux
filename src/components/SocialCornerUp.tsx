@@ -16,7 +16,7 @@ export interface SocialCornerUpProps {
 // querySelector externilastion from preact functions
 const fixedElementHeight: number = document.querySelector('#page-header')?.clientHeight || 0
 const effet: string = `
-  transition-all
+  transition-rotate
   origin-bottom-center
   ease-in-out 
   duration-300
@@ -71,7 +71,7 @@ export default function SocialCornerUp( { urlOfLinkToShare, name, menuShareItems
               stroke={`currentColor`}
               viewBox={"-2 -4 32 32"}
               alt="Share"
-              className={`${doesButtonRoll && "transition-all duration-300 ease-in-out"} h-18 w-18 m-1 p-1 rounded-full ${isUp && doesButtonRoll?`rotate-[0deg]`:`rotate-[-180deg]`}`}
+              className={`${doesButtonRoll && "transition-rotate duration-300 ease-in-out"} h-18 w-18 m-1 p-1 rounded-full ${isUp && doesButtonRoll?`rotate-[0deg]`:`rotate-[-180deg]`}`}
             />
           </button>
         </div>
@@ -101,7 +101,7 @@ export default function SocialCornerUp( { urlOfLinkToShare, name, menuShareItems
                 href={`${item.link}?${urlOfLinkToShare}`}
                 target="_blank"
                 role="menuitem" 
-                class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] ${item.bottom} ${item.right}`}
+                class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] ${item.bottom} ${item.right}`}
                 id={`user-menu-bottom-${item.label}-${name}`}>
                 { 
                   item.returnIcon({
