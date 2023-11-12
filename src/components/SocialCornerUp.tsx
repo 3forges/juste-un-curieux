@@ -1,14 +1,12 @@
-//import { h } from 'preact'
 import { useEffect } from 'preact/hooks'
 import { useState, useRef } from 'preact/compat'
-import { Share2Icon, LucideProps } from 'lucide-preact'
+import { Share2Icon } from 'lucide-preact'
 import { socials, social } from "./SocialList"
-//import { TwitchIcon, YoutubeIcon, FacebookIcon, LucideIcon } from 'lucide-preact'
-//import DiscordIcon from "./DiscordIcon"
 
 export interface SocialCornerUpProps {
   urlOfLinkToShare: string
   name: string
+  menuShareItems: social[]
 }
 
 /**
@@ -24,12 +22,13 @@ const effet: string = `
   transform-gpu
 `
 const iconSize: number = 48
-const socialAsAList: boolean = true
 
-export default function SocialCornerUp( { urlOfLinkToShare, name }: SocialCornerUpProps) {
+export default function SocialCornerUp( { urlOfLinkToShare, name, menuShareItems }: SocialCornerUpProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isUp, setIsUp] = useState<boolean>(true)
   const menuCompo = useRef<HTMLDivElement>(null)
+
+  // console.log(socials, menuShareItems)
 
   const onClickHandler = () => {
     setIsOpen(!isOpen);
@@ -96,7 +95,7 @@ export default function SocialCornerUp( { urlOfLinkToShare, name }: SocialCorner
           role="menu" 
           tabIndex={-1}
         >
-          {socialAsAList && socials.map((item: social) => {
+          {socials.map((item: social) => {
             return (
               <a 
                 href={`${item.link}?${urlOfLinkToShare}`}

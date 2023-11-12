@@ -1,5 +1,5 @@
 import { h } from 'preact'
-import { TwitchIcon, YoutubeIcon, FacebookIcon, LucideIcon } from 'lucide-preact'
+import { TwitchIcon, YoutubeIcon, FacebookIcon, LucideIcon, LucideProps } from 'lucide-preact'
 import DiscordIcon from "./DiscordIcon"
 
 export interface social {
@@ -21,7 +21,6 @@ export const socials: social[] = [
     bottom: "-bottom-[20px]",
     right: "right-[20px]"
   },
-
   {
     link: "https://www.youtube.com/@justincurieux31",
     returnIcon: (props: LucideIcon) => {
