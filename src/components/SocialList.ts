@@ -4,7 +4,7 @@ import DiscordIcon from "./DiscordIcon"
 
 export interface social {
   link: string
-  icon: Function
+  returnIcon: Function
   label: string
   bottom: string
   right: string
@@ -13,7 +13,7 @@ export interface social {
 export const socials: social[] = [
   {
     link: "https://www.twitch.tv/Justin_Curieux",
-    icon: (props: LucideIcon) => {
+    returnIcon: (props: LucideIcon) => {
       return h(TwitchIcon, {...props})
     }
     ,
@@ -24,7 +24,7 @@ export const socials: social[] = [
 
   {
     link: "https://www.youtube.com/@justincurieux31",
-    icon: (props: LucideIcon) => {
+    returnIcon: (props: LucideIcon) => {
       return h(YoutubeIcon, {...props})
     },
     label: "Youtube",
@@ -33,7 +33,7 @@ export const socials: social[] = [
   },
   {
     link: "https://www.facebook.com/justin.curieux/",
-    icon: (props: LucideIcon) => {
+    returnIcon: (props: LucideIcon) => {
       return h(FacebookIcon, {...props})
     },
     label: "Facebook",
@@ -42,7 +42,7 @@ export const socials: social[] = [
   },
   {
     link: "https://discord.com/channels/1054405752422420531/1054405753240305736",
-    icon: (props: LucideIcon) => {
+    returnIcon: (props: LucideIcon) => {
       return h(DiscordIcon, {...props})
     },
     label: "Discord",

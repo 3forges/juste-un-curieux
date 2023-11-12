@@ -96,36 +96,25 @@ export default function SocialCornerUp( { urlOfLinkToShare, name }: SocialCorner
           role="menu" 
           tabIndex={-1}
         >
-          {socialAsAList && socials.map(({link: url, label: label, icon: SocialIcon, bottom: bottom, right: right }: social) => {
-            console.log(SocialIcon)
+          {socialAsAList && socials.map((item: social) => {
             return (
               <a 
-                href={`${url}?${urlOfLinkToShare}`}
+                href={`${item.link}?${urlOfLinkToShare}`}
                 target="_blank"
                 role="menuitem" 
-                class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] ${bottom} ${right}`}
-                id={`user-menu-bottom-${label}-${name}`}>
-                {
-                  SocialIcon( {
-                    size:(label !== "Discord")?iconSize:iconSize-12,
+                class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] ${item.bottom} ${item.right}`}
+                id={`user-menu-bottom-${item.label}-${name}`}>
+                { 
+                  item.returnIcon({
+                    size:(item.label !== "Discord")?iconSize:iconSize-12,
                     strokeWidth:2,
                     stroke:`currentColor`,
-                    viewBox:(label !== "Discord")?"-2 -4 32 32":"0 0 640 512",
+                    viewBox:(item.label !== "Discord")?"-2 -4 32 32":"0 0 640 512",
                     alt:"Share",
-                    className:(label !== "Discord")?"m-1 p-1 rounded-full focus:border-none":"m-2 p-2 rounded-full focus:border-none"
+                    className:(item.label !== "Discord")?"m-1 p-1 rounded-full focus:border-none":"m-2 p-2 rounded-full focus:border-none"
                   })
                 }
-                {/* 
-                <SocialIcon
-                  size={(label !== "Discord")?iconSize:iconSize-12}
-                  strokeWidth={2}
-                  stroke={`currentColor`}
-                  viewBox={(label !== "Discord")?"-2 -4 32 32":"0 0 640 512"}
-                  alt="Share"
-                  className={(label !== "Discord")?"m-1 p-1 rounded-full focus:border-none":"m-2 p-2 rounded-full focus:border-none"}
-                />
-                */}
-                <span class="sr-only">{label}</span>
+                <span class="sr-only">{item.label}</span>
               </a>
             )
           })}
