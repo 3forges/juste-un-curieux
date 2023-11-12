@@ -1,12 +1,14 @@
+//import { h } from 'preact'
 import { useEffect } from 'preact/hooks'
 import { useState, useRef } from 'preact/compat'
-import { Share2Icon } from 'lucide-preact'
-//import { socials, Social } from "./SocialList"
-import type { Social } from "./SocialList"
+import { Share2Icon, LucideProps } from 'lucide-preact'
+import { socials, social } from "./SocialList"
+//import { TwitchIcon, YoutubeIcon, FacebookIcon, LucideIcon } from 'lucide-preact'
+//import DiscordIcon from "./DiscordIcon"
+
 export interface SocialCornerUpProps {
   urlOfLinkToShare: string
   name: string
-  socialMenuItems: Social[]
 }
 
 /**
@@ -24,7 +26,7 @@ const effet: string = `
 const iconSize: number = 48
 const socialAsAList: boolean = true
 
-export default function SocialCornerUp( { urlOfLinkToShare, name, socialMenuItems }: SocialCornerUpProps) {
+export default function SocialCornerUp( { urlOfLinkToShare, name }: SocialCornerUpProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isUp, setIsUp] = useState<boolean>(true)
   const menuCompo = useRef<HTMLDivElement>(null)
@@ -94,23 +96,36 @@ export default function SocialCornerUp( { urlOfLinkToShare, name, socialMenuItem
           role="menu" 
           tabIndex={-1}
         >
-          {socialAsAList && socialMenuItems.map((item: Social) => {
+          {socialAsAList && socials.map(({link: url, label: label, icon: SocialIcon, bottom: bottom, right: right }: social) => {
+            console.log(SocialIcon)
             return (
               <a 
-                href={`${item.link}?${urlOfLinkToShare}`}
+                href={`${url}?${urlOfLinkToShare}`}
                 target="_blank"
                 role="menuitem" 
-                class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] ${item.bottom} ${item.right}`}
-                id={`user-menu-bottom-${item.label}-${name}`}>
-                <item.icon
-                  size={(item.label !== "Discord")?iconSize:iconSize-5}
+                class={`absolute rotate-[${isUp?`0deg`:`-180deg`}] ${bottom} ${right}`}
+                id={`user-menu-bottom-${label}-${name}`}>
+                {
+                  SocialIcon( {
+                    size:(label !== "Discord")?iconSize:iconSize-12,
+                    strokeWidth:2,
+                    stroke:`currentColor`,
+                    viewBox:(label !== "Discord")?"-2 -4 32 32":"0 0 640 512",
+                    alt:"Share",
+                    className:(label !== "Discord")?"m-1 p-1 rounded-full focus:border-none":"m-2 p-2 rounded-full focus:border-none"
+                  })
+                }
+                {/* 
+                <SocialIcon
+                  size={(label !== "Discord")?iconSize:iconSize-12}
                   strokeWidth={2}
                   stroke={`currentColor`}
-                  viewBox={(item.label !== "Discord")?"-2 -4 32 32":"0 0 640 512"}
+                  viewBox={(label !== "Discord")?"-2 -4 32 32":"0 0 640 512"}
                   alt="Share"
-                  className={(item.label !== "Discord")?"m-1 p-1 rounded-full focus:border-none":"m-2 p-2 rounded-full focus:border-none"}
+                  className={(label !== "Discord")?"m-1 p-1 rounded-full focus:border-none":"m-2 p-2 rounded-full focus:border-none"}
                 />
-                <span class="sr-only">{item.label}</span>
+                */}
+                <span class="sr-only">{label}</span>
               </a>
             )
           })}

@@ -1,10 +1,52 @@
-import type { LucideIcon } from 'lucide-preact'
+import { h } from 'preact'
+import { TwitchIcon, YoutubeIcon, FacebookIcon, LucideIcon } from 'lucide-preact'
+import DiscordIcon from "./DiscordIcon"
 
-
-export interface Social {
+export interface social {
   link: string
-  icon: LucideIcon
+  icon: Function
   label: string
   bottom: string
   right: string
 }
+
+export const socials: social[] = [
+  {
+    link: "https://www.twitch.tv/Justin_Curieux",
+    icon: (props: LucideIcon) => {
+      return h(TwitchIcon, {...props})
+    }
+    ,
+    label: "Twitch",
+    bottom: "-bottom-[20px]",
+    right: "right-[20px]"
+  },
+
+  {
+    link: "https://www.youtube.com/@justincurieux31",
+    icon: (props: LucideIcon) => {
+      return h(YoutubeIcon, {...props})
+    },
+    label: "Youtube",
+    bottom: "bottom-[10px]",
+    right: "-right-[10px]"
+  },
+  {
+    link: "https://www.facebook.com/justin.curieux/",
+    icon: (props: LucideIcon) => {
+      return h(FacebookIcon, {...props})
+    },
+    label: "Facebook",
+    bottom: "bottom-[10px]",
+    right: "-right-[50px]"
+  },
+  {
+    link: "https://discord.com/channels/1054405752422420531/1054405753240305736",
+    icon: (props: LucideIcon) => {
+      return h(DiscordIcon, {...props})
+    },
+    label: "Discord",
+    bottom: "-bottom-[15px]",
+    right: "-right-[70px]"
+  },
+]
