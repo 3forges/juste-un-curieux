@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+/*
 import { TwitchIcon, YoutubeIcon, FacebookIcon } from 'lucide-preact'
 import type { LucideIcon } from 'lucide-preact'
 import DiscordIcon from "../components/DiscordIcon"
@@ -41,7 +42,7 @@ const socials: social[] = [
     right: "-right-[70px]"
   },
 ]
-
+*/
 const showcase = defineCollection({
   type: "data",
   schema: z.object({
@@ -54,5 +55,5 @@ const showcase = defineCollection({
 
 export const collections = {
   showcase,
-  socials,
+  //socials,
 };

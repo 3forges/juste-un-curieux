@@ -70,7 +70,7 @@ export default function SocialCornerUp( { urlOfLinkToShare, name, menuShareItems
               stroke={`currentColor`}
               viewBox={"-2 -4 32 32"}
               alt="Share"
-              className="h-18 w-18 m-1 p-1 rounded-full"
+              className={`transition-all duration-300 ease-in-out h-18 w-18 m-1 p-1 rounded-full ${isUp?`rotate-[0deg]`:`rotate-[-180deg]`}`}
             />
           </button>
         </div>
