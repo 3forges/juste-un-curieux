@@ -6,8 +6,9 @@ import SocialCornerUp from "~/components/SocialCornerUp";
 import LogoSVG from "~/components/LogoSVG";
 import { Share2Icon } from "lucide-preact";
 //import { collections } from "~/content/config";
-import { TwitchSocialMenuItem, YoutubeSocialMenuItem} from '~/components/SocialListChildren'
+import { TwitchSocialBurgerMenuItem, TwitchSocialMenuItem, YoutubeSocialBurgerMenuItem, YoutubeSocialMenuItem} from '~/components/SocialListChildren'
 import {SocialCornerUpChildren} from './SocialCornerUpChildren'
+import { SocialCornerUpBurgerChildren } from "./SocialCornerUpChildrenBurger";
 
 const navOnAirItems: Array<NavItem> = [{ title: "ON AIR", url: "#" }];
 const navItems: Array<NavItem> = [
@@ -203,7 +204,8 @@ const navItems: Array<NavItem> = [
                 </span>
               </li>
               <ul>
-                {
+                <SocialCornerUpBurgerChildren children={[<TwitchSocialBurgerMenuItem/>, <YoutubeSocialBurgerMenuItem/>]}/>
+                {/* 
                   socials.map((item) => {
                     // for astro console log
                     console.log("returnIcon: ", item.returnIcon())
@@ -230,7 +232,7 @@ const navItems: Array<NavItem> = [
                       </li>
                     );
                   })
-                }
+                */}
               </ul>
             </ul>
           </nav>

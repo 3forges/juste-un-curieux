@@ -57,7 +57,14 @@ export const TwitchSocialMenuItem = ({
   )
 }
 
-
+/*
+size={(item.label!="Discord")?48:36}
+strokeWidth={2}
+stroke={`currentColor`}
+viewBox={(item.label!=="Discord")?"-2 -4 32 32":"0 0 640 512"}
+alt="Share"
+className={(item.label!=="Discord")?"h-20 w-20 m-1 items-center rounded-full p-1":"h-20 w-20 m-5 items-center rounded-full p-5"}
+*/
 
 export const TwitchSocialBurgerMenuItem = ({
   urlOfLinkToShare = 'https://example.com',
@@ -66,14 +73,12 @@ export const TwitchSocialBurgerMenuItem = ({
   stroke=`currentColor`,
   viewBox="-2 -4 32 32",
   alt="Share",
-  className="m-1 p-1 rounded-full",
+  className="h-20 w-20 m-1 items-center rounded-full p-1",
 }: TwitchSocialMenuItemProps) =>  {
   const randomUuid = uuidv4();
   // const [isUp, setIsUp] = useState(true)
   return (
-
     <>
-
         <a
             href={`${urlOfLinkToShare}`}
             target="_blank"
@@ -149,5 +154,41 @@ export const YoutubeSocialMenuItem = ({
       />
       <span class="sr-only">YouTube</span>
     </a>
+  )
+}
+
+export const YoutubeSocialBurgerMenuItem = ({
+  urlOfLinkToShare = 'https://example.com',
+  size=iconSize-12,
+  strokeWidth=2,
+  stroke=`currentColor`,
+  viewBox="-2 -4 32 32",
+  alt="Share",
+  className="h-20 w-20 m-1 items-center rounded-full p-1",
+}: YoutubeSocialMenuItemProps) =>  {
+  const randomUuid = uuidv4();
+  // const [isUp, setIsUp] = useState(true)
+  return (
+    <>
+        <a
+            href={`${urlOfLinkToShare}`}
+            target="_blank"
+            role="menuitem"
+            class={`block text-center`}
+            id={`user-menu-bottom-twitch`}
+          >
+          <span class="flex flex-row items-center">
+            <YoutubeIcon 
+            size={size}
+            strokeWidth={strokeWidth}
+            stroke={stroke}
+            viewBox={viewBox}
+            alt={alt}
+            className={className}
+            />
+            YouTube
+          </span>
+        </a>
+    </>
   )
 }
