@@ -3,7 +3,10 @@ import { useState, useRef, JSX, Children } from 'preact/compat'
 import { Share2Icon } from 'lucide-preact'
 import type { FunctionalComponent } from 'preact'
 //import { collections, social } from "~/content/config"
-
+import {
+  TwitchSocialMenuItem,
+  YoutubeSocialMenuItem
+} from './SocialListChildren'
 export interface SocialCornerUpChildrenProps {
   urlOfLinkToShare?: string
   name?: string
