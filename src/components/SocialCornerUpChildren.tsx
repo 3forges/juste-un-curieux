@@ -5,7 +5,9 @@ import type { FunctionalComponent } from 'preact'
 //import { collections, social } from "~/content/config"
 import {
   TwitchSocialMenuItem,
-  YoutubeSocialMenuItem
+  YoutubeSocialMenuItem,
+  FacebookSocialMenuItem,
+  DiscordSocialMenuItem
 } from './SocialListChildren'
 export interface SocialCornerUpChildrenProps {
   urlOfLinkToShare?: string
@@ -31,7 +33,9 @@ const effet: string = `
 // export const SocialCornerUpChildren: FunctionalComponent<SocialCornerUpChildrenProps> = ( { urlOfLinkToShare, name, children = <></> }: SocialCornerUpChildrenProps): JSX.Element => {
 export const SocialCornerUpChildren: FunctionalComponent<SocialCornerUpChildrenProps> = ( { urlOfLinkToShare, name, children = [
   <TwitchSocialMenuItem />,
-  <YoutubeSocialMenuItem />
+  <YoutubeSocialMenuItem />,
+  <FacebookSocialMenuItem/>,
+  <DiscordSocialMenuItem />
 ] }: SocialCornerUpChildrenProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isUp, setIsUp] = useState<boolean>(true)

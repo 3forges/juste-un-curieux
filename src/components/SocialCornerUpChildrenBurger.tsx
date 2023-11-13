@@ -1,10 +1,11 @@
-import { useEffect } from 'preact/hooks'
-import { useState, useRef, JSX, Children } from 'preact/compat'
+import { JSX, Children } from 'preact/compat'
 import { Share2Icon } from 'lucide-preact'
 import type { FunctionalComponent } from 'preact'
 import {
   TwitchSocialBurgerMenuItem,
-  YoutubeSocialBurgerMenuItem
+  YoutubeSocialBurgerMenuItem,
+  FacebookSocialBurgerMenuItem,
+  DiscordSocialBurgerMenuItem
 } from './SocialListChildren'
 //import { collections, social } from "~/content/config"
 /*
@@ -57,28 +58,10 @@ const fixedElementHeight: number = document.querySelector('#page-header')?.clien
 // export const SocialCornerUpBurgerChildren: FunctionalComponent<SocialCornerUpBurgerChildrenProps> = ( { urlOfLinkToShare, name, children = <></> }: SocialCornerUpBurgerChildrenProps): JSX.Element => {
 export const SocialCornerUpBurgerChildren: FunctionalComponent<SocialCornerUpBurgerChildrenProps> = ( { urlOfLinkToShare, name, children = [
   <TwitchSocialBurgerMenuItem />,
-  <YoutubeSocialBurgerMenuItem />
+  <YoutubeSocialBurgerMenuItem />,
+  <FacebookSocialBurgerMenuItem />,
+  <DiscordSocialBurgerMenuItem />
 ] }: SocialCornerUpBurgerChildrenProps): JSX.Element => {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [isUp, setIsUp] = useState<boolean>(true)
-  const menuCompo = useRef<HTMLDivElement>(null)
-
-  //console.log(socials, children)
-
-  const onClickHandler = () => {
-    setIsOpen(!isOpen);
-  }
-
-  function onScrolling() {
-    let scroll: number = document.body.scrollTop || document.documentElement.scrollTop
-    const headerHeight: number = fixedElementHeight > 0 ? fixedElementHeight : menuCompo.current?.clientHeight || 0
-    setIsUp( (window.innerHeight - scroll - headerHeight < 0) ? false : true )
-  }
-
-  useEffect(() => {
-    onScrolling()
-    document.addEventListener("scroll", onScrolling)
-  })
 
   return (
     <> 

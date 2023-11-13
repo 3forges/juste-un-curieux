@@ -56,7 +56,7 @@ export const TwitchSocialMenuItem = ({
       href={`${urlOfLinkToShare}`}
       target="_blank"
       role="menuitem" 
-      class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[10px] -right-[50px]`}
+      class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] -bottom-[20px] right-[20px]`}
       id={`user-menu-bottom-discord-${randomUuid}`}
     >
       <TwitchIcon 
@@ -221,6 +221,269 @@ export const YoutubeSocialBurgerMenuItem = ({
             className={className}
             />
             YouTube
+          </span>
+        </a>
+    </>
+  )
+}
+
+/**
+ * 
+ * ------------------------
+ * -- FacebookSocialMenuItem
+ * ------------------------
+ ****/
+
+export interface FacebookSocialMenuItemProps {
+  urlOfLinkToShare?: string;
+  size?: number,
+  strokeWidth?: number,
+  stroke?: string,
+  viewBox?: string,
+  alt?: string,
+  className?: string
+}
+export const FacebookSocialMenuItem = ({
+  urlOfLinkToShare = 'https://example.com',
+  size=iconSize-12,
+  strokeWidth=2,
+  stroke=`currentColor`,
+  viewBox="-2 -4 32 32",
+  alt="Share",
+  className="m-1 p-1 rounded-full"
+}: FacebookSocialMenuItemProps) =>  {
+  const randomUuid = uuidv4();
+  const [isUp, setIsUp] = useState(false)
+  const thisRef = useRef<HTMLDivElement>(null)
+
+  function onScrolling() {
+    let scroll: number = document.body.scrollTop || document.documentElement.scrollTop
+    const headerHeight: number = fixedElementHeight > 0 ? fixedElementHeight : menuCompo.current?.clientHeight || 0
+    setIsUp( (window.innerHeight - scroll - headerHeight < 0) ? false : true )
+  }
+
+  useEffect(() => {
+    onScrolling()
+    document.addEventListener("scroll", onScrolling)
+  })
+  return (
+    <>
+    <li>
+      <a 
+        ref={thisRef}
+        href={`${urlOfLinkToShare}`}
+        target="_blank"
+        role="menuitem" 
+        class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[10px] -right-[50px]`}
+        id={`user-menu-bottom-discord-${randomUuid}`}
+      >
+        <FacebookIcon
+          size={size}
+          strokeWidth={strokeWidth}
+          stroke={stroke}
+          viewBox={viewBox}
+          alt={alt}
+          className={className}
+        />
+        <span class="sr-only">Facebook</span>
+      </a>
+    </li>
+    </>
+  )
+}
+
+export const FacebookSocialBurgerMenuItem = ({
+  urlOfLinkToShare = 'https://example.com',
+  size=iconSize-12,
+  strokeWidth=2,
+  stroke=`currentColor`,
+  viewBox="-2 -4 32 32",
+  alt="Share",
+  className="h-20 w-20 m-1 items-center rounded-full p-1",
+}: FacebookSocialMenuItemProps) =>  {
+  const randomUuid = uuidv4();
+  // const [isUp, setIsUp] = useState(true)
+  return (
+    <>
+        <a
+            href={`${urlOfLinkToShare}`}
+            target="_blank"
+            role="menuitem"
+            class={`block text-center`}
+            id={`user-menu-bottom-twitch`}
+          >
+          <span class="flex flex-row items-center">
+            <FacebookIcon 
+            size={size}
+            strokeWidth={strokeWidth}
+            stroke={stroke}
+            viewBox={viewBox}
+            alt={alt}
+            className={className}
+            />
+            Facebook
+          </span>
+        </a>
+    </>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * 
+ * ------------------------
+ * -- DiscordSocialMenuItem
+ * ------------------------
+ ****/
+
+export interface DiscordSocialMenuItemProps {
+  urlOfLinkToShare?: string;
+  size?: number,
+  strokeWidth?: number,
+  stroke?: string,
+  viewBox?: string,
+  alt?: string,
+  className?: string
+}
+export const DiscordSocialMenuItem = ({
+  urlOfLinkToShare = 'https://example.com',
+  size=iconSize-12,
+  strokeWidth=2,
+  stroke=`currentColor`,
+  viewBox="-2 -4 32 32",
+  alt="Share",
+  className="m-1 p-1 rounded-full"
+}: DiscordSocialMenuItemProps) =>  {
+  const randomUuid = uuidv4();
+  const [isUp, setIsUp] = useState(false)
+  const thisRef = useRef<HTMLDivElement>(null)
+
+  function onScrolling() {
+    let scroll: number = document.body.scrollTop || document.documentElement.scrollTop
+    const headerHeight: number = fixedElementHeight > 0 ? fixedElementHeight : menuCompo.current?.clientHeight || 0
+    setIsUp( (window.innerHeight - scroll - headerHeight < 0) ? false : true )
+  }
+
+  useEffect(() => {
+    onScrolling()
+    document.addEventListener("scroll", onScrolling)
+  })
+  return (
+    <>
+    <li>
+      <a 
+        ref={thisRef}
+        href={`${urlOfLinkToShare}`}
+        target="_blank"
+        role="menuitem" 
+        class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] -bottom-[15px] -right-[70px]`}
+        id={`user-menu-bottom-discord-${randomUuid}`}
+      >
+        <DiscordIcon
+          size={size}
+          strokeWidth={strokeWidth}
+          stroke={stroke}
+          viewBox={viewBox}
+          alt={alt}
+          className={className}
+        />
+        <span class="sr-only">Discord</span>
+      </a>
+    </li>
+    </>
+  )
+}
+
+export const DiscordSocialBurgerMenuItem = ({
+  urlOfLinkToShare = 'https://example.com',
+  // size=iconSize-12,
+  size=iconSize-12,
+  strokeWidth=2,
+  stroke=`currentColor`,
+  viewBox="-2 -4 32 32",
+  alt="Share",
+  className="h-20 w-20 m-1 items-center rounded-full p-1",
+}: DiscordSocialMenuItemProps) =>  {
+  const randomUuid = uuidv4();
+  // const [isUp, setIsUp] = useState(true)
+  return (
+    <>
+        <a
+            href={`${urlOfLinkToShare}`}
+            target="_blank"
+            role="menuitem"
+            class={`block text-center`}
+            id={`user-menu-bottom-twitch`}
+          >
+          <span class="flex flex-row items-center">
+            <DiscordIcon 
+            size={size}
+            strokeWidth={strokeWidth}
+            stroke={stroke}
+            viewBox={viewBox}
+            alt={alt}
+            className={className}
+            />
+            Discord
           </span>
         </a>
     </>
