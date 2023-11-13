@@ -12,11 +12,8 @@ import {
   YoutubeSocialBurgerMenuItem,
   YoutubeSocialMenuItem,
 } from "~/components/SocialListChildren";
-// const menuItemsArray: JSX.Element[] = [<TwitchSocialMenuItem></TwitchSocialMenuItem>, <YoutubeSocialMenuItem></YoutubeSocialMenuItem>]
-
 import { SocialCornerUpChildren } from "./SocialCornerUpChildren";
 import { SocialCornerUpBurgerChildren } from "./SocialCornerUpChildrenBurger";
-import type { JSX } from "preact/compat";
 
 const navOnAirItems: Array<NavItem> = [{ title: "ON AIR", url: "#" }];
 const navOnAirItem: NavItem = { title: "ON AIR", url: "#" };
@@ -138,6 +135,7 @@ const navItems: Array<NavItem> = [
             <SocialCornerUpChildren
               name="noburger"
               urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`}
+              children={[<TwitchSocialMenuItem />, <YoutubeSocialMenuItem />]}
               client:only="preact"
             />
           </li>
@@ -196,7 +194,12 @@ const navItems: Array<NavItem> = [
                 </span>
               </li>
               <ul>
-                <SocialCornerUpBurgerChildren />
+                <SocialCornerUpBurgerChildren
+                  children={[
+                    <TwitchSocialBurgerMenuItem />,
+                    <YoutubeSocialBurgerMenuItem />,
+                  ]}
+                />
               </ul>
             </ul>
           </nav>

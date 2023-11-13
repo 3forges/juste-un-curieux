@@ -26,7 +26,10 @@ const effet: string = `
 
 
 // export const SocialCornerUpChildren: FunctionalComponent<SocialCornerUpChildrenProps> = ( { urlOfLinkToShare, name, children = <></> }: SocialCornerUpChildrenProps): JSX.Element => {
-export const SocialCornerUpChildren: FunctionalComponent<SocialCornerUpChildrenProps> = ( { urlOfLinkToShare, name, children = [<></>] }: SocialCornerUpChildrenProps): JSX.Element => {
+export const SocialCornerUpChildren: FunctionalComponent<SocialCornerUpChildrenProps> = ( { urlOfLinkToShare, name, children = [
+  <TwitchSocialMenuItem />,
+  <YoutubeSocialMenuItem />,
+] }: SocialCornerUpChildrenProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isUp, setIsUp] = useState<boolean>(true)
   const menuCompo = useRef<HTMLDivElement>(null)

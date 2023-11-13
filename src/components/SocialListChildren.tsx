@@ -33,7 +33,7 @@ export const TwitchSocialMenuItem = ({
   viewBox="-2 -4 32 32",
   alt="Share",
   className="m-1 p-1 rounded-full",
-}: TwitchSocialMenuItemProps) =>  {
+}: TwitchSocialMenuItemProps): JSX.Element =>  {
   const randomUuid = uuidv4();
   const [isUp, setIsUp] = useState(true)
   return (
@@ -74,7 +74,7 @@ export const TwitchSocialBurgerMenuItem = ({
   viewBox="-2 -4 32 32",
   alt="Share",
   className="h-20 w-20 m-1 items-center rounded-full p-1",
-}: TwitchSocialMenuItemProps) =>  {
+}: TwitchSocialMenuItemProps): JSX.Element =>  {
   const randomUuid = uuidv4();
   // const [isUp, setIsUp] = useState(true)
   return (
