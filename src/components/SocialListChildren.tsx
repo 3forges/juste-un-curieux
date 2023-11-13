@@ -59,6 +59,43 @@ export const TwitchSocialMenuItem = ({
 
 
 
+export const TwitchSocialBurgerMenuItem = ({
+  urlOfLinkToShare = 'https://example.com',
+  size=iconSize-12,
+  strokeWidth=2,
+  stroke=`currentColor`,
+  viewBox="-2 -4 32 32",
+  alt="Share",
+  className="m-1 p-1 rounded-full",
+}: TwitchSocialMenuItemProps) =>  {
+  const randomUuid = uuidv4();
+  // const [isUp, setIsUp] = useState(true)
+  return (
+
+    <>
+
+        <a
+            href={`${urlOfLinkToShare}`}
+            target="_blank"
+            role="menuitem"
+            class={`block text-center`}
+            id={`user-menu-bottom-twitch`}
+          >
+          <span class="flex flex-row items-center">
+            <TwitchIcon 
+            size={size}
+            strokeWidth={strokeWidth}
+            stroke={stroke}
+            viewBox={viewBox}
+            alt={alt}
+            className={className}
+            />
+            Twitch
+          </span>
+        </a>
+    </>
+  )
+}
 
 
 

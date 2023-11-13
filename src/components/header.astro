@@ -7,7 +7,7 @@ import LogoSVG from "~/components/LogoSVG";
 import { Share2Icon } from "lucide-preact";
 //import { collections } from "~/content/config";
 import { TwitchSocialMenuItem, YoutubeSocialMenuItem} from '~/components/SocialListChildren'
-import SocialCornerUpChildren from './SocialCornerUpChildren'
+import {SocialCornerUpChildren} from './SocialCornerUpChildren'
 
 const navOnAirItems: Array<NavItem> = [{ title: "ON AIR", url: "#" }];
 const navItems: Array<NavItem> = [
@@ -15,7 +15,8 @@ const navItems: Array<NavItem> = [
   { title: "Vidéos", url: "#showcase" },
 ];
 ---
-{console.log("Astro: ",socials)}
+{// console.log("Astro: ",socials)
+}
 { /* console.log("Astro: ",socials[0].returnIcon({})) */ }
 <header
   id="page-header"
@@ -120,7 +121,7 @@ const navItems: Array<NavItem> = [
             <SocialCornerUpChildren
               name="noburger"
               urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`}
-              menuShareItems={[<TwitchSocialMenuItem/>, <YoutubeSocialMenuItem/>]} 
+              children={[<TwitchSocialMenuItem/>, <YoutubeSocialMenuItem/>]} 
               client:only="preact"
             />
           </li>
