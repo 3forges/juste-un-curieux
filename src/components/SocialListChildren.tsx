@@ -1,4 +1,5 @@
 //import { h } from 'preact'
+import { JSX } from 'preact'
 import { TwitchIcon, YoutubeIcon, FacebookIcon, LucideIcon, LucideProps } from 'lucide-preact'
 import DiscordIcon from "./DiscordIcon"
 import {v4 as uuidv4} from 'uuid';
@@ -145,7 +146,7 @@ export const YoutubeSocialMenuItem = ({
         href={`${urlOfLinkToShare}`}
         target="_blank"
         role="menuitem" 
-        class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[10px] -right-[50px]`}
+        class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[10px] -right-[10px]`}
         id={`user-menu-bottom-discord-${randomUuid}`}
       >
         <YoutubeIcon 
