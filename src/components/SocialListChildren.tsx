@@ -3,10 +3,11 @@ import { JSX } from 'preact'
 import { TwitchIcon, YoutubeIcon, FacebookIcon, LucideIcon, LucideProps } from 'lucide-preact'
 import DiscordIcon from "./DiscordIcon"
 import {v4 as uuidv4} from 'uuid';
-import { useState } from 'preact/hooks';
+import { useState, useRef, useEffect } from 'preact/hooks';
 
 const iconSize: number = 48
 const doesButtonRoll = true
+const fixedElementHeight: number = document.querySelector('#page-header')?.clientHeight || 0
 
 
 /**
@@ -37,8 +38,21 @@ export const TwitchSocialMenuItem = ({
 }: TwitchSocialMenuItemProps): JSX.Element =>  {
   const randomUuid = uuidv4();
   const [isUp, setIsUp] = useState(true)
+  const thisRef = useRef<HTMLDivElement>(null)
+
+  function onScrolling() {
+    let scroll: number = document.body.scrollTop || document.documentElement.scrollTop
+    const headerHeight: number = fixedElementHeight > 0 ? fixedElementHeight : menuCompo.current?.clientHeight || 0
+    setIsUp( (window.innerHeight - scroll - headerHeight < 0) ? false : true )
+  }
+
+  useEffect(() => {
+    onScrolling()
+    document.addEventListener("scroll", onScrolling)
+  })
   return (
     <a 
+      ref={thisRef}
       href={`${urlOfLinkToShare}`}
       target="_blank"
       role="menuitem" 
@@ -126,7 +140,7 @@ export interface YoutubeSocialMenuItemProps {
   stroke?: string,
   viewBox?: string,
   alt?: string,
-  className?: string,
+  className?: string
 }
 export const YoutubeSocialMenuItem = ({
   urlOfLinkToShare = 'https://example.com',
@@ -135,14 +149,27 @@ export const YoutubeSocialMenuItem = ({
   stroke=`currentColor`,
   viewBox="-2 -4 32 32",
   alt="Share",
-  className="m-1 p-1 rounded-full",
+  className="m-1 p-1 rounded-full"
 }: YoutubeSocialMenuItemProps) =>  {
   const randomUuid = uuidv4();
-  const [isUp, setIsUp] = useState(true)
+  const [isUp, setIsUp] = useState(false)
+  const thisRef = useRef<HTMLDivElement>(null)
+
+  function onScrolling() {
+    let scroll: number = document.body.scrollTop || document.documentElement.scrollTop
+    const headerHeight: number = fixedElementHeight > 0 ? fixedElementHeight : menuCompo.current?.clientHeight || 0
+    setIsUp( (window.innerHeight - scroll - headerHeight < 0) ? false : true )
+  }
+
+  useEffect(() => {
+    onScrolling()
+    document.addEventListener("scroll", onScrolling)
+  })
   return (
     <>
     <li>
       <a 
+        ref={thisRef}
         href={`${urlOfLinkToShare}`}
         target="_blank"
         role="menuitem" 
