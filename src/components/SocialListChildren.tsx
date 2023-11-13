@@ -2,7 +2,6 @@
 import { TwitchIcon, YoutubeIcon, FacebookIcon, LucideIcon, LucideProps } from 'lucide-preact'
 import DiscordIcon from "./DiscordIcon"
 import {v4 as uuidv4} from 'uuid';
-import { TwitchIcon, YoutubeIcon, FacebookIcon, LucideIcon, LucideProps } from 'lucide-preact'
 import { useState } from 'preact/hooks';
 
 const iconSize: number = 48
