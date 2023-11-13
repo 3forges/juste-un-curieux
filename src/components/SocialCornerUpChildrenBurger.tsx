@@ -1,4 +1,4 @@
-import { JSX, Children } from 'preact/compat'
+import type { JSX } from 'preact/compat'
 import { Share2Icon } from 'lucide-preact'
 import type { FunctionalComponent } from 'preact'
 import {

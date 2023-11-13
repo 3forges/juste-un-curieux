@@ -1,5 +1,5 @@
 //import { h } from 'preact'
-import { JSX } from 'preact'
+import type { JSX } from 'preact'
 import { TwitchIcon, YoutubeIcon, FacebookIcon, LucideIcon, LucideProps } from 'lucide-preact'
 import DiscordIcon from "./DiscordIcon"
 import {v4 as uuidv4} from 'uuid';
@@ -38,11 +38,11 @@ export const TwitchSocialMenuItem = ({
 }: TwitchSocialMenuItemProps): JSX.Element =>  {
   const randomUuid = uuidv4();
   const [isUp, setIsUp] = useState(true)
-  const thisRef = useRef<HTMLDivElement>(null)
+  const thisRef = useRef<HTMLAnchorElement>(null)
 
   function onScrolling() {
     let scroll: number = document.body.scrollTop || document.documentElement.scrollTop
-    const headerHeight: number = fixedElementHeight > 0 ? fixedElementHeight : menuCompo.current?.clientHeight || 0
+    const headerHeight: number = fixedElementHeight > 0 ? fixedElementHeight : thisRef.current?.clientHeight || 0
     setIsUp( (window.innerHeight - scroll - headerHeight < 0) ? false : true )
   }
 
@@ -153,11 +153,11 @@ export const YoutubeSocialMenuItem = ({
 }: YoutubeSocialMenuItemProps) =>  {
   const randomUuid = uuidv4();
   const [isUp, setIsUp] = useState(false)
-  const thisRef = useRef<HTMLDivElement>(null)
+  const thisRef = useRef<HTMLAnchorElement>(null)
 
   function onScrolling() {
     let scroll: number = document.body.scrollTop || document.documentElement.scrollTop
-    const headerHeight: number = fixedElementHeight > 0 ? fixedElementHeight : menuCompo.current?.clientHeight || 0
+    const headerHeight: number = fixedElementHeight > 0 ? fixedElementHeight : thisRef.current?.clientHeight || 0
     setIsUp( (window.innerHeight - scroll - headerHeight < 0) ? false : true )
   }
 
@@ -254,11 +254,11 @@ export const FacebookSocialMenuItem = ({
 }: FacebookSocialMenuItemProps) =>  {
   const randomUuid = uuidv4();
   const [isUp, setIsUp] = useState(false)
-  const thisRef = useRef<HTMLDivElement>(null)
+  const thisRef = useRef<HTMLAnchorElement>(null)
 
   function onScrolling() {
     let scroll: number = document.body.scrollTop || document.documentElement.scrollTop
-    const headerHeight: number = fixedElementHeight > 0 ? fixedElementHeight : menuCompo.current?.clientHeight || 0
+    const headerHeight: number = fixedElementHeight > 0 ? fixedElementHeight : thisRef.current?.clientHeight || 0
     setIsUp( (window.innerHeight - scroll - headerHeight < 0) ? false : true )
   }
 
@@ -406,20 +406,21 @@ export interface DiscordSocialMenuItemProps {
 }
 export const DiscordSocialMenuItem = ({
   urlOfLinkToShare = 'https://example.com',
-  size=iconSize-12,
+  size=iconSize-24,
+  viewBox = `0 0 640 512`,
+  alt = "Discord",
   strokeWidth=2,
+  //stroke = "none",
   stroke=`currentColor`,
-  viewBox="-2 -4 32 32",
-  alt="Share",
   className="m-1 p-1 rounded-full"
 }: DiscordSocialMenuItemProps) =>  {
   const randomUuid = uuidv4();
   const [isUp, setIsUp] = useState(false)
-  const thisRef = useRef<HTMLDivElement>(null)
+  const thisRef = useRef<HTMLAnchorElement>(null)
 
   function onScrolling() {
     let scroll: number = document.body.scrollTop || document.documentElement.scrollTop
-    const headerHeight: number = fixedElementHeight > 0 ? fixedElementHeight : menuCompo.current?.clientHeight || 0
+    const headerHeight: number = fixedElementHeight > 0 ? fixedElementHeight : thisRef.current?.clientHeight || 0
     setIsUp( (window.innerHeight - scroll - headerHeight < 0) ? false : true )
   }
 
@@ -435,7 +436,7 @@ export const DiscordSocialMenuItem = ({
         href={`${urlOfLinkToShare}`}
         target="_blank"
         role="menuitem" 
-        class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] -bottom-[15px] -right-[70px]`}
+        class={`p-2 transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] -bottom-[15px] -right-[70px]`}
         id={`user-menu-bottom-discord-${randomUuid}`}
       >
         <DiscordIcon
@@ -456,11 +457,12 @@ export const DiscordSocialMenuItem = ({
 export const DiscordSocialBurgerMenuItem = ({
   urlOfLinkToShare = 'https://example.com',
   // size=iconSize-12,
-  size=iconSize-12,
+  size=iconSize-5,
+  viewBox = `0 0 640 512`,
+  alt = "Discord",
   strokeWidth=2,
+  //stroke = "none",
   stroke=`currentColor`,
-  viewBox="-2 -4 32 32",
-  alt="Share",
   className="h-20 w-20 m-1 items-center rounded-full p-1",
 }: DiscordSocialMenuItemProps) =>  {
   const randomUuid = uuidv4();
