@@ -6,19 +6,24 @@ import SocialCornerUp from "~/components/SocialCornerUp";
 import LogoSVG from "~/components/LogoSVG";
 import { Share2Icon } from "lucide-preact";
 //import { collections } from "~/content/config";
-import { TwitchSocialBurgerMenuItem, TwitchSocialMenuItem, YoutubeSocialBurgerMenuItem, YoutubeSocialMenuItem} from '~/components/SocialListChildren'
-import {SocialCornerUpChildren} from './SocialCornerUpChildren'
+import {
+  TwitchSocialBurgerMenuItem,
+  TwitchSocialMenuItem,
+  YoutubeSocialBurgerMenuItem,
+  YoutubeSocialMenuItem,
+} from "~/components/SocialListChildren";
+import { SocialCornerUpChildren } from "./SocialCornerUpChildren";
 import { SocialCornerUpBurgerChildren } from "./SocialCornerUpChildrenBurger";
 
 const navOnAirItems: Array<NavItem> = [{ title: "ON AIR", url: "#" }];
+const navOnAirItem: NavItem = { title: "ON AIR", url: "#" };
+
 const navItems: Array<NavItem> = [
   { title: "Bientôt", url: "#features" },
   { title: "Vidéos", url: "#showcase" },
 ];
 ---
-{// console.log("Astro: ",socials)
-}
-{ /* console.log("Astro: ",socials[0].returnIcon({})) */ }
+
 <header
   id="page-header"
   class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-3 py-2 text-white sm:px-3 sm:py-2 xl:px-8 xl:py-4"
@@ -89,24 +94,34 @@ const navItems: Array<NavItem> = [
     <div class="flex items-center gap-6">
       <nav class="hidden sm:block">
         <ul class="flex items-center gap-6">
-          {
-            navOnAirItems.map(({ title, url }) => (
-              <li class="group m-4 inline-flex overflow-hidden rounded bg-gray-900 text-white">
-                <span class="flex items-center justify-center bg-gradient-to-r from-teal-200 to-lime-200 px-3.5 py-2 text-white hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200">
-                  <span class="relative flex animate-jump animate-duration-[2000ms] animate-infinite ">
-                    <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75" />
-                    <span class="relative inline-flex h-3 w-3 animate-jump rounded-full bg-red-500 animate-duration-[2000ms] animate-infinite" />
-                  </span>
-                </span>
-                <span class="bg-gradient-to-r from-purple-500 to-pink-500 py-2.5 pl-4 pr-5 hover:bg-gradient-to-l ">
-                  <div class="text-small animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5 font-bold text-white">
-                    <span class="text-small text-transparent">- . </span>
-                    {title}
-                  </div>
-                </span>
-              </li>
-            ))
-          }
+          <li
+            class="group m-4 inline-flex overflow-hidden rounded bg-gray-900 text-white"
+          >
+            <span
+              class="flex items-center justify-center bg-gradient-to-r from-teal-200 to-lime-200 px-3.5 py-2 text-white hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200"
+            >
+              <span
+                class="relative flex animate-jump animate-duration-[2000ms] animate-infinite"
+              >
+                <span
+                  class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"
+                ></span>
+                <span
+                  class="relative inline-flex h-3 w-3 animate-jump rounded-full bg-red-500 animate-duration-[2000ms] animate-infinite"
+                ></span>
+              </span>
+            </span>
+            <span
+              class="bg-gradient-to-r from-purple-500 to-pink-500 py-2.5 pl-4 pr-5 hover:bg-gradient-to-l"
+            >
+              <div
+                class="text-small animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5 font-bold text-white"
+              >
+                <span class="text-small text-transparent">- .</span>
+                {navOnAirItem.title}
+              </div>
+            </span>
+          </li>
 
           {
             navItems.map(({ title, url }) => (
@@ -118,11 +133,11 @@ const navItems: Array<NavItem> = [
             ))
           }
 
-          <li class="sm:mr-10 ml-10">
+          <li class="ml-10 sm:mr-10">
             <SocialCornerUpChildren
               name="noburger"
               urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`}
-              children={[<TwitchSocialMenuItem/>, <YoutubeSocialMenuItem/>]} 
+              children={[<TwitchSocialMenuItem />, <YoutubeSocialMenuItem />]}
               client:only="preact"
             />
           </li>
@@ -204,35 +219,12 @@ const navItems: Array<NavItem> = [
                 </span>
               </li>
               <ul>
-                <SocialCornerUpBurgerChildren children={[<TwitchSocialBurgerMenuItem/>, <YoutubeSocialBurgerMenuItem/>]}/>
-                {/* 
-                  socials.map((item) => {
-                    // for astro console log
-                    console.log("returnIcon: ", item.returnIcon())
-                    return (
-                      <li>
-                        <a
-                          href={item.link}
-                          role="menuitem"
-                          class={`block text-center`}
-                          id={`user-menu-bottom-${item.label}`}
-                        >
-                          <span class="flex flex-row items-center">
-                            <item.returnIcon
-                              size={(item.label!="Discord")?48:36}
-                              strokeWidth={2}
-                              stroke={`currentColor`}
-                              viewBox={(item.label!=="Discord")?"-2 -4 32 32":"0 0 640 512"}
-                              alt="Share"
-                              className={(item.label!=="Discord")?"h-20 w-20 m-1 items-center rounded-full p-1":"h-20 w-20 m-5 items-center rounded-full p-5"}
-                            />
-                            {item.label}
-                          </span>
-                        </a>
-                      </li>
-                    );
-                  })
-                */}
+                <SocialCornerUpBurgerChildren
+                  children={[
+                    <TwitchSocialBurgerMenuItem />,
+                    <YoutubeSocialBurgerMenuItem />,
+                  ]}
+                />
               </ul>
             </ul>
           </nav>
