@@ -2,6 +2,10 @@ import { useEffect } from 'preact/hooks'
 import { useState, useRef, JSX, Children } from 'preact/compat'
 import { Share2Icon } from 'lucide-preact'
 import type { FunctionalComponent } from 'preact'
+import {
+  TwitchSocialBurgerMenuItem,
+  YoutubeSocialBurgerMenuItem
+} from './SocialListChildren'
 //import { collections, social } from "~/content/config"
 /*
 {
