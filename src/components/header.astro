@@ -6,7 +6,8 @@ import SocialCornerUp from "~/components/SocialCornerUp";
 import LogoSVG from "~/components/LogoSVG";
 import { Share2Icon } from "lucide-preact";
 //import { collections } from "~/content/config";
-import { socials } from "./SocialList";
+import { TwitchSocialMenuItem, YoutubeSocialMenuItem} from '~/components/SocialListChildren'
+import SocialCornerUpChildren from './SocialCornerUpChildren'
 
 const navOnAirItems: Array<NavItem> = [{ title: "ON AIR", url: "#" }];
 const navItems: Array<NavItem> = [
@@ -116,10 +117,10 @@ const navItems: Array<NavItem> = [
           }
 
           <li class="sm:mr-10 ml-10">
-            <SocialCornerUp
+            <SocialCornerUpChildren
               name="noburger"
               urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`}
-              menuShareItems={socials} 
+              menuShareItems={[<TwitchSocialMenuItem/>, <YoutubeSocialMenuItem/>]} 
               client:only="preact"
             />
           </li>
