@@ -3,7 +3,7 @@ import { useState, useRef, JSX, Children } from 'preact/compat'
 import { Share2Icon } from 'lucide-preact'
 //import { collections, social } from "~/content/config"
 
-export interface SocialCornerUpChildrenProps {
+export interface SocialCornerUpChildrenBurgerProps {
   urlOfLinkToShare: string
   name: string
   menuShareItems: JSX.Element[]
@@ -22,7 +22,7 @@ const effet: string = `
 `
 
 
-export default function SocialCornerUpChildren( { urlOfLinkToShare, name, menuShareItems }: SocialCornerUpChildrenProps) {
+export default function SocialCornerUpChildrenBurger( { urlOfLinkToShare, name, menuShareItems }: SocialCornerUpChildrenBurgerProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isUp, setIsUp] = useState<boolean>(true)
   const menuCompo = useRef<HTMLDivElement>(null)
@@ -96,7 +96,7 @@ export default function SocialCornerUpChildren( { urlOfLinkToShare, name, menuSh
 
         {
           Children.forEach(menuShareItems, (child, index) => {
-              console.log(`[SocialCornerUpChildren] - Loop over MainLayout children, chil no.${index} : `, child)
+              console.log(`[SocialCornerUpChildrenBurger] - Loop over MainLayout children, chil no.${index} : `, child)
               return child;
             })
         }

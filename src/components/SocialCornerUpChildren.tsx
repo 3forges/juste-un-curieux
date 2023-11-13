@@ -1,14 +1,17 @@
 import { useEffect } from 'preact/hooks'
 import { useState, useRef, JSX, Children } from 'preact/compat'
 import { Share2Icon } from 'lucide-preact'
+import type { FunctionalComponent } from 'preact'
 //import { collections, social } from "~/content/config"
 
 export interface SocialCornerUpChildrenProps {
-  urlOfLinkToShare: string
-  name: string
-  menuShareItems: JSX.Element[]
+  urlOfLinkToShare?: string
+  name?: string
+  // children: JSX.Element[]
+  children?: JSX.Element[],
+  theme?: any,
 }
-
+const doesButtonRoll = true
 /**
  * SOME CONF
  */
@@ -22,12 +25,13 @@ const effet: string = `
 `
 
 
-export default function SocialCornerUpChildren( { urlOfLinkToShare, name, menuShareItems }: SocialCornerUpChildrenProps) {
+// export const SocialCornerUpChildren: FunctionalComponent<SocialCornerUpChildrenProps> = ( { urlOfLinkToShare, name, children = <></> }: SocialCornerUpChildrenProps): JSX.Element => {
+export const SocialCornerUpChildren: FunctionalComponent<SocialCornerUpChildrenProps> = ( { urlOfLinkToShare, name, children = [<></>] }: SocialCornerUpChildrenProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isUp, setIsUp] = useState<boolean>(true)
   const menuCompo = useRef<HTMLDivElement>(null)
 
-  //console.log(socials, menuShareItems)
+  //console.log(socials, children)
 
   const onClickHandler = () => {
     setIsOpen(!isOpen);
@@ -93,13 +97,17 @@ export default function SocialCornerUpChildren( { urlOfLinkToShare, name, menuSh
         >
 
 
-
-        {
-          Children.forEach(menuShareItems, (child, index) => {
-              console.log(`[SocialCornerUpChildren] - Loop over MainLayout children, chil no.${index} : `, child)
-              return child;
+        {/*
+          Children.forEach(children, (child, index) => {
+              console.log(`[SocialCornerUpChildren] - Loop over MainLayout children, chil no.${index} : `, child);
+              return (child);
             })
+        */
         }
+
+{children.map((child: JSX.Element ) => {
+  return child
+          })}
         </div>        
       </div>
     </>
