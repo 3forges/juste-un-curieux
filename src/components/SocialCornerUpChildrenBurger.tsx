@@ -57,7 +57,7 @@ const fixedElementHeight: number = document.querySelector('#page-header')?.clien
 // export const SocialCornerUpBurgerChildren: FunctionalComponent<SocialCornerUpBurgerChildrenProps> = ( { urlOfLinkToShare, name, children = <></> }: SocialCornerUpBurgerChildrenProps): JSX.Element => {
 export const SocialCornerUpBurgerChildren: FunctionalComponent<SocialCornerUpBurgerChildrenProps> = ( { urlOfLinkToShare, name, children = [
   <TwitchSocialBurgerMenuItem />,
-  <YoutubeSocialBurgerMenuItem />,
+  <YoutubeSocialBurgerMenuItem />
 ] }: SocialCornerUpBurgerChildrenProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isUp, setIsUp] = useState<boolean>(true)
@@ -84,11 +84,7 @@ export const SocialCornerUpBurgerChildren: FunctionalComponent<SocialCornerUpBur
     <> 
 
     {children.map((child: JSX.Element ) => {
-      return (
-          <li>
-            <child />
-          </li>
-        )
+      return child
               })}
 
 

@@ -79,6 +79,7 @@ export const TwitchSocialBurgerMenuItem = ({
   // const [isUp, setIsUp] = useState(true)
   return (
     <>
+    <li>
         <a
             href={`${urlOfLinkToShare}`}
             target="_blank"
@@ -98,6 +99,7 @@ export const TwitchSocialBurgerMenuItem = ({
             Twitch
           </span>
         </a>
+        </li>
     </>
   )
 }
@@ -137,23 +139,27 @@ export const YoutubeSocialMenuItem = ({
   const randomUuid = uuidv4();
   const [isUp, setIsUp] = useState(true)
   return (
-    <a 
-      href={`${urlOfLinkToShare}`}
-      target="_blank"
-      role="menuitem" 
-      class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[10px] -right-[50px]`}
-      id={`user-menu-bottom-discord-${randomUuid}`}
-    >
-      <YoutubeIcon 
-        size={size}
-        strokeWidth={strokeWidth}
-        stroke={stroke}
-        viewBox={viewBox}
-        alt={alt}
-        className={className}
-      />
-      <span class="sr-only">YouTube</span>
-    </a>
+    <>
+    <li>
+      <a 
+        href={`${urlOfLinkToShare}`}
+        target="_blank"
+        role="menuitem" 
+        class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[10px] -right-[50px]`}
+        id={`user-menu-bottom-discord-${randomUuid}`}
+      >
+        <YoutubeIcon 
+          size={size}
+          strokeWidth={strokeWidth}
+          stroke={stroke}
+          viewBox={viewBox}
+          alt={alt}
+          className={className}
+        />
+        <span class="sr-only">YouTube</span>
+      </a>
+    </li>
+    </>
   )
 }
 
