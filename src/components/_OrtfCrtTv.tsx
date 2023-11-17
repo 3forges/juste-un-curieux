@@ -32,7 +32,7 @@ export default function OrtfCrtTv () {
         {// <!-- CRT BARS -->
         }
         <div 
-            class="absolute z-2 rounded-[50px] opacity-10 min-w-[90%] min-h-full bg-gradient-to-b from-white to-black bg-[length:5px_5px] m-5"
+            class="absolute z-2 rounded-[50px] opacity-10 min-w-[100%] min-h-full bg-gradient-to-b from-white to-black bg-[length:5px_5px] m-5"
         ></div>
     </div>)
 }
