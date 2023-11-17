@@ -28,7 +28,7 @@ export interface TwitchSocialMenuItemProps {
 }
 
 export const TwitchSocialMenuItem = ({
-  urlOfLinkToShare = 'https://example.com',
+  urlOfLinkToShare = 'https://www.twitch.tv/Justin_Curieux',
   size=iconSize-12,
   strokeWidth=2,
   stroke=`currentColor`,
@@ -82,7 +82,7 @@ className={(item.label!=="Discord")?"h-20 w-20 m-1 items-center rounded-full p-1
 */
 
 export const TwitchSocialBurgerMenuItem = ({
-  urlOfLinkToShare = 'https://example.com',
+  urlOfLinkToShare = 'https://www.twitch.tv/Justin_Curieux',
   size=iconSize-12,
   strokeWidth=2,
   stroke=`currentColor`,
@@ -143,7 +143,7 @@ export interface YoutubeSocialMenuItemProps {
   className?: string
 }
 export const YoutubeSocialMenuItem = ({
-  urlOfLinkToShare = 'https://example.com',
+  urlOfLinkToShare = 'https://www.youtube.com/@justincurieux31',
   size=iconSize-12,
   strokeWidth=2,
   stroke=`currentColor`,
@@ -192,7 +192,7 @@ export const YoutubeSocialMenuItem = ({
 }
 
 export const YoutubeSocialBurgerMenuItem = ({
-  urlOfLinkToShare = 'https://example.com',
+  urlOfLinkToShare = 'https://www.youtube.com/@justincurieux31',
   size=iconSize-12,
   strokeWidth=2,
   stroke=`currentColor`,
@@ -244,7 +244,7 @@ export interface FacebookSocialMenuItemProps {
   className?: string
 }
 export const FacebookSocialMenuItem = ({
-  urlOfLinkToShare = 'https://example.com',
+  urlOfLinkToShare = 'https://www.facebook.com/justin.curieux/',
   size=iconSize-12,
   strokeWidth=2,
   stroke=`currentColor`,
@@ -293,7 +293,7 @@ export const FacebookSocialMenuItem = ({
 }
 
 export const FacebookSocialBurgerMenuItem = ({
-  urlOfLinkToShare = 'https://example.com',
+  urlOfLinkToShare = 'https://www.facebook.com/justin.curieux/',
   size=iconSize-12,
   strokeWidth=2,
   stroke=`currentColor`,
@@ -405,7 +405,7 @@ export interface DiscordSocialMenuItemProps {
   className?: string
 }
 export const DiscordSocialMenuItem = ({
-  urlOfLinkToShare = 'https://example.com',
+  urlOfLinkToShare = 'https://discord.com/channels/1054405752422420531/1054405753240305736',
   size=iconSize-24,
   viewBox = `0 0 640 512`,
   alt = "Discord",
@@ -455,7 +455,7 @@ export const DiscordSocialMenuItem = ({
 }
 
 export const DiscordSocialBurgerMenuItem = ({
-  urlOfLinkToShare = 'https://example.com',
+  urlOfLinkToShare = 'https://discord.com/channels/1054405752422420531/1054405753240305736',
   // size=iconSize-12,
   size=iconSize-5,
   viewBox = `0 0 640 512`,
