@@ -1,6 +1,0 @@
-@keyframes ping {
-	0% { background-position: 0% 0%; }
-    17% { background-position: 0% 1%; }
-    83% { background-position: 1% 0%; }
-	100% { background-position: 0% 1%; }
-}
