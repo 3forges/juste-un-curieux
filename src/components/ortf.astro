@@ -38,6 +38,10 @@ const myJustinCurieuxImageConfig: any = (astroConfig.image?astroConfig.image.ser
     }
     {//densities={[1.5, 2]}
     }
+
+const testAoui = import("https://picsum.photos/id/866/200/300.jpg") // src={testAoui}
+//
+    
 ---
 
 <style>
@@ -52,8 +56,8 @@ const myJustinCurieuxImageConfig: any = (astroConfig.image?astroConfig.image.ser
     <!-- CRT DISPLAY -->
     <Image 
 
-        src={imageResizingService.getURL(myJustinCurieuxOptions, myJustinCurieuxImageConfig) }
-
+        src={import(`${imageResizingService.getURL(myJustinCurieuxOptions, myJustinCurieuxImageConfig)}`)}
+        
         
         alt="Arc de Triomphe, Paris" 
         class="rounded-[50px] filter grayscale blur-[2px] z-1"

@@ -84,17 +84,37 @@ export const imageResizingService: ExternalImageService = {
    * @param imageConfig must be a JSON object with the properties defined in the {@JustinCurieuxImageConfig } interface
    * @returns The URL of the processed image, with resized according 2 things: the global <code>imageConfig</code> defined in <code>[astro.config.mjs]</code>, and the <code>options</code>
    */
-  getURL(options: ImageTransform, customImageConfig: AstroConfig['image']/*JustinCurieuxImageConfig*/) {
+  getURL(options: ImageTransform, customImageConfig: AstroConfig['image']/*JustinCurieuxImageConfig*/)/*: string | ImageMetadata | Promise<{ default: ImageMetadata; }>*/ {
     // const astroConfiguredImageService = customImageConfig.service.config; // you can use that if you feel like implementing more refined behavior
     // `https://picsum.photos/id/866/200/300.jpg`
     // console.log(`defaultOptions : `, defaultOptions)
     // console.log(`justinFormat : `, justinFormat)
     // console.log(`justinImgMetaData : `, justinImgMetaData)
-
+    const retourFake: string | ImageMetadata | Promise<{ default: ImageMetadata; }> = {
+      src: `bidule`,
+      format: "webp", // here {format} property of [ImageMetaData] Class, is an [Enum], not an [ImageOutputFormat]  
+      height: 150,
+      width: 150
+    }
+    const retourTest1: string | ImageMetadata | Promise<{ default: ImageMetadata; }> = {
+      src: `https://picsum.photos/id/${options.src}/${options.width}/${options.height}.jpg`,
+      format: "webp", // here {format} property of [ImageMetaData] Class, is an [Enum], not an [ImageOutputFormat]  
+      // format: justinFormat,
+      height: 150,
+      width: 150,
+    }
+    const retour: string | ImageMetadata = {
+      src: `https://picsum.photos/id/${options.src}/${options.width}/${options.height}.jpg`,
+      format: "webp", // here {format} property of [ImageMetaData] Class, is an [Enum], not an [ImageOutputFormat]  
+      // format: justinFormat,
+      height: 150,
+      width: 150,
+    }
     console.log(` IMAGE RESIZE SERVICE : [getURL()] Hook - passed options : `, options)
     console.log(` IMAGE RESIZE SERVICE : [getURL()] Hook - FETCHING RESIZED IMAGE : https://picsum.photos/id/${options.src}/${options.width}/${options.height}.jpg`)
     // console.log(`justinImgMetaData : `, justinImgMetaData)
-    return `https://picsum.photos/id/${options.src}/${options.width}/${options.height}.jpg`;
+    // return `https://picsum.photos/id/${options.src}/${options.width}/${options.height}.jpg`;
+    return retour.src;
   },
 
   // getLoremPicsumURL(options: ImageTransform, customImageConfig: AstroConfig['image']/*JustinCurieuxImageConfig*/) {
