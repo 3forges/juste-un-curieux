@@ -10,7 +10,7 @@ import arcTriomphe from "../assets/ortf/ArcdeTriomphe-1.jpg"
 import imageResizingService from "../../.ci/src/build/ImageResizeService"
 
 import astroConfig from 'astro.config.mjs'
-import type { ImageTransform, AstroConfig } from 'astro'
+import type { ImageTransform, AstroConfig, ImageMetadata } from 'astro'
 /**
  * `https://picsum.photos/id/866/200/300.jpg`
  */
@@ -39,9 +39,16 @@ const myJustinCurieuxImageConfig: any = (astroConfig.image?astroConfig.image.ser
     {//densities={[1.5, 2]}
     }
 
-const testAoui = import("https://picsum.photos/id/866/200/300.jpg") // src={testAoui}
+// const testAoui = import("https://picsum.photos/id/866/200/300.jpg") // src={testAoui}
 //
-    
+const justinImgMetaData: ImageMetadata = {
+  src: `bidule`,
+  format: "webp", // here {format} property of [ImageMetaData] Class, is an [Enum], not an [ImageOutputFormat]  
+  height: 150,
+  width: 150,
+}
+//
+// src={import(`${imageResizingService.getURL(myJustinCurieuxOptions, myJustinCurieuxImageConfig)}`)}
 ---
 
 <style>
@@ -56,8 +63,8 @@ const testAoui = import("https://picsum.photos/id/866/200/300.jpg") // src={test
     <!-- CRT DISPLAY -->
     <Image 
 
-        src={import(`${imageResizingService.getURL(myJustinCurieuxOptions, myJustinCurieuxImageConfig)}`)}
         
+        src={justinImgMetaData}
         
         alt="Arc de Triomphe, Paris" 
         class="rounded-[50px] filter grayscale blur-[2px] z-1"
