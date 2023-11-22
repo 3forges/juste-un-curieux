@@ -122,4 +122,4 @@ export const imageResizingService: ExternalImageService = {
 };
 
 
-// export default imageResizingService;
+export default imageResizingService;

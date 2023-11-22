@@ -1,3 +1,7 @@
 #!/bin/bash
 
-pnpm run meta:build
+cd ./.ci/
+ls -alh .
+pwd
+pnpm run clean || true
+pnpm i && pnpm run meta:build
