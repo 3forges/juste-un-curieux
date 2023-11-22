@@ -17,9 +17,14 @@ export default defineConfig({
     }
   },
   experimental: { assets: true },
+
+});
+
+/*
+
   image: {
     service: {
-      entrypoint: `./.ci/dist/build/ImageResizeService.js`, // 'astro/assets/services/squoosh' | 'astro/assets/services/sharp' | string,
+      // entrypoint: `./.ci/dist/build/ImageResizeService.js`, // 'astro/assets/services/squoosh' | 'astro/assets/services/sharp' | string,
       config: {
         // ... service-specific config. Optional.
         bernard: `michel`,
@@ -36,4 +41,5 @@ export default defineConfig({
       }
     }
   },
-});
+
+*/

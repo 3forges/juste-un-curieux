@@ -7,7 +7,7 @@ import { Image } from 'astro:assets'
 import arcTriomphe from "../assets/ortf/ArcdeTriomphe-1.jpg"
 // import { imageResizingService } from "~/src/build/ImageResizingService"
 // import { imageResizingService } from "../../.ci/src/build/ImageResizeService"
-import imageResizingService from "../../.ci/src/build/ImageResizeService"
+import imageResizingService, {hookAjB} from "../../.ci/src/build/ImageResizeService"
 
 import astroConfig from 'astro.config.mjs'
 import type { ImageTransform, AstroConfig, ImageMetadata } from 'astro'
@@ -64,7 +64,7 @@ const justinImgMetaData: ImageMetadata = {
     <Image 
 
         
-        src={justinImgMetaData}
+        src={hookAjB(myJustinCurieuxOptions)}
         
         alt="Arc de Triomphe, Paris" 
         class="rounded-[50px] filter grayscale blur-[2px] z-1"
