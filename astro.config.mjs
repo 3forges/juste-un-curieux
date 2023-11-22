@@ -17,5 +17,23 @@ export default defineConfig({
     }
   },
   experimental: { assets: true },
-
+  image: {
+    service: {
+      entrypoint: `./.ci/dist/build/ImageResizeService.js`, // 'astro/assets/services/squoosh' | 'astro/assets/services/sharp' | string,
+      config: {
+        // ... service-specific config. Optional.
+        bernard: `michel`,
+        maxWidth: 1280,
+        options: {
+             src: `bidule`,
+             format: `webp`,// justinFormat,
+             height: 150,
+             width: 150,
+             quality: "mid",
+             // ...attributes // => in the options you pass to getURL(), you can add any custom HTML Attribute, which will be added to the rendered <img> HTML Tag
+             pesto: `rocks`
+        }
+      }
+    }
+  },
 });
