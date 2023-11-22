@@ -55,9 +55,6 @@ devDependencies:
   '@types/micromodal':
     specifier: ^0.3.3
     version: 0.3.3
-  '@types/svgo':
-    specifier: ^3.0.0
-    version: 3.0.0
   '@types/uuid':
     specifier: ^9.0.7
     version: 9.0.7
@@ -1032,13 +1029,6 @@ packages:
 
   /@types/resolve@1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
-    dev: true
-
-  /@types/svgo@3.0.0:
-    resolution: {integrity: sha512-G5qLWNq/rMvSM1EyY4E2iEd+s9km/PxLkzPkA2lghrgWJ2jrVMuB1ZsGOzL4YAWCy5sAoUw7SEQseHE2qypF2w==}
-    deprecated: This is a stub types definition. svgo provides its own type definitions, so you do not need this installed.
-    dependencies:
-      svgo: 2.8.0
     dev: true
 
   /@types/unist@2.0.8:

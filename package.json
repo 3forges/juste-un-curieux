@@ -3,19 +3,19 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "format": "prettier --write .",
-    "clean": "rimraf dist .astro node_modules"
+    "meta:build": "tsc -p ./.ci/tsconfig.json",
+    "dev": "bash -c ./.ci/.shell/meta.build.sh && astro dev",
+    "start": "npm run \"meta:build\" && astro dev",
+    "build": "npm run \"meta:build\" && astro build",
+    "preview": "npm run \"meta:build\" && astro preview",
+    "astro": "npm run \"meta:build\" && astro",
+    "format": "npm run \"meta:build\" && prettier --write .",
+    "clean": "npm run \"meta:build\" && rimraf dist .astro node_modules"
   },
   "devDependencies": {
     "@astrojs/image": "^0.17.2",
     "@astrojs/tailwind": "^4.0.0",
     "@types/micromodal": "^0.3.3",
-    "@types/svgo": "^3.0.0",
     "@types/uuid": "^9.0.7",
     "astro": "^2.8.0",
     "astro-icon": "^0.8.1",
