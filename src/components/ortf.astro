@@ -4,6 +4,7 @@
 // const tailwindCssAnimated = `animate-rotate-y animate-twice animate-duration-[1250ms] animate-ease-in-out`  
 const tailwindCssAnimated = `animate-jump-in animate-once animate-duration-[1250ms] animate-ease-in-out`  
 // animate-rotate-y
+import service from './build/imageResizeService.ts'
 import { Image } from 'astro:assets'
 import arcTriomphe from "../assets/ortf/ArcdeTriomphe-1.jpg"
 ---
@@ -19,6 +20,7 @@ import arcTriomphe from "../assets/ortf/ArcdeTriomphe-1.jpg"
     <!-- CRT DISPLAY -->
     <Image 
         src={arcTriomphe} 
+        densities={[1.5, 2]}
         alt="Arc de Triomphe, Paris" 
         class="rounded-[50px] filter grayscale blur-[2px] z-1"
     />

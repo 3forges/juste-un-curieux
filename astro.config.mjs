@@ -15,4 +15,12 @@ export default defineConfig({
     }
   },
   experimental: { assets: true },
+  image: {
+    service: {
+      entrypoint: "src/build/imageResizeService.ts", // 'astro/assets/services/squoosh' | 'astro/assets/services/sharp' | string,
+      config: {
+        // ... service-specific config. Optional.
+      }
+    }
+  },
 });
