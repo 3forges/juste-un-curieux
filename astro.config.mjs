@@ -1,9 +1,8 @@
 //import image from "@astrojs/image";
 import tailwind from "@astrojs/tailwind";
 import { defineConfig } from "astro/config";
-
 import preact from "@astrojs/preact";
-import { ImageOutputFormat } from "astro";
+//import { ImageOutputFormat } from "astro";
 
 // import { imageResizingService, justinFormat } from "~/src/build/ImageResizeService";
 
