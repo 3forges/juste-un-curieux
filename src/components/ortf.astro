@@ -7,24 +7,12 @@ import { Image } from 'astro:assets'
 import arcTriomphe from "../assets/ortf/ArcdeTriomphe-1.jpg"
 // import { imageResizingService } from "~/src/build/ImageResizingService"
 // import { imageResizingService } from "../../.ci/src/build/ImageResizeService"
-//import imageResizingService, {hookAjB} from "../../.ci/src/build/ImageResizeService"
+// import imageResizingService, {hookAjB} from "../../.ci/src/build/ImageResizeService"
 
-import astroConfig from 'astro.config.mjs'
-import type { ImageTransform, AstroConfig, ImageMetadata } from 'astro'
+// import type { ImageTransform, AstroConfig, ImageMetadata } from 'astro'
 /**
  * `https://picsum.photos/id/866/200/300.jpg`
  */
-const myJustinCurieuxOptions: ImageTransform = {
-  src: '866',
-  width: 200,
-  height: 300
-}
-//const myJustinCurieuxImageConfig: AstroConfig['image'] = (astroConfig.image?astroConfig.image.service.config:{})
-const myJustinCurieuxImageConfig: any = (astroConfig.image?astroConfig.image.service.config:{})
-
-// myJustinCurieuxImageConfig
-
-
 
     {/* 
     <img src="/ArcdeTriomphe-1.jpg"
@@ -41,22 +29,16 @@ const myJustinCurieuxImageConfig: any = (astroConfig.image?astroConfig.image.ser
 
 // const testAoui = import("https://picsum.photos/id/866/200/300.jpg") // src={testAoui}
 //
-const justinImgMetaData: ImageMetadata = {
-  src: `bidule`,
-  format: "webp", // here {format} property of [ImageMetaData] Class, is an [Enum], not an [ImageOutputFormat]  
-  height: 150,
-  width: 150,
-}
 //
-// src={import(`${imageResizingService.getURL(myJustinCurieuxOptions, myJustinCurieuxImageConfig)}`)}
+
 ---
 
 <style>
 @keyframes ping {
-	0% { background-position: 0% 0%; }
+  0% { background-position: 0% 0%; }
     17% { background-position: 0% 1%; }
     83% { background-position: 1% 0%; }
-	100% { background-position: 0% 1%; }
+  100% { background-position: 0% 1%; }
 }
 </style>
 <div class={`${tailwindCssAnimated} relative grid justify-items-center items-center bg-black`}>
