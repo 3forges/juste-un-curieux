@@ -28,7 +28,7 @@ export const urls = [
   "aRg4TQzh4uQ"
 ]
 
-const videos = [
+export const videos = [
   { url: "p7gFHxlSpx0", title: "Je viens de lire 'Éloge des frontières' de Régis Debray", date: "15/01/2024" }, 
   { url: "", title: "", elapsed: "" }, 
   { url: "", title: "", elapsed: "" }, 
