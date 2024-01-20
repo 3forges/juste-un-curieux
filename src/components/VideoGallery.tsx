@@ -1,5 +1,5 @@
-import { videos } from "./videosUrls"
 import { useState } from "preact/hooks"
+import { videos } from "./videosUrls"
 
 const paginationItemsNumber = 5 
 
@@ -7,6 +7,13 @@ export default function VideoGallery() {
   const [pagination, setPagination] = useState<number>(0) 
   const lastVideo = videos.slice(-1)[0]
   const videoList = videos.slice(0,-1).slice(pagination * paginationItemsNumber, (pagination * paginationItemsNumber) + paginationItemsNumber)
+
+  // ELAPSED CALCULUS
+  videoList.map( (item) => {
+    const now = Date()
+    var newDate = item.date.split("/").reverse()
+    //console.log(item.date, " => ", newDate)
+  })
 
   return(
     <div class="grid place-items-center">
@@ -59,7 +66,8 @@ export default function VideoGallery() {
         <div class={`
           border-black border-2 
           max-w-fit margin-mx-auto place-content-center min-w-[452px]
-          grid place-items-center grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lgxl:grid-cols-3 ${ paginationItemsNumber > 3 && "xxl:grid-cols-4" }
+          grid place-items-center grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lgxl:grid-cols-3 
+          ${ paginationItemsNumber > 3 && "xxl:grid-cols-4" }
         `}>
         {
           videoList.map( (items) => {

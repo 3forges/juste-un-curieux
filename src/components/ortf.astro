@@ -1,36 +1,7 @@
 --- 
-// const tailwindCssAnimated = `animate-wiggle-more animate-twice animate-duration-[1250ms] animate-ease-in-out`  
-// const tailwindCssAnimated = `animate-wiggle animate-twice animate-duration-[1250ms] animate-ease-in-out`  
-// const tailwindCssAnimated = `animate-rotate-y animate-twice animate-duration-[1250ms] animate-ease-in-out`  
 const tailwindCssAnimated = `animate-jump-in animate-once animate-duration-[1250ms] animate-ease-in-out`  
 import { Image } from 'astro:assets'
 import arcTriomphe from "../assets/ortf/ArcdeTriomphe-1.jpg"
-// import { imageResizingService } from "~/src/build/ImageResizingService"
-// import { imageResizingService } from "../../.ci/src/build/ImageResizeService"
-// import imageResizingService, {hookAjB} from "../../.ci/src/build/ImageResizeService"
-
-// import type { ImageTransform, AstroConfig, ImageMetadata } from 'astro'
-/**
- * `https://picsum.photos/id/866/200/300.jpg`
- */
-
-    {/* 
-    <img src="/ArcdeTriomphe-1.jpg"
-        width={'75%'}
-        height={'80%'}
-        alt="Arc de Triomphe, Paris"
-        class="rounded-[50px] filter grayscale blur-[2px] z-1 p-5"
-    />
-     */}
-    {//src={arcTriomphe}
-    }
-    {//densities={[1.5, 2]}
-    }
-
-// const testAoui = import("https://picsum.photos/id/866/200/300.jpg") // src={testAoui}
-//
-//
-
 ---
 
 <style>
@@ -43,11 +14,8 @@ import arcTriomphe from "../assets/ortf/ArcdeTriomphe-1.jpg"
 </style>
 <div class={`${tailwindCssAnimated} relative grid justify-items-center items-center bg-black`}>
     <!-- CRT DISPLAY -->
-    <Image 
-
-        
+    <Image         
         src={arcTriomphe}
-        
         alt="Arc de Triomphe, Paris" 
         class="rounded-[50px] filter grayscale blur-[2px] z-1"
     />

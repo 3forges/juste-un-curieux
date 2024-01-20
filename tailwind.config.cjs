@@ -62,12 +62,15 @@ module.exports = {
   
         'lg': '1024px',
         // => @media (min-width: 1024px) { ... }
+
         'lgxl': '1220px',
-  
+        // => @media (min-width: 1220px) { ... }
+
         'xl': '1280px',
         // => @media (min-width: 1280px) { ... }
-        'xxl': '1480px',
         
+        'xxl': '1480px',
+        // => @media (min-width: 1480px) { ... }
       }
     },
   },
