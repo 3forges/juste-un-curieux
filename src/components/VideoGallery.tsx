@@ -1,5 +1,6 @@
 import { useState } from "preact/hooks"
 import { videos } from "./videosUrls"
+import { ArrowBigLeft, ArrowBigRight } from 'lucide-preact'
 
 const paginationItemsNumber = 5 
 
@@ -16,7 +17,7 @@ export default function VideoGallery() {
     //console.log(item.date, " => ", newDate)
   })
   */
- 
+
   return(
     <div class="grid place-items-center">
       <div class="m-2 max-w-fit min-w-[332px]">
@@ -52,15 +53,15 @@ export default function VideoGallery() {
           grid grid-cols-1 
           place-items-center md:place-items-start md:px-6
         ">
-          <div>
-            ■ Gallerie des vidéos: 
+          <div class="flex flex-row">
+            ■ Gallerie des vidéos: &nbsp;
             { pagination > 0 && 
-                <a class="hover:cursor-pointer" onClick={() => {setPagination(pagination - 1)}}>◄</a> 
+                  <ArrowBigLeft class="hover:cursor-pointer translate-y-1" onClick={() => {setPagination(pagination - 1)}} />
               ||  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
             }
             page: {pagination + 1} / {Math.ceil((videos.length-1)/paginationItemsNumber)} 
             { pagination < Math.ceil((videos.length-1)/paginationItemsNumber) - 1 &&
-              <a class="hover:cursor-pointer" onClick={() => {setPagination(pagination + 1)}}>►</a>
+                <ArrowBigRight class="hover:cursor-pointer translate-y-1" onClick={() => {setPagination(pagination + 1)}} />
             }
           </div>
         </div>
@@ -75,15 +76,19 @@ export default function VideoGallery() {
           videoList.map( (items) => {
             return (
               <div class="p-4" onMouseDown={ (e) => {
-                e.stopImmediatePropagation()
-                e.preventDefault()
+               //alert(e)
               }}>
                 <iframe 
                   src={`https://www.youtube.com/embed/${items.url}?si=BUW-Hf9r-yCHLET`} 
-                  title="YouTube video player" 
+                  title={items.title}
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  
+                  onMouseDown={ (e) => {
+                    e.preventDefault()
+                    e.stopImmediatePropagation()
+                    e.preventDefault()
+                  }}
+                  /* style="pointer-events: none" */ 
                   allowFullScreen
                   >
                 </iframe>
