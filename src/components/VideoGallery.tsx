@@ -8,13 +8,15 @@ export default function VideoGallery() {
   const lastVideo = videos.slice(-1)[0]
   const videoList = videos.slice(0,-1).slice(pagination * paginationItemsNumber, (pagination * paginationItemsNumber) + paginationItemsNumber)
 
+  /*
   // ELAPSED CALCULUS
   videoList.map( (item) => {
     const now = Date()
     var newDate = item.date.split("/").reverse()
     //console.log(item.date, " => ", newDate)
   })
-
+  */
+ 
   return(
     <div class="grid place-items-center">
       <div class="m-2 max-w-fit min-w-[332px]">
@@ -35,7 +37,7 @@ export default function VideoGallery() {
             title="YouTube video player" 
             frameBorder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            class="p-4 shrink grow h-[550px]"
+            class="p-4 shrink grow h-[700px]"
             allowFullScreen>
           </iframe>
           <div class="text-xs flex flex-raw mb-12">
@@ -72,18 +74,22 @@ export default function VideoGallery() {
         {
           videoList.map( (items) => {
             return (
-              <div class="">
+              <div class="p-4" onMouseDown={ (e) => {
+                e.stopImmediatePropagation()
+                e.preventDefault()
+              }}>
                 <iframe 
                   src={`https://www.youtube.com/embed/${items.url}?si=BUW-Hf9r-yCHLET`} 
                   title="YouTube video player" 
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  class="p-4 "
-                  allowFullScreen>
+                  
+                  allowFullScreen
+                  >
                 </iframe>
-                <div class="text-xs w-max-[332px] min-w-[332px]">
-                  <div class="mx-8 text-xs w-[250px] whitespace-pre-wrap break-words" >{items.title}</div>
-                  <div class="mx-8">{items.date}</div>
+                <div class="text-xs w-max-[300px] min-w-[300px]">
+                  <div class="mx-2 text-xs w-[250px] whitespace-pre-wrap break-words" >{items.title}</div>
+                  <div class="mx-2">{items.date}</div>
                 </div>
               </div>
             )
