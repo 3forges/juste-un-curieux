@@ -63,10 +63,11 @@ export default function VideoGallery() {
           </div>
         </div>
         {/* video gallery */}
+        
         <div class={`
           border-black border-2 
-          max-w-fit margin-mx-auto place-items-stretch min-w-[452px]
-          grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lgxl:grid-cols-3 
+          max-w-fit margin-mx-auto mx-auto min-w-[452px]
+          grid place-items-center lg:place-items-stretch grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lgxl:grid-cols-3 
           ${ paginationItemsNumber > 3 && "xxl:grid-cols-4" }
         `}>
         {
@@ -78,7 +79,7 @@ export default function VideoGallery() {
                   title="YouTube video player" 
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  class="p-4"
+                  class="p-4 "
                   allowFullScreen>
                 </iframe>
                 <div class="text-xs w-max-[332px] min-w-[332px]">
@@ -90,6 +91,7 @@ export default function VideoGallery() {
           }
         )}
         </div>
+        
       </div>
     </div>
   )
