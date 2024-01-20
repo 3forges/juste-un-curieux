@@ -65,8 +65,8 @@ export default function VideoGallery() {
         {/* video gallery */}
         <div class={`
           border-black border-2 
-          max-w-fit margin-mx-auto place-content-center min-w-[452px]
-          grid place-items-center grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lgxl:grid-cols-3 
+          max-w-fit margin-mx-auto place-items-stretch min-w-[452px]
+          grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lgxl:grid-cols-3 
           ${ paginationItemsNumber > 3 && "xxl:grid-cols-4" }
         `}>
         {
