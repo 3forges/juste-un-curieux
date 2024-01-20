@@ -63,7 +63,6 @@ export default function VideoGallery() {
           </div>
         </div>
         {/* video gallery */}
-        
         <div class={`
           border-black border-2 
           max-w-fit margin-mx-auto mx-auto min-w-[452px]
@@ -83,7 +82,7 @@ export default function VideoGallery() {
                   allowFullScreen>
                 </iframe>
                 <div class="text-xs w-max-[332px] min-w-[332px]">
-                  <div class="mx-8 text-xs w-[250px]" style="white-space: pre-wrap; overflow-wrap: break-word">{items.title}</div>
+                  <div class="mx-8 text-xs w-[250px] whitespace-pre-wrap break-words" >{items.title}</div>
                   <div class="mx-8">{items.date}</div>
                 </div>
               </div>
@@ -91,7 +90,6 @@ export default function VideoGallery() {
           }
         )}
         </div>
-        
       </div>
     </div>
   )
