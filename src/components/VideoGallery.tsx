@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks"
 import { videos } from "./videosUrls"
-import { ArrowBigLeft, ArrowBigRight } from 'lucide-preact'
+import { ArrowBigLeft, ArrowBigRight, StepBack, StepForward } from 'lucide-preact'
 
 const paginationItemsNumber = 5 
 
@@ -56,12 +56,12 @@ export default function VideoGallery() {
           <div class="flex flex-row">
             ■ Gallerie des vidéos: &nbsp;
             { pagination > 0 && 
-                  <ArrowBigLeft class="hover:cursor-pointer translate-y-1" onClick={() => {setPagination(pagination - 1)}} />
+                  <StepBack class="hover:cursor-pointer translate-y-1" onClick={() => {setPagination(pagination - 1)}} />
               ||  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
             }
             page: {pagination + 1} / {Math.ceil((videos.length-1)/paginationItemsNumber)} 
             { pagination < Math.ceil((videos.length-1)/paginationItemsNumber) - 1 &&
-                <ArrowBigRight class="hover:cursor-pointer translate-y-1" onClick={() => {setPagination(pagination + 1)}} />
+                <StepForward class="hover:cursor-pointer translate-y-1" onClick={() => {setPagination(pagination + 1)}} />
             }
           </div>
         </div>

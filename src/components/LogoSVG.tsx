@@ -15,17 +15,17 @@ export const defaultDescription = `Play Live Button`
 
 export default function LogoSVG() {
 
-    // const tailwindCssAnimation = `animate-jump-in animate-delay-300 animate-thrice`
+    // const tailwindCss = `animate-jump-in animate-delay-300 animate-thrice`
 
-    // const tailwindCssAnimation = `animate-jump animate-delay-300 animate-twice`
-	// const tailwindCssAnimation = `animate-infinite animate-jump animate-duration-[2000ms]`
-	// const tailwindCssAnimation = `animate-infinite animate-jump animate-duration-[1250ms] animate-delay-150 animate-ease-in`
-	// const tailwindCssAnimation = `animate-infinite animate-shake animate-duration-[1250ms] animate-delay-150 animate-ease-in`
-	// const tailwindCssAnimation = `animate-once animate-jump animate-duration-[1250ms] animate-delay-[400ms] animate-ease-in`
-	// const tailwindCssAnimation = `animate-none animate-jump animate-duration-[1250ms] animate-delay-[400ms] animate-ease-in`
-	const tailwindCssAnimation = `rounded-full hover:shadow-[0_35px_60px_-15px_rgba(200,200,200,0.9)] fill-orange-600`
+    // const tailwindCss = `animate-jump animate-delay-300 animate-twice`
+	// const tailwindCss = `animate-infinite animate-jump animate-duration-[2000ms]`
+	// const tailwindCss = `animate-infinite animate-jump animate-duration-[1250ms] animate-delay-150 animate-ease-in`
+	// const tailwindCss = `animate-infinite animate-shake animate-duration-[1250ms] animate-delay-150 animate-ease-in`
+	// const tailwindCss = `animate-once animate-jump animate-duration-[1250ms] animate-delay-[400ms] animate-ease-in`
+	// const tailwindCss = `animate-none animate-jump animate-duration-[1250ms] animate-delay-[400ms] animate-ease-in`
+	const tailwindCss = `rounded-full hover:shadow-[0_35px_60px_-15px_rgba(200,200,200,0.9)] fill-orange-600`
 	// animate-shake
-	// const tailwindCssAnimation = `animate-infinite animate-spin animate-ease-in-out animate-duration-[1250ms]` // celui là est proche du battement de coeur
+	// const tailwindCss = `animate-infinite animate-spin animate-ease-in-out animate-duration-[1250ms]` // celui là est proche du battement de coeur
 	const justin_curieux_global_alt =`Justin Curieux`
 	
     return (
@@ -44,7 +44,7 @@ export default function LogoSVG() {
 			  */
 			} 
 				<svg alt={`${justin_curieux_global_alt}`} preserveAspectRatio="xMidYMid slice" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-					viewBox="100 50 540 378" width="100" height="100" className={`${tailwindCssAnimation}`} >
+					viewBox="100 50 540 378" className={`${tailwindCss}`} >
 
 
 						<g fill="rgb(255,96,2)" width="100%" height="100%">
@@ -102,45 +102,3 @@ export default function LogoSVG() {
         </>
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
