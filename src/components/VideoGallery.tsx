@@ -9,6 +9,8 @@ export default function VideoGallery() {
   const lastVideo = videos.slice(-1)[0]
   const videoList = videos.slice(0,-1).slice(pagination * paginationItemsNumber, (pagination * paginationItemsNumber) + paginationItemsNumber)
 
+  const [playingVideo, setPlayingVideo] = useState(lastVideo)
+
   /*
   // ELAPSED CALCULUS
   videoList.map( (item) => {
@@ -21,20 +23,16 @@ export default function VideoGallery() {
   return(
     <div class="grid place-items-center">
       <div class="m-2 max-w-fit min-w-[332px]">
-        {/* last published video */}
+        {/* derniere video || playingVideo */}
         <div class="
           text-white bg-black rounded-t-lg 
-          p-2 min-w-[332px] 
+          p-2 min-w-[332px] h-[46px] 
           grid grid-cols-1 
           place-items-start px-6
-        ">
-          <div> ■ dernierement: </div>
-        </div>
-        
-        {/* derniere video */}
+        "></div>        
         <div class="border-black border-2 w-full margin-mx-auto flex flex-col place-content-center">
           <iframe 
-            src={`https://www.youtube.com/embed/${lastVideo.url}?si=BUW-Hf9r-yCHLET`} 
+            src={`https://www.youtube.com/embed/${playingVideo.url}?si=BUW-Hf9r-yCHLET&rel=0`} 
             title="YouTube video player" 
             frameBorder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -42,8 +40,8 @@ export default function VideoGallery() {
             allowFullScreen>
           </iframe>
           <div class="text-xs flex flex-raw mb-12">
-            <div class="mx-8">{lastVideo.title}</div>
-            <div class="mx-8">{lastVideo.date}</div>
+            <div class="mx-8">{playingVideo.title}</div>
+            <div class="mx-8">{playingVideo.date}</div>
           </div>
         </div>
         {/* pagination navigation */}
@@ -51,50 +49,45 @@ export default function VideoGallery() {
           text-white bg-black  
           p-2 min-w-[332px] 
           grid grid-cols-1 
-          place-items-center md:place-items-start md:px-6
+          place-items-end md:px-6
         ">
           <div class="flex flex-row">
-            ■ Gallerie des vidéos: &nbsp;
-            { pagination > 0 && 
-                  <StepBack class="hover:cursor-pointer translate-y-1" onClick={() => {setPagination(pagination - 1)}} />
-              ||  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            { pagination > 0 
+              && <StepBack class="hover:cursor-pointer translate-y-1" onClick={() => {setPagination(pagination - 1)}} />
             }
-            page: {pagination + 1} / {Math.ceil((videos.length-1)/paginationItemsNumber)} 
-            { pagination < Math.ceil((videos.length-1)/paginationItemsNumber) - 1 &&
-                <StepForward class="hover:cursor-pointer translate-y-1" onClick={() => {setPagination(pagination + 1)}} />
+            {pagination + 1} / {Math.ceil((videos.length-1)/paginationItemsNumber)} 
+            { pagination < Math.ceil((videos.length-1)/paginationItemsNumber) - 1 
+              && <StepForward class="hover:cursor-pointer translate-y-1" onClick={() => {setPagination(pagination + 1)}} />
+              || <span class="px-[12px]"></span>
             }
           </div>
         </div>
         {/* video gallery */}
         <div class={`
-          border-black border-2 
+          border-black border-2
           max-w-fit margin-mx-auto mx-auto min-w-[452px]
           grid place-items-center lg:place-items-stretch grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lgxl:grid-cols-3 
           ${ paginationItemsNumber > 3 && "xxl:grid-cols-4" }
         `}>
         {
-          videoList.map( (items) => {
+          videoList.map( (item) => {
             return (
-              <div class="p-4" onMouseDown={ (e) => {
-               //alert(e)
+              <div class="p-4 hover:cursor-pointer" onMouseDown={ (e) => {
+               setPlayingVideo(item)
               }}>
                 <iframe 
-                  src={`https://www.youtube.com/embed/${items.url}?si=BUW-Hf9r-yCHLET`} 
-                  title={items.title}
+                  src={`https://www.youtube.com/embed/${item.url}?si=BUW-Hf9r-yCHLET&rel=0`} 
+                  title={item.title}
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  onMouseDown={ (e) => {
-                    e.preventDefault()
-                    e.stopImmediatePropagation()
-                    e.preventDefault()
-                  }}
-                  /* style="pointer-events: none" */ 
+                  style="pointer-events: none"
                   allowFullScreen
+                  class=""
                   >
                 </iframe>
-                <div class="text-xs w-max-[300px] min-w-[300px]">
-                  <div class="mx-2 text-xs w-[250px] whitespace-pre-wrap break-words" >{items.title}</div>
-                  <div class="mx-2">{items.date}</div>
+                <div class="text-xs w-max-[300px] min-w-[300px] mt-2">
+                  <div class="mx-2 text-xs w-[250px] whitespace-pre-wrap break-words" >{item.title}</div>
+                  <div class="mx-2">{item.date}</div>
                 </div>
               </div>
             )
