@@ -6,16 +6,16 @@ export default function getPlusGrosseUniteEnFrancais(p: Period): any {
   reformattedElapsed = reformattedElapsed.toString().replace(`Y`, ` Y `);
   reformattedElapsed = reformattedElapsed.toString().replace(`M`, ` M `);
   reformattedElapsed = reformattedElapsed.toString().replace(`D`, ` D `);
-  console.log(`elapsed = [${p}]`);
+  // console.log(`elapsed = [${p}]`);
   
   let elapsedSplitted = reformattedElapsed.split(` `);
-  console.log(` avant pop, elapsedSplitted=[${elapsedSplitted}]`)
+  // console.log(` avant pop, elapsedSplitted=[${elapsedSplitted}]`)
   elapsedSplitted.pop()
-  console.log(` après pop, elapsedSplitted=[${elapsedSplitted}]`)
+  // console.log(` après pop, elapsedSplitted=[${elapsedSplitted}]`)
   
-  console.log(`reformattedElapsed = [${reformattedElapsed}]`);
+  // console.log(`reformattedElapsed = [${reformattedElapsed}]`);
   
-  console.log(`elapsedSplitted = [${elapsedSplitted}]`);
+  // console.log(`elapsedSplitted = [${elapsedSplitted}]`);
 
   let plusGrosseUniteEnFrancais = ``
 
@@ -34,7 +34,7 @@ export default function getPlusGrosseUniteEnFrancais(p: Period): any {
       if (elapsedSplitted[1] != `Y`) {
         throw new Error(`elapsedSplitted[0] ça devrait valoir "Y", mais vaut [${elapsedSplitted[1]}] `)
       } else {
-        console.log(` Tu vois bien, que si la longueur du tableau est 6, alors elapsedSplitted[0]=[${elapsedSplitted[0]}] est bien 'Y'`)
+        // console.log(` Tu vois bien, que si la longueur du tableau est 6, alors elapsedSplitted[0]=[${elapsedSplitted[0]}] est bien 'Y'`)
       }
 
       if (elapsedSplitted[0] == `1`) {
@@ -57,7 +57,7 @@ export default function getPlusGrosseUniteEnFrancais(p: Period): any {
       if (elapsedSplitted[1] != `M`) {
         throw new Error(`elapsedSplitted[0] ça devrait valoir "M", mais vaut [${elapsedSplitted[1]}] `)
       } else {
-        console.log(` Tu vois bien, que si la longueur du tableau est 4, alors elapsedSplitted[0]=[${elapsedSplitted[0]}] est bien 'M'`)
+        // console.log(` Tu vois bien, que si la longueur du tableau est 4, alors elapsedSplitted[0]=[${elapsedSplitted[0]}] est bien 'M'`)
       }
 
       plusGrosseUniteEnFrancais = "mois"
@@ -76,7 +76,7 @@ export default function getPlusGrosseUniteEnFrancais(p: Period): any {
       if (elapsedSplitted[1] != `D`) {
         throw new Error(`elapsedSplitted[0] ça devrait valoir "D", mais vaut [${elapsedSplitted[1]}] `)
       } else {
-        console.log(` Tu vois bien, que si la longueur du tableau est 2, alors elapsedSplitted[0]=[${elapsedSplitted[0]}] est bien 'D'`)
+        // console.log(` Tu vois bien, que si la longueur du tableau est 2, alors elapsedSplitted[0]=[${elapsedSplitted[0]}] est bien 'D'`)
       }
 
       if (elapsedSplitted[0] == `1`) {

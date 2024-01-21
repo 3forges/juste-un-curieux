@@ -1,12 +1,12 @@
 import { useState } from "preact/hooks"
 import { videos } from "./videosGalleryConfig"
-import { StepBack, StepForward } from 'lucide-preact'
+import { StepBack, StepForward, Circle, CircleDot } from 'lucide-preact'
 import getPlusGrosseUniteEnFrancais from './getPlusGrosseUniteEnFrancais'
 import {
   LocalDate, 
   Period,  
 } from '@js-joda/core';
-import '@js-joda/timezone';
+// import '@js-joda/timezone';
 
 const paginationItemsNumber = 5 
 
@@ -29,6 +29,11 @@ export default function VideoGallery() {
   const lastVideo = videos.slice(-1)[0]
   
   const [playingVideo, setPlayingVideo] = useState(lastVideo)
+
+  const dots: number = []
+  for (let i=0; i < Math.ceil((videos.length-1)/paginationItemsNumber); i++) {
+    dots.push(i)
+  }
 
   return(
     <div class="grid place-items-center">
@@ -59,15 +64,27 @@ export default function VideoGallery() {
           text-white bg-black  
           p-2 min-w-[332px] 
           grid grid-cols-1 
-          place-items-end md:px-6
+          place-items-center md:px-6
         ">
           <div class="flex flex-row">
             { pagination > 0 
-              && <StepBack class="hover:cursor-pointer translate-y-1" onClick={() => {setPagination(pagination - 1)}} />
+              && <StepBack class="hover:cursor-pointer" onClick={() => {setPagination(pagination - 1)}} />
             }
-            {pagination + 1} / {Math.ceil((videos.length-1)/paginationItemsNumber)} 
+            {/* pagination + 1} / {Math.ceil((videos.length-1)/paginationItemsNumber) */} 
+            { 
+              dots.map( (index) => {
+                if (pagination == index)
+                  return(<CircleDot onClick={() => {
+                    setPagination(index)
+                  }} class="hover:cursor-pointer" />)
+                else 
+                  return(<Circle onClick={() => {
+                    setPagination(index)
+                  }} class="hover:cursor-pointer" />)
+              })
+            }
             { pagination < Math.ceil((videos.length-1)/paginationItemsNumber) - 1 
-              && <StepForward class="hover:cursor-pointer translate-y-1" onClick={() => {setPagination(pagination + 1)}} />
+              && <StepForward class="hover:cursor-pointer" onClick={() => {setPagination(pagination + 1)}} />
               || <span class="px-[12px]"></span>
             }
           </div>
