@@ -1,3 +1,5 @@
+import type { Period } from '@js-joda/core'
+
 export default function getPlusGrosseUniteEnFrancais(p: Period): any {
 
   let reformattedElapsed = p.toString().replace(`P`, ``);
