@@ -32,7 +32,7 @@ export default function VideoGallery() {
     );
     const {plusGrosseUniteEnFrancais, elapsedSplitted} = getPlusGrosseUniteEnFrancais(elapsed)
     console.log(`Il y a [${elapsedSplitted[0]}] [${plusGrosseUniteEnFrancais}] `)
-    videos[index].elapsed = `Il y a ${elapsedSplitted[0]} ${plusGrosseUniteEnFrancais}`
+    videos[index].elapsed = `${elapsedSplitted[0]} ${plusGrosseUniteEnFrancais}`
   })
     
     /*
