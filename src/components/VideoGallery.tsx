@@ -69,8 +69,8 @@ export default function VideoGallery() {
           <div class="flex flex-row">
             { pagination > 0 
               && <StepBack class="hover:cursor-pointer" onClick={() => {setPagination(pagination - 1)}} />
+              || <span class="px-[12px]"></span>
             }
-            {/* pagination + 1} / {Math.ceil((videos.length-1)/paginationItemsNumber) */} 
             { 
               dots.map( (index) => {
                 if (pagination == index)
