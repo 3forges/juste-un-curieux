@@ -2,23 +2,14 @@ import type { Period } from '@js-joda/core'
 
 export default function getPlusGrosseUniteEnFrancais(p: Period): any {
 
-  let reformattedElapsed = p.toString().replace(`P`, ``);
-  reformattedElapsed = reformattedElapsed.toString().replace(`Y`, ` Y `);
-  reformattedElapsed = reformattedElapsed.toString().replace(`M`, ` M `);
-  reformattedElapsed = reformattedElapsed.toString().replace(`D`, ` D `);
-  // console.log(`elapsed = [${p}]`);
+  let reformattedElapsed = p.toString().replace(`P`, ``)
+  reformattedElapsed = reformattedElapsed.toString().replace(`Y`, ` Y `)
+  reformattedElapsed = reformattedElapsed.toString().replace(`M`, ` M `)
+  reformattedElapsed = reformattedElapsed.toString().replace(`D`, ` D `)
   
-  let elapsedSplitted = reformattedElapsed.split(` `);
-  // console.log(` avant pop, elapsedSplitted=[${elapsedSplitted}]`)
+  let elapsedSplitted = reformattedElapsed.split(` `)
   elapsedSplitted.pop()
-  // console.log(` après pop, elapsedSplitted=[${elapsedSplitted}]`)
-  
-  // console.log(`reformattedElapsed = [${reformattedElapsed}]`);
-  
-  // console.log(`elapsedSplitted = [${elapsedSplitted}]`);
-
   let plusGrosseUniteEnFrancais = ``
-
 
   switch(elapsedSplitted.length) { 
     case 6: { 
@@ -42,7 +33,7 @@ export default function getPlusGrosseUniteEnFrancais(p: Period): any {
       } else {
         plusGrosseUniteEnFrancais = "ans"
       }
-      break; 
+      break 
     } 
     case 4: { 
       /**
@@ -61,7 +52,7 @@ export default function getPlusGrosseUniteEnFrancais(p: Period): any {
       }
 
       plusGrosseUniteEnFrancais = "mois"
-      break; 
+      break 
     } 
     case 2: { 
       /**
@@ -84,11 +75,10 @@ export default function getPlusGrosseUniteEnFrancais(p: Period): any {
       } else {
         plusGrosseUniteEnFrancais = "jours"
       }
-      break; 
+      break
     } 
     default: { 
       throw new Error(`Houston on a un problème la longue n'est ni 4, ni 2, ni 6 elapsedSplitted=[${elapsedSplitted}]`)
-      break; 
     } 
   }
   return {

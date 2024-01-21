@@ -5,22 +5,22 @@ import getPlusGrosseUniteEnFrancais from './getPlusGrosseUniteEnFrancais'
 import {
   LocalDate, 
   Period,  
-} from '@js-joda/core';
-// import '@js-joda/timezone';
+} from '@js-joda/core'
+// import '@js-joda/timezone'
 
-const paginationItemsNumber = 5 
+const paginationItemsNumber: number = 5 
 
 export default function VideoGallery() {
   const [pagination, setPagination] = useState<number>(0) 
   
   videos.map( (item, index) => {
-    const dateStr = item.date.replaceAll('/','-').split("-").reverse().join("-")
-    const currentDate = new Date().toJSON().slice(0, 10)
+    const dateStr: string = item.date.replaceAll('/','-').split("-").reverse().join("-")
+    const currentDate: string = new Date().toJSON().slice(0, 10)
 
-    const elapsed = Period.between(
+    const elapsed: Period = Period.between(
       LocalDate.parse(dateStr),
       LocalDate.parse(currentDate)
-    );
+    )
     const {plusGrosseUniteEnFrancais, elapsedSplitted} = getPlusGrosseUniteEnFrancais(elapsed)
     videos[index].elapsed = `${elapsedSplitted[0]} ${plusGrosseUniteEnFrancais}`
   })
