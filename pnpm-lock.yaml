@@ -11,6 +11,15 @@ dependencies:
   '@fontsource-variable/inter':
     specifier: ^5.0.4
     version: 5.0.8
+  '@js-joda/core':
+    specifier: ^5.6.1
+    version: 5.6.1
+  '@js-joda/extra':
+    specifier: ^0.11.5
+    version: 0.11.5(@js-joda/core@5.6.1)
+  '@js-joda/timezone':
+    specifier: ^2.18.2
+    version: 2.18.2(@js-joda/core@5.6.1)
   backoff-rxjs:
     specifier: ^7.0.0
     version: 7.0.0(rxjs@7.8.1)
@@ -886,6 +895,26 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  /@js-joda/core@5.6.1:
+    resolution: {integrity: sha512-Xla/d7ZMMR6+zRd6lTio0wRZECfcfFJP7GGe9A9L4tDOlD5CX4YcZ4YZle9w58bBYzssojVapI84RraKWDQZRg==}
+    dev: false
+
+  /@js-joda/extra@0.11.5(@js-joda/core@5.6.1):
+    resolution: {integrity: sha512-rM2Hczp8zb00zquf5CccAbKENMNKCSJZmeW2a6h+biQBPm9jnk3lf1Wd1RoqD5sppG3vKN109diYrPjDRsI5iQ==}
+    peerDependencies:
+      '@js-joda/core': '>=1.11.0'
+    dependencies:
+      '@js-joda/core': 5.6.1
+    dev: false
+
+  /@js-joda/timezone@2.18.2(@js-joda/core@5.6.1):
+    resolution: {integrity: sha512-4binOw4XBO4H6nbw0tPg1IOIrf3MF7gPeXkNiPuK1QAHPaBC0YsvtRt8BiJTqhEaBqh/Kbqp6MChlnbJ8dxQ5Q==}
+    peerDependencies:
+      '@js-joda/core': '>=1.11.0'
+    dependencies:
+      '@js-joda/core': 5.6.1
+    dev: false
 
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}

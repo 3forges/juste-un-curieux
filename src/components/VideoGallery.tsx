@@ -1,16 +1,41 @@
 import { useState } from "preact/hooks"
 import { videos } from "./videosUrls"
-import { ArrowBigLeft, ArrowBigRight, StepBack, StepForward } from 'lucide-preact'
+import { StepBack, StepForward } from 'lucide-preact'
+import getPlusGrosseUniteEnFrancais from './joda'
+import {
+  ZonedDateTime,
+  LocalTime,
+  ZoneId,
+  DateTimeFormatter,
+  LocalDate,
+  LocalDateTime,
+  Period,
+  convert, 
+  Instant, 
+} from '@js-joda/core';
+import { Interval } from '@js-joda/extra';
+import '@js-joda/timezone';
 
 const paginationItemsNumber = 5 
 
 export default function VideoGallery() {
   const [pagination, setPagination] = useState<number>(0) 
-  // ELAPSED CALCULUS
+  
   videos.map( (item, index) => {
-    const now = new Date().getTime()
-    var newDate = new Date(item.date.split('/').reverse().join('/')).getTime()
+    const dateStr = item.date.replaceAll('/','-').split("-").reverse().join("-")
+    console.log(dateStr);
+    const currentDate = new Date().toJSON().slice(0, 10)
+    console.log(currentDate)
+    const elapsed = Period.between(
+      LocalDate.parse(dateStr),
+      LocalDate.parse(currentDate)
+    );
+    const {plusGrosseUniteEnFrancais, elapsedSplitted} = getPlusGrosseUniteEnFrancais(elapsed)
+    console.log(`Il y a [${elapsedSplitted[0]}] [${plusGrosseUniteEnFrancais}] `)
+    videos[index].elapsed = `Il y a ${elapsedSplitted[0]} ${plusGrosseUniteEnFrancais}`
+  })
     
+    /*
     const elapsedTest = (now - newDate) / 1000 / 3600 / 24
     if (elapsedTest < 0) {
       videos[index].elapsed = Math.floor(elapsedTest) + " heures"
@@ -23,11 +48,11 @@ export default function VideoGallery() {
     }
     console.log(item.date, " => ", videos[index].elapsed)
   })
+  */
   const videoList = videos.slice(0,-1).slice(pagination * paginationItemsNumber, (pagination * paginationItemsNumber) + paginationItemsNumber)
   const lastVideo = videos.slice(-1)[0]
   
   const [playingVideo, setPlayingVideo] = useState(lastVideo)
-  // const elapsed: any = []
 
   return(
     <div class="grid place-items-center">
@@ -38,7 +63,7 @@ export default function VideoGallery() {
           p-2 min-w-[332px] h-[46px] 
           grid grid-cols-1 
           place-items-start px-6
-        "></div>        
+        "> </div>        
         <div class="border-black border-2 w-full margin-mx-auto flex flex-col place-content-center">
           <iframe 
             src={`https://www.youtube.com/embed/${playingVideo.url}?si=BUW-Hf9r-yCHLET&rel=0`} 
@@ -50,7 +75,7 @@ export default function VideoGallery() {
           </iframe>
           <div class="text-xs flex flex-raw mb-12">
             <div class="mx-8">{playingVideo.title}</div>
-            <div class="mx-8">{playingVideo.elapsed}</div>
+            <div class="mx-8">il y as {playingVideo.elapsed}</div>
           </div>
         </div>
         {/* pagination navigation */}
@@ -96,7 +121,7 @@ export default function VideoGallery() {
                 </iframe>
                 <div class="text-xs w-max-[300px] min-w-[300px] mt-2">
                   <div class="mx-2 text-xs w-[250px] whitespace-pre-wrap break-words" >{item.title}</div>
-                  <div class="mx-2">il y a {videoList[index].elapsed}</div>
+                  <div class="mx-2">il y as {videoList[index].elapsed}</div>
                 </div>
               </div>
             )
