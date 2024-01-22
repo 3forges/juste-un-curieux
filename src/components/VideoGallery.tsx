@@ -1,7 +1,7 @@
 import { useState } from "preact/hooks"
 import { videos } from "./videosGalleryConfig"
 import { StepBack, StepForward, Circle, CircleDot, CheckCircle } from 'lucide-preact'
-import getPlusGrosseUniteEnFrancais from './getPlusGrosseUniteEnFrancais'
+import getPlusGrosseUniteEnFrancais, { gPGUEF } from './getPlusGrosseUniteEnFrancais'
 import {
   LocalDate, 
   Period,  
@@ -21,7 +21,7 @@ export default function VideoGallery() {
       LocalDate.parse(dateStr),
       LocalDate.parse(currentDate)
     )
-    const {plusGrosseUniteEnFrancais, elapsedSplitted} = getPlusGrosseUniteEnFrancais(elapsed)
+    const {plusGrosseUniteEnFrancais, elapsedSplitted}: gPGUEF  = getPlusGrosseUniteEnFrancais(elapsed)
     videos[index].elapsed = `${elapsedSplitted[0]} ${plusGrosseUniteEnFrancais}`
   })
 
@@ -68,16 +68,16 @@ export default function VideoGallery() {
         ">
           <div class="flex flex-row">
             { pagination > 0 
-              && <div><StepBack class="hover:cursor-pointer" onClick={() => {setPagination(pagination - 1)}} /></div>
-              || <div disabled><StepBack class="text-gray-400" /></div>
+              && <StepBack class="hover:cursor-pointer" onClick={() => {setPagination(pagination - 1)}} />
+              || <StepBack class="text-gray-400" /> 
             }
             <span class="w-1"></span>
             { 
               dots.map( (index) => {
                 if (pagination == index)
-                  return(<CheckCircle onClick={() => {
+                  return(<CircleDot onClick={() => {
                     setPagination(index)
-                  }} class="hover:cursor-pointer w-6 pr-1" />)
+                  }} class="hover:cursor-pointer w-4 h-4 pr-1 bg-white rounded-xl -translate-x-[2px] translate-y-1" />)
                 else 
                   return(<Circle onClick={() => {
                     setPagination(index)
