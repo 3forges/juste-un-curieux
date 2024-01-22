@@ -86,8 +86,8 @@ export default function VideoGallery() {
             }
             <span class="w-1"></span>
             { pagination < Math.ceil((videos.length-1)/paginationItemsNumber) - 1 
-              && <ChevronRightCircle class="hover:cursor-pointer" onClick={() => {setPagination(pagination + 1)}} />
-              || <ChevronRightCircle class="text-gray-400"  />
+              && <ChevronRightCircle class="hover:cursor-pointer pr-1" onClick={() => {setPagination(pagination + 1)}} />
+              || <ChevronRightCircle class="text-gray-400 pr-1"  />
             }
           </div>
         </div>
