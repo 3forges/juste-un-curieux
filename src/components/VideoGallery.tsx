@@ -8,7 +8,7 @@ import {
 } from '@js-joda/core'
 // import '@js-joda/timezone'
 
-const paginationItemsNumber: number = 3 
+const paginationItemsNumber: number = 4 
 
 export default function VideoGallery() {
   const [pagination, setPagination] = useState<number>(0) 
@@ -95,7 +95,7 @@ export default function VideoGallery() {
         <div class={`
           border-black border-2 rounded-b-lg 
           max-w-full margin-mx-auto mx-auto 
-          grid place-items-center lg:place-items-stretch grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lgxl:grid-cols-3 
+          grid place-items-center md:place-items-stretch grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lgxl:grid-cols-3 
           ${ paginationItemsNumber > 3 && "xxl:grid-cols-4" }
         `}>
         {
@@ -111,7 +111,6 @@ export default function VideoGallery() {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                   style="pointer-events: none"
                   allowFullScreen
-                  class=""
                   >
                 </iframe>
                 <div class="text-xs w-max-[300px] min-w-[300px] mt-2">
