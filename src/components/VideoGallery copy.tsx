@@ -1,8 +1,6 @@
 import { useState } from "preact/hooks"
 import { videos } from "./videosGalleryConfig"
 import { Circle, CircleDot, XCircle, ChevronRightCircle, ChevronLeftCircle } from 'lucide-preact'
-import PaginationButtonRight from './pagination/PaginationRightButton'
-import PaginationButtonLeft from './pagination/PaginationLeftButton'
 import getPlusGrosseUniteEnFrancais, { gPGUEF } from './getPlusGrosseUniteEnFrancais'
 import {
   LocalDate, 
@@ -97,7 +95,10 @@ export default function VideoGallery() {
           place-items-center md:px-6
         ">
           <div class="flex flex-row">
-            <PaginationButtonLeft setPaginationState={setPagination} paginationState={pagination} />
+            { pagination > 0 
+              && <ChevronLeftCircle class="hover:cursor-pointer pr-1" onClick={() => {setPagination(pagination - 1)}} />
+              || <ChevronLeftCircle class="text-gray-400 pr-1" /> 
+            }
             <span class="w-1"></span>
             { 
               dots.map( (index) => {
@@ -112,8 +113,10 @@ export default function VideoGallery() {
               })
             }
             <span class="w-1"></span>
-            <PaginationButtonRight setPaginationState={setPagination} paginationState={pagination} itemsNumber={videos.length} itemsPerPage={paginationItemsNumber} />
-            
+            { pagination < Math.ceil((videos.length-1)/paginationItemsNumber) - 1 
+              && <ChevronRightCircle class="hover:cursor-pointer pl-1" onClick={() => {setPagination(pagination + 1)}} />
+              || <ChevronRightCircle class="text-gray-400 pl-1"  />
+            }
           </div>
         </div>
         {/* video gallery */}
