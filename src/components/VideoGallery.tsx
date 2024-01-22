@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks"
 import { videos } from "./videosGalleryConfig"
-import { StepBack, StepForward, Circle, CircleDot } from 'lucide-preact'
+import { StepBack, StepForward, Circle, CircleDot, CheckCircle } from 'lucide-preact'
 import getPlusGrosseUniteEnFrancais from './getPlusGrosseUniteEnFrancais'
 import {
   LocalDate, 
@@ -30,7 +30,7 @@ export default function VideoGallery() {
   
   const [playingVideo, setPlayingVideo] = useState(lastVideo)
 
-  const dots: number = []
+  const dots: number[] = []
   for (let i=0; i < Math.ceil((videos.length-1)/paginationItemsNumber); i++) {
     dots.push(i)
   }
@@ -68,24 +68,26 @@ export default function VideoGallery() {
         ">
           <div class="flex flex-row">
             { pagination > 0 
-              && <StepBack class="hover:cursor-pointer" onClick={() => {setPagination(pagination - 1)}} />
-              || <span class="px-[12px]"></span>
+              && <div><StepBack class="hover:cursor-pointer" onClick={() => {setPagination(pagination - 1)}} /></div>
+              || <div disabled><StepBack class="text-gray-400" /></div>
             }
+            <span class="w-1"></span>
             { 
               dots.map( (index) => {
                 if (pagination == index)
-                  return(<CircleDot onClick={() => {
+                  return(<CheckCircle onClick={() => {
                     setPagination(index)
-                  }} class="hover:cursor-pointer" />)
+                  }} class="hover:cursor-pointer w-6 pr-1" />)
                 else 
                   return(<Circle onClick={() => {
                     setPagination(index)
-                  }} class="hover:cursor-pointer" />)
+                  }} class="hover:cursor-pointer w-5 pr-1" />)
               })
             }
+            <span class="w-1"></span>
             { pagination < Math.ceil((videos.length-1)/paginationItemsNumber) - 1 
               && <StepForward class="hover:cursor-pointer" onClick={() => {setPagination(pagination + 1)}} />
-              || <span class="px-[12px]"></span>
+              || <StepForward class="text-gray-400"  />
             }
           </div>
         </div>
