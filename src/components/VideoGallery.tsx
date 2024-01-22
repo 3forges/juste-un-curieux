@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks"
 import { videos } from "./videosGalleryConfig"
-import { Circle, CircleDot, ChevronRightCircle, ChevronLeftCircle } from 'lucide-preact'
+import { Circle, CircleDot, XCircle, ChevronRightCircle, ChevronLeftCircle } from 'lucide-preact'
 import getPlusGrosseUniteEnFrancais, { gPGUEF } from './getPlusGrosseUniteEnFrancais'
 import {
   LocalDate, 
@@ -28,24 +28,28 @@ export default function VideoGallery() {
   const videoList = videos.slice(0,-1).slice(pagination * paginationItemsNumber, (pagination * paginationItemsNumber) + paginationItemsNumber)
   const lastVideo = videos.slice(-1)[0]
   
-  const [playingVideo, setPlayingVideo] = useState(lastVideo)
+  const defaultPlayingVideo = { url: "", title: "", elapsed: "", date: "" }
+  const [playingVideo, setPlayingVideo] = useState(defaultPlayingVideo)
 
   const dots: number[] = []
   for (let i=0; i < Math.ceil((videos.length-1)/paginationItemsNumber); i++) {
     dots.push(i)
   }
 
+  const modalTransition = ""
+
   return(
+    <>
+    
     <div class="grid place-items-center">
-      <div class="m-2 max-w-full">
-        {/* derniere video || playingVideo */}
-        <div class="
-          text-white bg-black rounded-t-lg 
-          p-2 h-[46px] 
-          grid grid-cols-1 
-          place-items-start px-6
-        "> </div>        
-        <div class="border-black border-2 w-full margin-mx-auto flex flex-col place-content-center">
+      {/* playingVideo Modal */}
+      <a name="modal"></a>
+      <div id="videoPlayingModal" class={`border-black border-2 absolute p-8 m-8 w-[90%] bg-white rounded-xl ${
+        playingVideo.url != "" && "block" || "hidden" 
+      }`}>
+        <XCircle class="absolute top-2 right-2 hover:cursor-pointer" onClick={() => { setPlayingVideo(defaultPlayingVideo)}}/>
+        { playingVideo.url != "" &&
+        <div class="w-full margin-mx-auto flex flex-col place-content-center rounded-xl">
           <iframe 
             src={`https://www.youtube.com/embed/${playingVideo.url}?si=BUW-Hf9r-yCHLET&rel=0`} 
             title="YouTube video player" 
@@ -57,6 +61,30 @@ export default function VideoGallery() {
           <div class="text-xs flex flex-raw mb-12">
             <div class="mx-8">{playingVideo.title}</div>
             <div class="mx-8">( il y as {playingVideo.elapsed} )</div>
+          </div>
+        </div>
+        }
+      </div>
+      <div class="m-2 max-w-full">
+        {/* derniere video */}
+        <div class="
+          text-white bg-black rounded-t-lg 
+          p-2 h-[46px] 
+          grid grid-cols-1 
+          place-items-start px-6
+        "> </div>  
+        <div class="border-black border-2 w-full margin-mx-auto flex flex-col place-content-center">
+          <iframe 
+            src={`https://www.youtube.com/embed/${lastVideo.url}?si=BUW-Hf9r-yCHLET&rel=0`} 
+            title="YouTube video player" 
+            frameBorder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            class="p-4 shrink grow h-[700px]"
+            allowFullScreen>
+          </iframe>
+          <div class="text-xs flex flex-raw mb-12">
+            <div class="mx-8">{lastVideo.title}</div>
+            <div class="mx-8">( il y as {lastVideo.elapsed} )</div>
           </div>
         </div>
         {/* pagination navigation */}
@@ -103,6 +131,7 @@ export default function VideoGallery() {
             return (
               <div class="m-4 hover:cursor-pointer" onMouseDown={ () => {
                setPlayingVideo(item)
+               window.location.href="#modal"
               }}>
                 <iframe 
                   src={`https://www.youtube.com/embed/${item.url}?si=BUW-Hf9r-yCHLET&rel=0`} 
@@ -124,5 +153,6 @@ export default function VideoGallery() {
         </div>
       </div>
     </div>
+    </>
   )
 }
