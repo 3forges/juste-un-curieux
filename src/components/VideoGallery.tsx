@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks"
 import { videos } from "./videosGalleryConfig"
-import { StepBack, StepForward, Circle, CircleDot, CheckCircle } from 'lucide-preact'
+import { StepBack, StepForward, Circle, CircleDot, CheckCircle, ChevronRightCircle, ChevronLeftCircle } from 'lucide-preact'
 import getPlusGrosseUniteEnFrancais, { gPGUEF } from './getPlusGrosseUniteEnFrancais'
 import {
   LocalDate, 
@@ -68,8 +68,8 @@ export default function VideoGallery() {
         ">
           <div class="flex flex-row">
             { pagination > 0 
-              && <StepBack class="hover:cursor-pointer" onClick={() => {setPagination(pagination - 1)}} />
-              || <StepBack class="text-gray-400" /> 
+              && <ChevronLeftCircle class="hover:cursor-pointer pr-1" onClick={() => {setPagination(pagination - 1)}} />
+              || <ChevronLeftCircle class="text-gray-400 pr-1" /> 
             }
             <span class="w-1"></span>
             { 
@@ -86,8 +86,8 @@ export default function VideoGallery() {
             }
             <span class="w-1"></span>
             { pagination < Math.ceil((videos.length-1)/paginationItemsNumber) - 1 
-              && <StepForward class="hover:cursor-pointer" onClick={() => {setPagination(pagination + 1)}} />
-              || <StepForward class="text-gray-400"  />
+              && <ChevronRightCircle class="hover:cursor-pointer" onClick={() => {setPagination(pagination + 1)}} />
+              || <ChevronRightCircle class="text-gray-400"  />
             }
           </div>
         </div>
