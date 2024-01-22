@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks"
 import { videos } from "./videosGalleryConfig"
-import { StepBack, StepForward, Circle, CircleDot, CheckCircle, ChevronRightCircle, ChevronLeftCircle } from 'lucide-preact'
+import { Circle, CircleDot, ChevronRightCircle, ChevronLeftCircle } from 'lucide-preact'
 import getPlusGrosseUniteEnFrancais, { gPGUEF } from './getPlusGrosseUniteEnFrancais'
 import {
   LocalDate, 
@@ -8,7 +8,7 @@ import {
 } from '@js-joda/core'
 // import '@js-joda/timezone'
 
-const paginationItemsNumber: number = 5 
+const paginationItemsNumber: number = 3 
 
 export default function VideoGallery() {
   const [pagination, setPagination] = useState<number>(0) 
@@ -37,11 +37,11 @@ export default function VideoGallery() {
 
   return(
     <div class="grid place-items-center">
-      <div class="m-2 max-w-fit min-w-[332px]">
+      <div class="m-2 max-w-full">
         {/* derniere video || playingVideo */}
         <div class="
           text-white bg-black rounded-t-lg 
-          p-2 min-w-[332px] h-[46px] 
+          p-2 h-[46px] 
           grid grid-cols-1 
           place-items-start px-6
         "> </div>        
@@ -62,7 +62,7 @@ export default function VideoGallery() {
         {/* pagination navigation */}
         <div class="
           text-white bg-black  
-          p-2 min-w-[332px] 
+          p-2 
           grid grid-cols-1 
           place-items-center md:px-6
         ">
@@ -81,7 +81,7 @@ export default function VideoGallery() {
                 else 
                   return(<Circle onClick={() => {
                     setPagination(index)
-                  }} class="hover:cursor-pointer w-4 pr-1 blur-[1px]" />)
+                  }} class="hover:cursor-pointer w-4 pr-1" />)
               })
             }
             <span class="w-1"></span>
@@ -94,8 +94,8 @@ export default function VideoGallery() {
         {/* video gallery */}
         <div class={`
           border-black border-2 rounded-b-lg 
-          max-w-fit margin-mx-auto mx-auto min-w-[452px]
-          grid place-items-center lg:place-items-stretch grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lgxl:grid-cols-3 
+          max-w-full margin-mx-auto mx-auto 
+          grid place-items-center lg:place-items-stretch grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lgxl:grid-cols-3 
           ${ paginationItemsNumber > 3 && "xxl:grid-cols-4" }
         `}>
         {
