@@ -44,8 +44,8 @@ export default function VideoGallery() {
     <div class="grid place-items-center">
       {/* playingVideo Modal */}
       <a name="modal"></a>
-      <div id="videoPlayingModal" class={`border-black border-2 absolute p-8 m-8 w-[90%] bg-white rounded-xl ${
-        playingVideo.url != "" && "block" || "hidden" 
+      <div id="videoPlayingModal" class={`transition-all duration-300 border-black border-2 absolute p-8 m-8 w-[90%] bg-white rounded-xl ${
+        playingVideo.url != "" && "scale-100" || "scale-0" 
       }`}>
         <XCircle class="absolute top-2 right-2 hover:cursor-pointer" onClick={() => { setPlayingVideo(defaultPlayingVideo)}}/>
         { playingVideo.url != "" &&
@@ -153,6 +153,20 @@ export default function VideoGallery() {
         </div>
       </div>
     </div>
+    {/*
+    <style> 
+      @keyframes popup-scale {
+        0% {
+          transform: scale(0%);
+        },
+        100% {
+          transform: scale(100%);
+        }
+       
+      }
+    </style>
+    */}
     </>
   )
 }
+
