@@ -77,17 +77,17 @@ export default function VideoGallery() {
                 if (pagination == index)
                   return(<CircleDot onClick={() => {
                     setPagination(index)
-                  }} class="hover:cursor-pointer w-4 h-4 pr-1 bg-white rounded-xl -translate-x-[2px] translate-y-1" />)
+                  }} class="hover:cursor-pointer w-4 h-4 pr-1 bg-white rounded-xl -translate-x-[2px] translate-y-[4px]" />)
                 else 
                   return(<Circle onClick={() => {
                     setPagination(index)
-                  }} class="hover:cursor-pointer w-5 pr-1" />)
+                  }} class="hover:cursor-pointer w-4 pr-1 blur-[1px]" />)
               })
             }
             <span class="w-1"></span>
             { pagination < Math.ceil((videos.length-1)/paginationItemsNumber) - 1 
-              && <ChevronRightCircle class="hover:cursor-pointer pr-1" onClick={() => {setPagination(pagination + 1)}} />
-              || <ChevronRightCircle class="text-gray-400 pr-1"  />
+              && <ChevronRightCircle class="hover:cursor-pointer pl-1" onClick={() => {setPagination(pagination + 1)}} />
+              || <ChevronRightCircle class="text-gray-400 pl-1"  />
             }
           </div>
         </div>
