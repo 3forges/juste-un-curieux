@@ -54,6 +54,10 @@ module.exports = {
         default: "var(--color-border)",
       },
       screens: {
+        'xxs-noyoutube': '135px',
+        'xs-noyoutube': '335px',
+        // => @media (min-width: 640px) { ... }
+  
         'sm': '640px',
         // => @media (min-width: 640px) { ... }
   
