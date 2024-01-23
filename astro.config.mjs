@@ -8,7 +8,7 @@ import preact from "@astrojs/preact";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astro-moon-landing.netlify.app/",
+  site: "https://justincurieux-boris-dropup-refined-pkfwversm.vercel.app/",
   integrations: [tailwind(), preact()],
   vite: {
     ssr: {
