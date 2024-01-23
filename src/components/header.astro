@@ -18,9 +18,6 @@ import { SocialCornerUpChildren } from "./SocialCornerUpChildren";
 import { SocialCornerUpBurgerChildren } from "./SocialCornerUpChildrenBurger";
 import type { JSX } from "preact/compat";
 
-const navOnAirItems: Array<NavItem> = [{ title: "ON AIR", url: "#" }];
-const navOnAirItem: NavItem = { title: "ON AIR", url: "#" };
-
 const navItems: Array<NavItem> = [
   { title: "Bientôt", url: "#features" },
   { title: "Vidéos", url: "#showcase" },
@@ -57,16 +54,7 @@ const navItems: Array<NavItem> = [
                 ></span>
               </span>
             </span>
-            <span
-              class="bg-gradient-to-r from-purple-500 to-pink-500 py-2.5 pl-4 pr-5 hover:bg-gradient-to-l"
-            >
-              <div
-                class="text-small animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5 font-bold text-white"
-              >
-                <span class="text-small text-transparent">- .</span>
-                {navOnAirItem.title}
-              </div>
-            </span>
+
           </li>
 
           {
