@@ -1,7 +1,7 @@
 import { useState } from "preact/hooks"
 import { videos } from "./videosGalleryConfig"
 import { Circle, CircleDot, XCircle, ChevronRightCircle, ChevronLeftCircle } from 'lucide-preact'
-import getPlusGrosseUniteEnFrancais, { gPGUEF } from './getPlusGrosseUniteEnFrancais'
+import getPlusGrosseUniteEnFrancais, { SplittedPeriodFR } from '../utils/videos/getPlusGrosseUniteEnFrancais'
 import {
   LocalDate, 
   Period,  
@@ -21,7 +21,7 @@ export default function VideoGallery() {
       LocalDate.parse(dateStr),
       LocalDate.parse(currentDate)
     )
-    const {plusGrosseUniteEnFrancais, elapsedSplitted}: gPGUEF  = getPlusGrosseUniteEnFrancais(elapsed)
+    const {plusGrosseUniteEnFrancais, elapsedSplitted}: SplittedPeriodFR  = getPlusGrosseUniteEnFrancais(elapsed)
     videos[index].elapsed = `${elapsedSplitted[0]} ${plusGrosseUniteEnFrancais}`
   })
 

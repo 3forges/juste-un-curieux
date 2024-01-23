@@ -1,10 +1,10 @@
 import React from "preact/compat";
 import { useState } from "preact/hooks";
-import { videos } from "./videosGalleryConfig"
+import { videos, VideoItem } from "./videosGalleryConfig"
 import { Circle, CircleDot, XCircle, ChevronRightCircle, ChevronLeftCircle } from 'lucide-preact'
 import PaginationButtonRight from './pagination/PaginationRightButton'
 import PaginationButtonLeft from './pagination/PaginationLeftButton'
-import getPlusGrosseUniteEnFrancais, { gPGUEF } from './getPlusGrosseUniteEnFrancais'
+import getPlusGrosseUniteEnFrancais, { SplittedPeriodFR } from '../utils/videos/getPlusGrosseUniteEnFrancais'
 import {
   LocalDate, 
   Period,  
@@ -12,17 +12,17 @@ import {
 // import '@js-joda/timezone'
 import VideoModal, {VideoModalState} from './videos/VideoModal'
 
+
 const paginationItemsNumber: number = 4 
 
 export default function VideoGallery() {
-  const [pagination, setPagination] = useState<number>(0) 
+  const [currentPageIndex, setPagination] = useState<number>(0) 
   const [showModal, setShowModal] = React.useState<boolean>(false);
-  const [modalVideoState, setModalVideoState] = React.useState<VideoModalState>({
-    showModal: false,
-    videoUrl: ``
-  });
-  
-  videos.map( (item, index) => {
+
+  /**
+   * Initalise le champs "elapsed" pour chacune des vidéos de la config
+   */
+  videos.map( (item: VideoItem, index: number) => {
     const dateStr: string = item.date.replaceAll('/','-').split("-").reverse().join("-")
     const currentDate: string = new Date().toJSON().slice(0, 10)
 
@@ -30,13 +30,16 @@ export default function VideoGallery() {
       LocalDate.parse(dateStr),
       LocalDate.parse(currentDate)
     )
-    const {plusGrosseUniteEnFrancais, elapsedSplitted}: gPGUEF  = getPlusGrosseUniteEnFrancais(elapsed)
+    const {plusGrosseUniteEnFrancais, elapsedSplitted}: SplittedPeriodFR  = getPlusGrosseUniteEnFrancais(elapsed)
     videos[index].elapsed = `${elapsedSplitted[0]} ${plusGrosseUniteEnFrancais}`
   })
 
-  const videoList = videos.slice(0,-1).slice(pagination * paginationItemsNumber, (pagination * paginationItemsNumber) + paginationItemsNumber)
+  const videoList = videos.slice(0,-1).slice(currentPageIndex * paginationItemsNumber, (currentPageIndex * paginationItemsNumber) + paginationItemsNumber)
   const lastVideo = videos.slice(-1)[0]
-  
+  const [modalVideoState, setModalVideoState] = React.useState<VideoModalState>({
+    showModal: false,
+    video: lastVideo
+  });
   const defaultPlayingVideo = { url: "", title: "", elapsed: "", date: "" }
   const [playingVideo, setPlayingVideo] = useState(defaultPlayingVideo)
 
@@ -53,29 +56,6 @@ export default function VideoGallery() {
     }
     <VideoModal modalVideoState={modalVideoState} setModalVideoState={setModalVideoState} />
     <div class="grid place-items-center">
-      {/* playingVideo Modal */}
-      <a name="modal"></a>
-      <div id="videoPlayingModal" class={`transition-all duration-300 border-black border-2 fixed p-8 m-8 w-[90%] bg-white rounded-xl ${
-        playingVideo.url != "" && "scale-100" || "scale-0" 
-      }`}>
-        <XCircle class="top-2 right-2 hover:cursor-pointer" onClick={() => { setPlayingVideo(defaultPlayingVideo)}}/>
-        { playingVideo.url != "" &&
-        <div class="w-full margin-mx-auto flex flex-col place-content-center rounded-xl">
-          <iframe 
-            src={`https://www.youtube.com/embed/${playingVideo.url}?si=BUW-Hf9r-yCHLET&rel=0`} 
-            title="YouTube video player" 
-            frameBorder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            class="p-4 shrink grow h-[700px]"
-            allowFullScreen>
-          </iframe>
-          <div class="text-xs flex flex-raw mb-12">
-            <div class="mx-8">{playingVideo.title}</div>
-            <div class="mx-8">( il y as {playingVideo.elapsed} )</div>
-          </div>
-        </div>
-        }
-      </div>
       <div class="m-2 max-w-full">
         {/* derniere video */}
         <div class="
@@ -98,7 +78,7 @@ export default function VideoGallery() {
             <div class="mx-8">( il y as {lastVideo.elapsed} )</div>
           </div>
         </div>
-        {/* pagination navigation */}
+        {/* currentPageIndex navigation */}
         <div class="
           text-white bg-black  
           p-2 
@@ -106,11 +86,11 @@ export default function VideoGallery() {
           place-items-center md:px-6
         ">
           <div class="flex flex-row">
-            <PaginationButtonLeft setPaginationState={setPagination} paginationState={pagination} />
+            <PaginationButtonLeft setPaginationState={setPagination} paginationState={currentPageIndex} />
             <span class="w-1"></span>
             { 
               dots.map( (index) => {
-                if (pagination == index)
+                if (currentPageIndex == index)
                   return(<CircleDot onClick={() => {
                     setPagination(index)
                   }} class="hover:cursor-pointer w-4 h-4 pr-1 bg-white rounded-xl -translate-x-[2px] translate-y-[4px]" />)
@@ -121,7 +101,7 @@ export default function VideoGallery() {
               })
             }
             <span class="w-1"></span>
-            <PaginationButtonRight setPaginationState={setPagination} paginationState={pagination} itemsNumber={videos.length} itemsPerPage={paginationItemsNumber} />
+            <PaginationButtonRight setPaginationState={setPagination} paginationState={currentPageIndex} itemsNumber={videos.length} itemsPerPage={paginationItemsNumber} />
             
           </div>
         </div>
@@ -133,7 +113,7 @@ export default function VideoGallery() {
           ${ paginationItemsNumber > 3 && "xxl:grid-cols-4" }
         `}>
         {
-          videoList.map( (item, index) => {
+          videoList.map( (videoItem, index) => {
             return (
                 <div class="m-4 hover:cursor-pointer" onMouseDown={ () => {
                     // setPlayingVideo(item)
@@ -141,13 +121,13 @@ export default function VideoGallery() {
                     console.log(`onMouseDown `)
                     setModalVideoState({
                       showModal: true,
-                      videoUrl: item.url
+                      video: videoItem
                     })
                   }
                 }>
                 <iframe 
-                  src={`https://www.youtube.com/embed/${item.url}?si=BUW-Hf9r-yCHLET&rel=0`} 
-                  title={item.title}
+                  src={`https://www.youtube.com/embed/${videoItem.url}?si=BUW-Hf9r-yCHLET&rel=0`} 
+                  title={videoItem.title}
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                   style="pointer-events: none"
@@ -155,7 +135,7 @@ export default function VideoGallery() {
                   >
                 </iframe>
                 <div class="text-xs w-max-[300px] min-w-[300px] mt-2">
-                  <div class="mx-2 text-xs w-[250px] whitespace-pre-wrap break-words" >{item.title}</div>
+                  <div class="mx-2 text-xs w-[250px] whitespace-pre-wrap break-words" >{videoItem.title}</div>
                   <div class="mx-2">( il y as {videoList[index].elapsed} )</div>
                 </div>
               </div>
@@ -165,19 +145,6 @@ export default function VideoGallery() {
         </div>
       </div>
     </div>
-    {/*
-    <style> 
-      @keyframes popup-scale {
-        0% {
-          transform: scale(0%);
-        },
-        100% {
-          transform: scale(100%);
-        }
-       
-      }
-    </style>
-    */}
     </>
   )
 }

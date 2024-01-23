@@ -1,11 +1,13 @@
 import React from "preact/compat";
 import { Cross, CrossIcon, XCircle, X } from 'lucide-preact' // ./node_modules/lucide-preact/dist/lucide-preact.d.ts
+import type { VideoItem } from "../videosGalleryConfig";
+import './VideoModal.module.css'
 /**
  * Striatum Sébastien Bohler - X
  **/
 export interface VideoModalState {
   showModal: boolean
-  videoUrl: string
+  video: VideoItem
 }
 export interface VideoModalProps {
   modalVideoState: VideoModalState
@@ -36,67 +38,52 @@ export default function VideoModal(props: VideoModalProps) {
                   </span>
                 </button>
                 {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                <div className="p-5 border-b border-solid border-blueGray-200 rounded-t">
 
 
-                  <h3 className="text-3xl font-semibold">
-                    Modal Title
+                <h3 className="text-3xl font-semibold my-3">
+                  {props.modalVideoState.video.title}
                   </h3>
+                  
+
+
 
                 </div>
                 {/*body*/}
-                <div className="relative p-6 flex-auto">
-                  <div class="w-full margin-mx-auto flex flex-col place-content-center rounded-xl">
+                <div className="relative p-6">
+                  <div class="w-auto place-items-center margin-mx-auto flex flex-col place-content-center rounded-xl">
                     <div class="place-items-center">
 
                       
                         <iframe
-                          src={`https://www.youtube.com/embed/${props.modalVideoState.videoUrl}?si=BUW-Hf9r-yCHLET&rel=0`}
+                          src={`https://www.youtube.com/embed/${props.modalVideoState.video.url}?autoplay=1&si=BUW-Hf9r-yCHLET&rel=0`}
                           title="YouTube video player"
                           frameBorder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          class="w-full"
+                          className="video"
                           allowFullScreen>
                         </iframe>
-                        <div class="text-xs flex flex-raw mb-12">
 
-                          {
-                            //<div class="mx-8">{playingVideo.title}</div>
-                            //<div class="mx-8">( il y as {playingVideo.elapsed} )</div>
-                          }
-                        </div>
                     </div>
                   </div>
                 </div>
+
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
-                  <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => props.setModalVideoState({
-                      ...props.modalVideoState,
-                      showModal: false,
-                    })}
-                  >
-                    Close
-                  </button>
-                  <button
-                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => props.setModalVideoState({
-                      ...props.modalVideoState,
-                      showModal: false,
-                    })}
-                  >
-                    Save Changes
-                  </button>
+                <p className="text-lg font-semibold my-3">
+                    ( il y a {props.modalVideoState.video.elapsed} )
+                    </p>
                 </div>
+
+
               </div>
             </div>
           </div>
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
       ) : null}
+
     </>
   );
 }
+

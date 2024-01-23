@@ -1,11 +1,11 @@
 import type { Period } from '@js-joda/core'
 
-export interface gPGUEF {
+export interface SplittedPeriodFR {
   plusGrosseUniteEnFrancais: string,
   elapsedSplitted: string[],
 }
 
-export default function getPlusGrosseUniteEnFrancais(p: Period): gPGUEF {
+export default function getPlusGrosseUniteEnFrancais(p: Period): SplittedPeriodFR {
 
   let reformattedElapsed = p.toString().replace(`P`, ``)
   reformattedElapsed = reformattedElapsed.toString().replace(`Y`, ` Y `)
