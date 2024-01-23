@@ -1,4 +1,5 @@
-import { useState } from "preact/hooks"
+import React from "preact/compat";
+import { useState } from "preact/hooks";
 import { videos } from "./videosGalleryConfig"
 import { Circle, CircleDot, XCircle, ChevronRightCircle, ChevronLeftCircle } from 'lucide-preact'
 import PaginationButtonRight from './pagination/PaginationRightButton'
@@ -9,11 +10,17 @@ import {
   Period,  
 } from '@js-joda/core'
 // import '@js-joda/timezone'
+import VideoModal, {VideoModalState} from './videos/VideoModal'
 
 const paginationItemsNumber: number = 4 
 
 export default function VideoGallery() {
   const [pagination, setPagination] = useState<number>(0) 
+  const [showModal, setShowModal] = React.useState<boolean>(false);
+  const [modalVideoState, setModalVideoState] = React.useState<VideoModalState>({
+    showModal: false,
+    videoUrl: ``
+  });
   
   videos.map( (item, index) => {
     const dateStr: string = item.date.replaceAll('/','-').split("-").reverse().join("-")
@@ -42,14 +49,16 @@ export default function VideoGallery() {
 
   return(
     <>
-    
+    {//<VideoModal />
+    }
+    <VideoModal modalVideoState={modalVideoState} setModalVideoState={setModalVideoState} />
     <div class="grid place-items-center">
       {/* playingVideo Modal */}
       <a name="modal"></a>
-      <div id="videoPlayingModal" class={`transition-all duration-300 border-black border-2 absolute p-8 m-8 w-[90%] bg-white rounded-xl ${
+      <div id="videoPlayingModal" class={`transition-all duration-300 border-black border-2 fixed p-8 m-8 w-[90%] bg-white rounded-xl ${
         playingVideo.url != "" && "scale-100" || "scale-0" 
       }`}>
-        <XCircle class="absolute top-2 right-2 hover:cursor-pointer" onClick={() => { setPlayingVideo(defaultPlayingVideo)}}/>
+        <XCircle class="top-2 right-2 hover:cursor-pointer" onClick={() => { setPlayingVideo(defaultPlayingVideo)}}/>
         { playingVideo.url != "" &&
         <div class="w-full margin-mx-auto flex flex-col place-content-center rounded-xl">
           <iframe 
@@ -126,10 +135,16 @@ export default function VideoGallery() {
         {
           videoList.map( (item, index) => {
             return (
-              <div class="m-4 hover:cursor-pointer" onMouseDown={ () => {
-               setPlayingVideo(item)
-               window.location.href="#modal"
-              }}>
+                <div class="m-4 hover:cursor-pointer" onMouseDown={ () => {
+                    // setPlayingVideo(item)
+                    // window.location.href="#modal"
+                    console.log(`onMouseDown `)
+                    setModalVideoState({
+                      showModal: true,
+                      videoUrl: item.url
+                    })
+                  }
+                }>
                 <iframe 
                   src={`https://www.youtube.com/embed/${item.url}?si=BUW-Hf9r-yCHLET&rel=0`} 
                   title={item.title}

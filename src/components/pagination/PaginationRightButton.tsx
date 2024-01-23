@@ -1,5 +1,5 @@
 import { useState } from "preact/hooks";
-import { ChevronLeft, ChevronRight } from 'lucide-preact'
+import { ChevronRight } from 'lucide-preact'
 
 export interface PaginationRightButtonProps {
   setPaginationState: Function
