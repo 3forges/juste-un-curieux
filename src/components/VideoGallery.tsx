@@ -55,7 +55,7 @@ export default function VideoGallery() {
     }
     <VideoModal modalVideoState={modalVideoState} setModalVideoState={setModalVideoState} />
     <div class="grid place-items-center">
-      <div class="m-2 max-w-full">
+      <div class="m-0 max-w-full">
         {/* derniere video */}
         <div class="
           text-white bg-black rounded-t-lg 
