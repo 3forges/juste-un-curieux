@@ -17,7 +17,6 @@ const paginationItemsNumber: number = 4
 
 export default function VideoGallery() {
   const [currentPageIndex, setCurrentPageIndex] = useState<number>(0) 
-  const [showModal, setShowModal] = React.useState<boolean>(false);
 
   /**
    * Initalise le champs "elapsed" pour chacune des vidéos de la config
