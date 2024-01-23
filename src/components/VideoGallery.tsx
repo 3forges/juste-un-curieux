@@ -16,7 +16,7 @@ import VideoModal, {VideoModalState} from './videos/VideoModal'
 const paginationItemsNumber: number = 4 
 
 export default function VideoGallery() {
-  const [currentPageIndex, setPagination] = useState<number>(0) 
+  const [currentPageIndex, setCurrentPageIndex] = useState<number>(0) 
   const [showModal, setShowModal] = React.useState<boolean>(false);
 
   /**
@@ -86,22 +86,22 @@ export default function VideoGallery() {
           place-items-center md:px-6
         ">
           <div class="flex flex-row">
-            <PaginationButtonLeft setPaginationState={setPagination} paginationState={currentPageIndex} />
+            <PaginationButtonLeft setPaginationState={setCurrentPageIndex} paginationState={currentPageIndex} />
             <span class="w-1"></span>
             { 
               dots.map( (index) => {
                 if (currentPageIndex == index)
                   return(<CircleDot onClick={() => {
-                    setPagination(index)
+                    setCurrentPageIndex(index)
                   }} class="hover:cursor-pointer w-4 h-4 pr-1 bg-white rounded-xl -translate-x-[2px] translate-y-[4px]" />)
                 else 
                   return(<Circle onClick={() => {
-                    setPagination(index)
+                    setCurrentPageIndex(index)
                   }} class="hover:cursor-pointer w-4 pr-1" />)
               })
             }
             <span class="w-1"></span>
-            <PaginationButtonRight setPaginationState={setPagination} paginationState={currentPageIndex} itemsNumber={videos.length} itemsPerPage={paginationItemsNumber} />
+            <PaginationButtonRight setPaginationState={setCurrentPageIndex} paginationState={currentPageIndex} itemsNumber={videos.length} itemsPerPage={paginationItemsNumber} />
             
           </div>
         </div>
