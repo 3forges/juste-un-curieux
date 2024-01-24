@@ -55,7 +55,7 @@ export const TwitchSocialMenuItem = ({
       ref={thisRef}
       href={`${urlOfLinkToShare}`}
       target="_blank"
-      role="menuitem" 
+      
       class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] -bottom-[20px] right-[20px]`}
       id={`user-menu-bottom-discord-${randomUuid}`}
     >
@@ -93,12 +93,11 @@ export const TwitchSocialBurgerMenuItem = ({
   const randomUuid = uuidv4();
   // const [isUp, setIsUp] = useState(true)
   return (
-    <>
-    <li>
+
         <a
             href={`${urlOfLinkToShare}`}
             target="_blank"
-            role="menuitem"
+
             class={`block text-center`}
             id={`user-menu-bottom-twitch`}
           >
@@ -114,8 +113,7 @@ export const TwitchSocialBurgerMenuItem = ({
             Twitch
           </span>
         </a>
-        </li>
-    </>
+        
   )
 }
 
@@ -166,13 +164,12 @@ export const YoutubeSocialMenuItem = ({
     document.addEventListener("scroll", onScrolling)
   })
   return (
-    <>
-    <li>
+    
       <a 
         ref={thisRef}
         href={`${urlOfLinkToShare}`}
         target="_blank"
-        role="menuitem" 
+
         class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[10px] -right-[10px]`}
         id={`user-menu-bottom-discord-${randomUuid}`}
       >
@@ -186,8 +183,7 @@ export const YoutubeSocialMenuItem = ({
         />
         <span class="sr-only">YouTube</span>
       </a>
-    </li>
-    </>
+    
   )
 }
 
@@ -203,11 +199,11 @@ export const YoutubeSocialBurgerMenuItem = ({
   const randomUuid = uuidv4();
   // const [isUp, setIsUp] = useState(true)
   return (
-    <>
+    
         <a
             href={`${urlOfLinkToShare}`}
             target="_blank"
-            role="menuitem"
+
             class={`block text-center`}
             id={`user-menu-bottom-twitch`}
           >
@@ -223,7 +219,7 @@ export const YoutubeSocialBurgerMenuItem = ({
             YouTube
           </span>
         </a>
-    </>
+
   )
 }
 
@@ -267,13 +263,12 @@ export const FacebookSocialMenuItem = ({
     document.addEventListener("scroll", onScrolling)
   })
   return (
-    <>
-    <li>
+    
       <a 
         ref={thisRef}
         href={`${urlOfLinkToShare}`}
         target="_blank"
-        role="menuitem" 
+
         class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[10px] -right-[50px]`}
         id={`user-menu-bottom-discord-${randomUuid}`}
       >
@@ -287,8 +282,7 @@ export const FacebookSocialMenuItem = ({
         />
         <span class="sr-only">Facebook</span>
       </a>
-    </li>
-    </>
+    
   )
 }
 
@@ -304,11 +298,11 @@ export const FacebookSocialBurgerMenuItem = ({
   const randomUuid = uuidv4();
   // const [isUp, setIsUp] = useState(true)
   return (
-    <>
+
         <a
             href={`${urlOfLinkToShare}`}
             target="_blank"
-            role="menuitem"
+
             class={`block text-center`}
             id={`user-menu-bottom-twitch`}
           >
@@ -324,7 +318,7 @@ export const FacebookSocialBurgerMenuItem = ({
             Facebook
           </span>
         </a>
-    </>
+    
   )
 }
 
@@ -429,13 +423,11 @@ export const DiscordSocialMenuItem = ({
     document.addEventListener("scroll", onScrolling)
   })
   return (
-    <>
-    <li>
       <a 
         ref={thisRef}
         href={`${urlOfLinkToShare}`}
         target="_blank"
-        role="menuitem" 
+
         class={`p-2 transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] -bottom-[15px] -right-[70px]`}
         id={`user-menu-bottom-discord-${randomUuid}`}
       >
@@ -449,8 +441,6 @@ export const DiscordSocialMenuItem = ({
         />
         <span class="sr-only">Discord</span>
       </a>
-    </li>
-    </>
   )
 }
 

@@ -102,7 +102,7 @@ export const SocialCornerUpChildren: FunctionalComponent<SocialCornerUpChildrenP
             ${isOpen?`scale-125`:`scale-0`} 
             ${isUp?`rotate-[0deg]`:`rotate-[-180deg]`}
           `} 
-          role="menu" 
+
           tabIndex={-1}
         >
 
@@ -118,6 +118,7 @@ export const SocialCornerUpChildren: FunctionalComponent<SocialCornerUpChildrenP
 {children.map((child: JSX.Element ) => {
   return child
           })}
+
         </div>        
       </div>
     </>
