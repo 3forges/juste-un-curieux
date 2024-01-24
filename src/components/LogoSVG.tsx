@@ -23,7 +23,7 @@ export default function LogoSVG() {
 	// const tailwindCss = `animate-infinite animate-shake animate-duration-[1250ms] animate-delay-150 animate-ease-in`
 	// const tailwindCss = `animate-once animate-jump animate-duration-[1250ms] animate-delay-[400ms] animate-ease-in`
 	// const tailwindCss = `animate-none animate-jump animate-duration-[1250ms] animate-delay-[400ms] animate-ease-in`
-	const tailwindCss = `rounded-full hover:shadow-[0_35px_60px_-15px_rgba(200,200,200,0.9)] fill-orange-600`
+	const tailwindCss = `h-full rounded-full hover:shadow-[0_35px_60px_-15px_rgba(200,200,200,0.9)] fill-orange-600`
 	// animate-shake
 	// const tailwindCss = `animate-infinite animate-spin animate-ease-in-out animate-duration-[1250ms]` // celui là est proche du battement de coeur
 	const justin_curieux_global_alt =`Justin Curieux`
