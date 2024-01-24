@@ -90,7 +90,7 @@ export default function SocialCornerUp( { urlOfLinkToShare, name, menuShareItems
             ${isOpen?`scale-125`:`scale-0`} 
             ${isUp?`rotate-[0deg]`:`rotate-[-180deg]`}
           `} 
-          role="menu" 
+
           tabIndex={-1}
         >
           {socials.map((item: social) => {

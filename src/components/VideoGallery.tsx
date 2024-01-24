@@ -86,7 +86,7 @@ export default function VideoGallery() {
           grid grid-cols-1 
           place-items-center md:px-6
         ">
-          <div class="flex flex-row">
+          <div class="flex flex-row rounded-xl p-2 bg-white">
             <PaginationButtonLeft setPaginationState={setCurrentPageIndex} paginationState={currentPageIndex} />
             <span class="w-1"></span>
             { 
