@@ -57,13 +57,15 @@ export default function VideoGallery() {
     <div class="grid place-items-center">
       <div class="m-0 max-w-full">
         {/* derniere video */}
+        {/* 
         <div class="
           text-white bg-black rounded-t-lg 
           p-2 h-[46px] 
           grid grid-cols-1 
           place-items-start px-6
         "> </div>  
-        <div class="border-black border-2 w-full margin-mx-auto flex flex-col place-content-center">
+        */}
+        <div class="w-full margin-mx-auto flex flex-col place-content-center">
           <iframe 
             src={`https://www.youtube.com/embed/${lastVideo.url}?si=BUW-Hf9r-yCHLET&rel=0`} 
             title="YouTube video player" 
@@ -79,7 +81,7 @@ export default function VideoGallery() {
         </div>
         {/* currentPageIndex navigation */}
         <div class="
-          text-white bg-black  
+          text-white
           p-2 
           grid grid-cols-1 
           place-items-center md:px-6
@@ -92,11 +94,11 @@ export default function VideoGallery() {
                 if (currentPageIndex == index)
                   return(<CircleDot onClick={() => {
                     setCurrentPageIndex(index)
-                  }} class="hover:cursor-pointer w-4 h-4 pr-1 bg-white rounded-xl -translate-x-[2px] translate-y-[4px]" />)
+                  }} class="hover:cursor-pointer w-4 h-4 px-[1px] text-black bg-black rounded-xl translate-y-[4px] scale-75" />)
                 else 
                   return(<Circle onClick={() => {
                     setCurrentPageIndex(index)
-                  }} class="hover:cursor-pointer w-4 pr-1" />)
+                  }} class="hover:cursor-pointer w-4 px-[1px] text-black" />)
               })
             }
             <span class="w-1"></span>
@@ -106,7 +108,6 @@ export default function VideoGallery() {
         </div>
         {/* video gallery */}
         <div class={`
-          border-black border-2 rounded-b-lg 
           max-w-full margin-mx-auto mx-auto 
           grid place-items-center md:place-items-stretch grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lgxl:grid-cols-3 
           ${ paginationItemsNumber > 3 && "xxl:grid-cols-4" }
