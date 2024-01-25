@@ -1,16 +1,18 @@
 ---
 import "@fontsource-variable/inter";
 import Compatibility from "~/components/compatibility.astro";
-import Features from "~/components/features.astro";
+//import Features from "~/components/features.astro";
 import Footer from "~/components/footer.astro";
 import Header from "~/components/header.astro";
 import Intro from "~/components/intro.astro";
-import Showcase from "~/components/showcase.astro";
+//import Showcase from "~/components/showcase.astro";
 import Splash from "~/components/splash.astro";
 import "~/styles/index.css";
+import VideoGallery from "~/components/VideoGallery"
 
 const { generator, site } = Astro;
-const image = new URL("social.jpg", site);
+const image = new URL("favicon.jpg", `https://justincurieux-boris-dropup-refined-52ms19bol.vercel.app/`);
+// const image = `https://justincurieux-boris-dropup-refined-52ms19bol.vercel.app/favicon.jpg`
 /*
 
 const description =
@@ -41,6 +43,8 @@ const description =
     <meta property="og:url" content={site} />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <meta property="og:image" content="https://mywebsite.net/assets/opengraph/theogimage.jpg"/>
+
     <!-- initialize theme -->
     <script is:inline>
       const themeSaved = localStorage.getItem("theme");
@@ -66,17 +70,17 @@ const description =
     </script>
   </head>
   <body
-    class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white"
+    class="border-black border-[1px] h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white"
   >
     <Header />
     <Splash />
-    <div class="space-y-24 px-8 py-32">
-      
-      <Intro />
-      <Features />
-      <Compatibility />
-      <Showcase />
+    <div class="hidden xxs-noyoutube:hidden xs-noyoutube:block space-y-24 px-0 py-32">      
+      <VideoGallery client:only="preact" client:visible />
+      <!-- <Intro /> -->
+      <!--  <Features /> -->
+      <!-- <Compatibility /> -->
+      <!-- <Showcase /> -->
     </div>
-    <Footer />
+    <Footer /> 
   </body>
 </html>

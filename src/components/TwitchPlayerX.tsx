@@ -1,5 +1,5 @@
 import { useState } from 'preact/compat'
-import { TwitchPlayer } from "~/components/TwitchPlayer"; // <TwitchPlayer client:only="preact"/>
+import { TwitchPlayer } from "./TwitchPlayer"; // <TwitchPlayer client:only="preact"/>
 import { PlayLiveButton } from '~/components/PlayLiveButton'
 // import { TikTokPlayer } from "~/components/TikTokPlayer"; // <TwitchPlayer client:only="preact"/>
 

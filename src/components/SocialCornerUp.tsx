@@ -1,136 +1,122 @@
-// import React from "preact/compat";
-import { TwitchIcon, YoutubeIcon, FacebookIcon,Share2Icon } from 'lucide-preact'
-import {
-  EmailShareButton,
-  FacebookShareButton,
-  HatenaShareButton,
-  InstapaperShareButton,
-  LineShareButton,
-  LinkedinShareButton,
-  LivejournalShareButton,
-  MailruShareButton,
-  OKShareButton,
-  PinterestShareButton,
-  PocketShareButton,
-  RedditShareButton,
-  TelegramShareButton,
-  TumblrShareButton,
-  TwitterShareButton,
-  ViberShareButton,
-  VKShareButton,
-  WhatsappShareButton,
-  WorkplaceShareButton
-} from "react-share";
+import { useEffect } from 'preact/hooks'
+import { useState, useRef } from 'preact/compat'
+import { Share2Icon } from 'lucide-preact'
+//import { collections, social } from "~/content/config"
+import { socials, social } from "./SocialList";
 
-import { useState } from 'preact/compat'; // const [isOpen, setIsOpen] = useState<boolean>(true); // onClick={() => props.setIsOpen(true)}
-// import styles from '~/components/SocialCornerUp.module.css';
-// import SocialCornerUpDrawer from "~/components/SocialCornerUpDrawer";
 export interface SocialCornerUpProps {
   urlOfLinkToShare: string
+  name: string
+  menuShareItems: social[]
 }
 
-export default function SocialCornerUp( { urlOfLinkToShare = `https://www.twitch.tv/Justin_Curieux`}: SocialCornerUpProps) {
-  const [isOpen, setIsOpen] = useState<boolean>(true); // onClick={() => props.setIsOpen(true)}
-  setIsOpen(false)
-  const onClickHandler = () => {
-    console.info(`DRAWER JUSTIN SOCIAL`)
-    setIsOpen(true);
-  }
-  return (
-    <>
-      {// <!-- https://github.com/tholman/github-corners -->
-      }
+/**
+ * SOME CONF
+ */
+// querySelector externilastion from preact functions
+const fixedElementHeight: number = document.querySelector('#page-header')?.clientHeight || 0
+const effet: string = `
+  transition-rotate
+  origin-bottom-center
+  ease-in-out 
+  duration-500
+`
+const iconSize: number = 48
+const doesButtonRoll = true
 
-      <div class="relative ml-3 px-2 m-3 mr-6 separateur scroll-ml-14 origin-[right_center] scale-1 transition-all duration-500">
+export default function SocialCornerUp( { urlOfLinkToShare, name, menuShareItems }: SocialCornerUpProps) {
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [isUp, setIsUp] = useState<boolean>(true)
+  const menuCompo = useRef<HTMLDivElement>(null)
+
+  //console.log(socials, menuShareItems)
+
+  const onClickHandler = () => {
+    setIsOpen(!isOpen);
+  }
+
+  function onScrolling() {
+    let scroll: number = document.body.scrollTop || document.documentElement.scrollTop
+    const headerHeight: number = fixedElementHeight > 0 ? fixedElementHeight : menuCompo.current?.clientHeight || 0
+    setIsUp( (window.innerHeight - scroll - headerHeight < 0) ? false : true )
+  }
+
+  useEffect(() => {
+    onScrolling()
+    document.addEventListener("scroll", onScrolling)
+  })
+
+  return (
+    <> 
+      <div 
+        id={`social_corner_up`}
+        class={`
+          relative 
+          ml-6 px-2 m-3 mr-6  
+          scroll-ml-14 
+        `}
+      >
         <div>
           <button 
-
             onClick={onClickHandler} 
             type="button"
-            class="hover:cursor-pointer p-1 relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-            id="user-menu-button"
-            aria-expanded="false" 
-            aria-haspopup="true">
-            <span class="absolute -inset-1.5"></span>
-            <span class="sr-only">Open share menu</span>
+            class={`hover:cursor-pointer p-1 relative flex rounded-full text-sm ${isOpen?`shadow-gray-400 shadow-lg bottom-1`:``}`}
+            id={`user-menu-button-bottom-right${name}`}
+            >
 
+            <span class="sr-only">Open share menu</span>
             <Share2Icon
               size={48}
               strokeWidth={4}
               stroke={`currentColor`}
-              //viewBox={"-6 -6 36 36"}
               viewBox={"-2 -4 32 32"}
               alt="Share"
-              className="h-18 w-18 m-1 p-1 rounded-full"
+              className={`${doesButtonRoll && "transition-rotate duration-500 ease-in-out"} z-10  h-18 w-18 m-1 p-1 rounded-full ${isUp && doesButtonRoll?`rotate-[0deg]`:`-rotate-[180deg]`}`}
             />
-
           </button>
         </div>
+        <div
+          ref={menuCompo} 
+          class={`
+            absolute 
+            origin-bottom
+            right-[38px]
+            bottom-[38px]
+            flex
+            mt-2 
+            bg-transparent 
+            py-1 
+            ${effet} 
+            ${isOpen?`scale-125`:`scale-0`} 
+            ${isUp?`rotate-[0deg]`:`rotate-[-180deg]`}
+          `} 
 
-        {
-          /**
-          *     <!--
-                  Dropdown menu, show/hide based on menu state.
-  
-                  Entering: "transition ease-out duration-100"
-                  From: "transform opacity-0 scale-95"
-                  To: "transform opacity-100 scale-100"
-                  Leaving: "transition ease-in duration-75"
-                  From: "transform opacity-100 scale-100"
-                  To: "transform opacity-0 scale-95"
-                -->
-          */
-        }
-        {/**
-         *   <div 
-         *     class="absolute top-[-150px] ml-4 right-0 z-10 mt-2 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-         *     role="menu"
-         *     aria-orientation="vertical"
-         *     aria-labelledby="user-menu-button"
-         *     tabIndex={-1}
-         *   ></div>
-         */}
-        <div 
-          class="absolute bottom-[75px] xl:bottom-[70px] right-7 md:right-0 lg:right-0 xl:right-0 2xl:right-0 z-10 mt-2 rounded-md bg-orange-500 py-1 shadow-lg ring-1 ring-orange ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex={-1}>
-          {// <!-- Active: "bg-gray-100", Not Active: "" -->
-          }
-
-          <a href="#" class="block" role="menuitem" tabIndex={-1} id="user-menu-item-0">
-            <TwitchIcon
-              size={48}
-              strokeWidth={2}
-              stroke={`currentColor`}
-              //viewBox={"-6 -6 36 36"}
-              viewBox={"-2 -4 32 32"}
-              alt="Share"
-              className="h-18 w-18 m-1 p-1 rounded-full"
-            />
-          </a>
-          <a href="#" class="block" role="menuitem" tabIndex={-1} id="user-menu-item-1">
-            <YoutubeIcon               size={48}
-              strokeWidth={2}
-              stroke={`currentColor`}
-              //viewBox={"-6 -6 36 36"}
-              viewBox={"-2 -4 32 32"}
-              alt="Share"
-              className="h-18 w-18 m-1 p-1 rounded-full"
-            />
-          </a>
-          <a href="#" class="block" role="menuitem" tabIndex={-1} id="user-menu-item-2">
-            <FacebookIcon               size={48}
-              strokeWidth={2}
-              stroke={`currentColor`}
-              //viewBox={"-6 -6 36 36"}
-              viewBox={"-2 -4 32 32"}
-              alt="Share"
-              className="h-18 w-18 m-1 p-1 rounded-full"
-            />
-          </a>
-        </div>
+          tabIndex={-1}
+        >
+          {socials.map((item: social) => {
+            return (
+              <a 
+                href={`${item.link}?${urlOfLinkToShare}`}
+                target="_blank"
+                role="menuitem" 
+                class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] ${item.bottom} ${item.right}`}
+                id={`user-menu-bottom-${item.label}-${name}`}>
+                { 
+                  item.returnIcon({
+                    size:(item.label !== "Discord")?iconSize:iconSize-12,
+                    strokeWidth:2,
+                    stroke:`currentColor`,
+                    viewBox:(item.label !== "Discord")?"-2 -4 32 32":"0 0 640 512",
+                    alt:"Share",
+                    className:(item.label !== "Discord")?"m-1 p-1 rounded-full":"m-2 p-2 rounded-full"
+                  })
+                }
+                <span class="sr-only">{item.label}</span>
+              </a>
+            )
+          })}
+        </div>        
       </div>
-
     </>
-
-  );
+  )
 }
-
