@@ -2,48 +2,84 @@
 import { Icon } from "astro-icon";
 import ThemeSwitcher from "~/components/theme-switcher.astro";
 import type { NavItem } from "~/types";
+import SocialCornerUp from "~/components/SocialCornerUp";
+import LogoSVG from "~/components/LogoSVG";
+import { Share2Icon } from "lucide-preact";
+//import { collections } from "~/content/config";
+import {
+  TwitchSocialBurgerMenuItem,
+  TwitchSocialMenuItem,
+  YoutubeSocialBurgerMenuItem,
+  YoutubeSocialMenuItem,
+} from "~/components/SocialListChildren";
+// const menuItemsArray: JSX.Element[] = [<TwitchSocialMenuItem></TwitchSocialMenuItem>, <YoutubeSocialMenuItem></YoutubeSocialMenuItem>]
+
+import { SocialCornerUpChildren } from "./SocialCornerUpChildren";
+import { SocialCornerUpBurgerChildren } from "./SocialCornerUpChildrenBurger";
+import type { JSX } from "preact/compat";
 
 const navItems: Array<NavItem> = [
-  { title: "Features", url: "#features" },
-  { title: "Compatibility", url: "#compatibility" },
-  { title: "Showcase", url: "#showcase" },
+  { title: "Bientôt", url: "#features" },
+  { title: "Vidéos", url: "#showcase" },
 ];
 ---
 
 <header
   id="page-header"
-  class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-white"
->
-  <a class="flex items-center gap-3 hover:!text-default" href="#">
-    <h1 class="sr-only">Astro</h1>
-    <Icon name="logomark" class="h-10" />
-    <Icon name="wordmark" class="hidden h-4 sm:block" />
+  class="absolute bottom-0 z-20 flex flex-row w-full items-center justify-between border-b border-transparent 
+    px-1 py-2 text-white sm:px-3 sm:py-2 xl:px-8 xl:py-4">
+  <a class="flex h-24 items-center gap-3 hover:!text-default" href="#">
+    <h1 class="sr-only">Justin Curieux</h1>
+    <LogoSVG /> 
+    <Icon name="wordmark" class="hidden h-5 md:flex" />
   </a>
   <div>
+    <!-- HORIZONTAL MENU -->
     <div class="flex items-center gap-6">
+
       <nav class="hidden sm:block">
-        <ul class="flex items-center gap-6">
-          {
-            navItems.map(({ title, url }) => (
+        <ul class="flex items-center justify-end gap-6">
+          <li class="group m-4 inline-flex overflow-hidden rounded bg-gray-900 text-white">
+            <span class="flex items-center justify-center bg-gradient-to-r from-teal-200 to-lime-200 px-3.5 py-2 text-white hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200">
+              <span class="relative flex animate-jump animate-duration-[2000ms] animate-infinite" >
+                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+                <span class="relative inline-flex h-3 w-3 animate-jump rounded-full bg-red-500 animate-duration-[2000ms] animate-infinite"></span>
+              </span>
+            </span>
+          </li>
+          { navItems.map(({ title, url }) => (
               <li>
                 <a class="text-sm" href={url}>
                   {title}
                 </a>
               </li>
-            ))
-          }
+            )
+          )}
+          
         </ul>
       </nav>
+      <ul class="flex items-center gap-6">
+        <li class="mr-10">
+        <SocialCornerUpChildren
+          name="noburger"
+          urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`}
+          client:only="preact"
+        />
+        </li>
+      </ul>
       <button
         id="open-nav-button"
         type="button"
-        class="btn sm:hidden"
+        class="sm:hidden -ml-12"
         aria-label="Navigation"
       >
         <Icon pack="mdi" name="menu" class="h-8" />
       </button>
       <ThemeSwitcher />
+
     </div>
+
+    <!-- HAMBURGER MENU MODAL -->
     <div id="menu-modal" class="modal hidden" aria-hidden="true">
       <div class="fixed inset-0 bg-default px-8 py-4 text-default">
         <div class="space-y-4" role="dialog" aria-modal="true">
@@ -61,7 +97,7 @@ const navItems: Array<NavItem> = [
             <Icon name="logomark" class="h-16" />
           </div>
           <nav>
-            <ul class="flex flex-col">
+            <ul class="flex flex-col place-items-center">
               {
                 navItems.map(({ title, url }) => (
                   <li>
@@ -71,6 +107,22 @@ const navItems: Array<NavItem> = [
                   </li>
                 ))
               }
+              <li class="block py-4 text-center text-xl">
+                <span class="flex flex-row items-center">
+                  <Share2Icon
+                    size={36}
+                    strokeWidth={3}
+                    stroke={`currentColor`}
+                    viewBox={"-2 -4 32 32"}
+                    alt="Share"
+                    className="h-18 w-18 m-1 p-1 rounded-full"
+                  />
+                  Partager:
+                </span>
+              </li>
+              <ul>
+                <SocialCornerUpBurgerChildren client:only="preact" />
+              </ul>
             </ul>
           </nav>
         </div>
@@ -96,6 +148,7 @@ const navItems: Array<NavItem> = [
   invariant(openNavButton, "openNavButton should not be null");
   invariant(closeNavButton, "closeNavButton should not be null");
 
+  // EVERY LISTENER INTO window.addEventListener("load", ... ) ??
   const openMenu = () => {
     MicroModal.show(menuModalId, { disableScroll: true });
   };
@@ -117,6 +170,12 @@ const navItems: Array<NavItem> = [
       closeMenu();
     }
   });
+
+  // FORCE BAR SYNCH ONLOAD
+  window.addEventListener("load", () => {
+    const d = page.clientHeight - page.scrollTop - header.offsetHeight;
+    header.classList.toggle("fixed-header", d < 0);
+  });
 </script>
 
 <noscript>
@@ -134,5 +193,58 @@ const navItems: Array<NavItem> = [
   }
   .modal.is-open {
     @apply block;
+  }
+  .st0 {
+    display: none;
+  }
+  .st1 {
+    display: inline;
+    fill: none;
+    stroke: #ff0000;
+    stroke-width: 15;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+  }
+  .st2 {
+    display: inline;
+    fill: #ff0000;
+  }
+  .st3 {
+    display: inline;
+    fill: none;
+    stroke: #ff0000;
+    stroke-width: 13;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+  }
+  .st4 {
+    display: inline;
+  }
+  .st5 {
+    display: inline;
+    fill: none;
+    stroke: #ff0000;
+    stroke-width: 14.22;
+    stroke-miterlimit: 10;
+  }
+  .st6 {
+    fill: #ff5d01;
+  }
+  .logo_livre {
+    display: inline;
+    fill: none;
+    stroke: #ff0000;
+    stroke-width: 14.22;
+    stroke-miterlimit: 10;
+  }
+  path.logo_livre {
+    stroke: black;
+    fill: black;
+  }
+  polygon.logo_livre {
+    stroke: black;
+    fill: black;
   }
 </style>

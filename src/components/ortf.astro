@@ -1,0 +1,26 @@
+--- 
+const tailwindCssAnimated = `animate-jump-in animate-once animate-duration-[1250ms] animate-ease-in-out`  
+import { Image } from 'astro:assets'
+import arcTriomphe from "../assets/ortf/ArcdeTriomphe-1.jpg"
+---
+
+<style>
+@keyframes ping {
+  0% { background-position: 0% 0%; }
+    17% { background-position: 0% 1%; }
+    83% { background-position: 1% 0%; }
+  100% { background-position: 0% 1%; }
+}
+</style>
+<div class={`${tailwindCssAnimated} relative grid justify-items-center items-center bg-black`}>
+    <!-- CRT DISPLAY -->
+    <Image         
+        src={arcTriomphe}
+        alt="Arc de Triomphe, Paris" 
+        class="rounded-[50px] filter grayscale blur-[2px] z-1"
+    />
+    <!-- CRT BARS -->
+    <div 
+        class="absolute z-2 rounded-[50px] opacity-10 min-w-[100%] min-h-full bg-gradient-to-b from-white to-black bg-[length:5px_5px] animate-ping"
+    ></div>
+</div>

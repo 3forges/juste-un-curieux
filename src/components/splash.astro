@@ -1,28 +1,23 @@
 ---
-//import { Picture } from "@astrojs/image/components";
-//import { Icon } from "astro-icon";
-//import astronautImage from "~/assets/astronaut.png";
-//import HeroImage from "~/components/hero-image.astro";
-import Starfield from "./starfield.astro";
-import { TwitchPlayer } from "~/components/TwitchPlayer";
-// import TwitchPlayer from "~/components/TwitchPlayer2.astro";
-// import TwitchPlayer from "~/components/TwitchPlayer3.astro";
+import Ortf from "~/components/ortf.astro";
+// import { TwitchPlayer } from "~/components/TwitchPlayer"; // <TwitchPlayer client:only="preact"/>
+import { TwitchPlayerX } from "~/components/TwitchPlayerX";
 import GitHubCorner from "./github-corner.astro";
+//import GitHubCorner from "~/components/GithubCorner";
 
-//const widths = [450, 800];
-//const sizes = "(min-width: 640px) 42vw, 67vw";
+// //<GitHubCorner client:only="preact" />
+// import SocialCorner from "~/components/SocialCorner";
+// //<SocialCorner client:only="preact" />
+
 ---
 
 <section class="relative h-full bg-black">
-  <Starfield />
   <GitHubCorner />
-  <div class="relative grid h-full place-items-center sm:grid-cols-1">
-    {/**
-      * <TwitchPlayer client:only="preact"/> 
-      * <TwitchPlayer />
-      */}
-      <TwitchPlayer client:only="preact"/>
-  
+  <div class="relative grid h-full place-items-center grid-cols-1">
+    <Ortf />
+    <!-- // <TwitchPlayerX client:load /> -->
+    <!-- <TwitchPlayerX channel="Justin_Curieux" client:only="preact" /> -->
+    <TwitchPlayerX channel="Justin_Curieux" client:only="preact" />
    </div>
 </section>
 
