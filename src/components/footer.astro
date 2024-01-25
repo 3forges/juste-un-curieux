@@ -1,10 +1,10 @@
 ---
-import { Icon } from "astro-icon";
 import HeroImage from "~/components/hero-image.astro";
 import type { FooterLink } from "~/types";
-import { socials } from "./SocialList"
-import { TwitchIcon, YoutubeIcon, FacebookIcon, LucideIcon, LucideProps } from 'lucide-preact'
-import DiscordIcon from "./DiscordIcon"
+// import { socials } from "./SocialList"
+import { Twitch, YoutubeIcon, FacebookIcon } from 'lucide-preact'
+import { Icon } from "astro-icon/components";
+
 
 const links: Array<FooterLink> = [
   {
@@ -37,15 +37,15 @@ const links: Array<FooterLink> = [
   <ul class="relative grid grid-cols-2 gap-4 sm:grid-cols-4">
     {
       //links.map((link) => (
-      socials.map((item) => (
+      links.map((item) => (
         <li>
           <a
             class="flex h-16 w-16 items-center justify-center rounded-full border-2 border-current p-4"
-            href={item.link}
+            href={item.url}
           >
-            <span class="sr-only">{item.label}</span>
-            {/* <Icon class="h-full" name={item.returnIcon} /> */}
-            <item.returnIcon stroke="currentColor"/>
+            <span class="sr-only">{item.description}</span>
+            {/* <Icon class="h-full" name={item.name} /> */}
+            <Icon class="h-full" name={item.icon} />
           </a>
         </li>
       ))

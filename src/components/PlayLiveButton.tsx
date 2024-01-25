@@ -6,7 +6,7 @@ import styles from './PlayLiveButton.module.css'
  * designed to be compiled as an 
  * '*.astro', not as an '*.tsx' 
  */
-// import { Icon } from "astro-icon";
+// import { Icon } from 'astro-icon/components'
 
 export interface PlayLiveButtonProps {
     onClick: any;

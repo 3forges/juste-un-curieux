@@ -1,5 +1,5 @@
 import { useEffect } from 'preact/hooks'
-import { useState, useRef, JSX, Children } from 'preact/compat'
+import { useState, useRef, type JSX, Children } from 'preact/compat'
 import { Share2Icon } from 'lucide-preact'
 import type { FunctionalComponent } from 'preact'
 //import { collections, social } from "~/content/config"

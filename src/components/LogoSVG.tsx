@@ -1,13 +1,3 @@
-// import styles from './LogoSVG.module.css'
-// import './LogoSVG.module.css'
-/**
- * Astro Icon cannot be used into 
- * a React / Preact component, it is 
- * designed to be compiled as an 
- * '*.astro', not as an '*.tsx' 
- */
-// import { Icon } from "astro-icon";
-
 export interface LogoSVGProps { // (props: LogoSVGProps)
 }
 

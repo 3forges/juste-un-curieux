@@ -2,7 +2,8 @@ import { useEffect } from 'preact/hooks'
 import { useState, useRef } from 'preact/compat'
 import { Share2Icon } from 'lucide-preact'
 //import { collections, social } from "~/content/config"
-import { socials, social } from "./SocialList";
+import { socials, type social } from "./SocialList";
+import { Icon } from 'astro-icon/components'
 
 export interface SocialCornerUpProps {
   urlOfLinkToShare: string
@@ -102,14 +103,7 @@ export default function SocialCornerUp( { urlOfLinkToShare, name, menuShareItems
                 class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] ${item.bottom} ${item.right}`}
                 id={`user-menu-bottom-${item.label}-${name}`}>
                 { 
-                  item.returnIcon({
-                    size:(item.label !== "Discord")?iconSize:iconSize-12,
-                    strokeWidth:2,
-                    stroke:`currentColor`,
-                    viewBox:(item.label !== "Discord")?"-2 -4 32 32":"0 0 640 512",
-                    alt:"Share",
-                    className:(item.label !== "Discord")?"m-1 p-1 rounded-full":"m-2 p-2 rounded-full"
-                  })
+                  <Icon name={item.iconName} />
                 }
                 <span class="sr-only">{item.label}</span>
               </a>

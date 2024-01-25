@@ -1,16 +1,16 @@
 import React from "preact/compat";
 import { useState } from "preact/hooks";
-import { videos, VideoItem } from "./videosGalleryConfig"
+import { videos, type VideoItem } from "./videosGalleryConfig"
 import { Circle, CircleDot, XCircle, ChevronRightCircle, ChevronLeftCircle } from 'lucide-preact'
 import PaginationButtonRight from './pagination/PaginationRightButton'
 import PaginationButtonLeft from './pagination/PaginationLeftButton'
-import getPlusGrosseUniteEnFrancais, { SplittedPeriodFR } from '../utils/videos/getPlusGrosseUniteEnFrancais'
+import getPlusGrosseUniteEnFrancais, { type SplittedPeriodFR } from '../utils/videos/getPlusGrosseUniteEnFrancais'
 import {
   LocalDate, 
   Period,  
 } from '@js-joda/core'
 // import '@js-joda/timezone'
-import VideoModal, {VideoModalState} from './videos/VideoModal'
+import VideoModal, {type VideoModalState} from './videos/VideoModal'
 
 
 const paginationItemsNumber: number = 4 
