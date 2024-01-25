@@ -55,9 +55,17 @@ module.exports = {
       },
       screens: {
         'xxs-noyoutube': '135px',
-        'xs-noyoutube': '335px',
-        // => @media (min-width: 640px) { ... }
-  
+        // => @media (min-width: 135px) { ... }
+        
+        'xxs': '240px',
+        // => @media (min-width: 240px) { ... }
+        
+        'xs-noyoutube': '335px', // at this exact screen size, the youtube video gallery will disappear
+        // => @media (min-width: 335px) { ... }
+        
+        'xs': '360px',
+        // => @media (min-width: 360px) { ... }
+
         'sm': '640px',
         // => @media (min-width: 640px) { ... }
   
