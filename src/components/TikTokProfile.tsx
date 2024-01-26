@@ -43,7 +43,11 @@ export function TikTokProfile(props: TikTokProfileProps) {
         <>
             {//<div id="twitch-embed" class="absolute grid justify-items-center items-center min-w-[80%] min-h-[50%]" style="opacity: 0.3; z-index:5;"></div>
             }
-            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@atef.83" data-unique-id="atef.83" data-embed-type="creator" style="max-width: 780px; min-width: 288px;" > <section> <a target="_blank" href="https://www.tiktok.com/@scout2015?refer=creator_embed">@atef.83</a> </section> </blockquote> 
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@atef.83" data-unique-id="atef.83" data-embed-type="creator" style="max-width: 780px; min-width: 288px;" > 
+                <section> 
+                    <a target="_blank" href="https://www.tiktok.com/@scout2015?refer=creator_embed">@atef.83</a> 
+                </section> 
+            </blockquote> 
             https://www.tiktok.com/@atef.83/live?is_from_webapp=1&sender_device=pc
             
             {

@@ -54,7 +54,7 @@ export const TwitchSocialMenuItem = ({
   return (
     <a 
       ref={thisRef}
-      href={`${urlOfLinkToShare}`}
+      href={`${urlOfLinkToShare}`} 
       target="_blank"
       
       class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] -bottom-[20px] right-[20px]`}
