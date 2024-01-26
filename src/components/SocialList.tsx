@@ -9,7 +9,7 @@ export interface social {
   label: string
   bottom: string
   right: string
-}
+} 
 
 export const socials: social[] = [
   {
