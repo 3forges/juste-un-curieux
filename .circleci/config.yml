@@ -315,14 +315,14 @@ jobs:
           command: |
             echo ' ------------------------------------------------------- '
             echo "   "
-            # echo radiojaune-${PR_BRANCH_NAME}-*.vercel.app > CNAME
+            # echo justincurieux-${PR_BRANCH_NAME}-*.vercel.app > CNAME
             ls -alh ${ASTRO_BUILD_DIR} || true
             echo " PR_BRANCH_NAME = [${PR_BRANCH_NAME}]"
             export PR_BRANCH_NAME_SANITIZED=$(echo "${PR_BRANCH_NAME}" | sed "s#/#-#g" | sed "s#_#-#g")
             echo " PR_BRANCH_NAME_SANITIZED = [${PR_BRANCH_NAME_SANITIZED}]"
             export VERCEL_DEPLOYMENT_DIR=$(mktemp -d -t XXXXXXX_VERCEL_DEPLOYMENT_DIR)
-            mkdir -p ${VERCEL_DEPLOYMENT_DIR}/radiojaune-${PR_BRANCH_NAME_SANITIZED}
-            export VERCEL_DEPLOYMENT_DIR=${VERCEL_DEPLOYMENT_DIR}/radiojaune-${PR_BRANCH_NAME_SANITIZED}
+            mkdir -p ${VERCEL_DEPLOYMENT_DIR}/justincurieux-${PR_BRANCH_NAME_SANITIZED}
+            export VERCEL_DEPLOYMENT_DIR=${VERCEL_DEPLOYMENT_DIR}/justincurieux-${PR_BRANCH_NAME_SANITIZED}
             echo " VERCEL_DEPLOYMENT_DIR = [${VERCEL_DEPLOYMENT_DIR}]"
             cp -fr ${ASTRO_BUILD_DIR}/* ${VERCEL_DEPLOYMENT_DIR}
             vercel deploy ${VERCEL_DEPLOYMENT_DIR} --token ${VERCEL_TOKEN} --yes > ./VERCEL_DEPLOYMENT.out
@@ -353,7 +353,7 @@ jobs:
               echo " CIRCLE_BUILD_URL=[${CIRCLE_BUILD_URL}]"
               echo " CIRCLE_SHA1=[${CIRCLE_SHA1}]"
               echo " CIRCLE_REPOSITORY_URL=[${CIRCLE_REPOSITORY_URL}]"
-              export SURGE_DEPLOYMENT_URL="https://radiojaune_${PR_BRANCH_NAME_SANITIZED}.surge.sh"
+              export SURGE_DEPLOYMENT_URL="https://justincurieux_${PR_BRANCH_NAME_SANITIZED}.surge.sh"
               sed -i "s#VERCEL_DEPLOYMENT_URL_PLACEHOLDER#${VERCEL_DEPLOYMENT_URL}#g" ./.circleci/assets/discord/notification.deployment.payload.json
               sed -i "s#SURGE_DEPLOYMENT_URL_PLACEHOLDER#${SURGE_DEPLOYMENT_URL}#g" ./.circleci/assets/discord/notification.deployment.payload.json
               sed -i "s#PR_GIT_BRANCH_PLACEHOLDER#${PR_BRANCH_NAME}#g" ./.circleci/assets/discord/notification.deployment.payload.json
@@ -405,7 +405,7 @@ jobs:
               echo " PR_BRANCH_NAME_SANITIZED = [${PR_BRANCH_NAME_SANITIZED}]"
               
               
-              export POKUS_SURGE_DEPLOYMENT_URL=radiojaune-${PR_BRANCH_NAME_SANITIZED}.surge.sh
+              export POKUS_SURGE_DEPLOYMENT_URL=justincurieux-${PR_BRANCH_NAME_SANITIZED}.surge.sh
 
 
               sed -i "s#POKUS_CIRCLE_USERNAME_PLACEHOLDER#${POKUS_CIRCLE_USERNAME}#g" ${MOUSTACHE_VIEW}
@@ -467,7 +467,7 @@ jobs:
               export POKUS_PULL_REQUEST_NUMBER=$CIRCLE_PR_NUMBER
               gh pr comment ${POKUS_PULL_REQUEST_NUMBER} -F ${MOUSTACHE_OUTPUT} || true
 
-  e2e_tests_radiojaune:
+  e2e_tests_justincurieux:
     # <<: *pokus-jobs-common
     docker:
       # ---
@@ -586,7 +586,7 @@ jobs:
               export PR_BRANCH_NAME_SANITIZED=$(echo "${PR_BRANCH_NAME}" | sed "s#/#_#g")
               echo " PR_BRANCH_NAME_SANITIZED = [${PR_BRANCH_NAME_SANITIZED}]"
               echo ' ------------------------------------------------------- '
-              export SURGE_DEPLOYMENT_URL="https://radiojaune_${PR_BRANCH_NAME_SANITIZED}.surge.sh"
+              export SURGE_DEPLOYMENT_URL="https://justincurieux_${PR_BRANCH_NAME_SANITIZED}.surge.sh"
               sed -i "s#SURGE_DEPLOYMENT_URL_PLACEHOLDER#${SURGE_DEPLOYMENT_URL}#g" ./.circleci/assets/discord/notification.e2e.tests.payload.json
               sed -i "s#PR_GIT_BRANCH_PLACEHOLDER#${PR_BRANCH_NAME_SANITIZED}#g" ./.circleci/assets/discord/notification.e2e.tests.payload.json
               sed -i "s#CIRCLE_USERNAME_PLACEHOLDER#${CIRCLE_USERNAME}#g" ./.circleci/assets/discord/notification.e2e.tests.payload.json
@@ -623,7 +623,7 @@ jobs:
               export POKUS_COMMIT_HASH="${CIRCLE_SHA1}"              
               export POKUS_GIT_BRANCH="${CIRCLE_BRANCH}"
               export POKUS_GIT_REPO_URL="${CIRCLE_REPOSITORY_URL}"
-              export E2E_REPORT_DEPLOYMENT_URL="https://onverra.radiojaune.dev"
+              export E2E_REPORT_DEPLOYMENT_URL="https://onverra.justincurieux.dev"
               export PLAYWRIGHT_E2E_TESTS_STATUS=" :x: :bangbang: Failure"
               export PLAYWRIGHT_E2E_TESTS_STATUS=" :heavy_check_mark: Success"
               export CYPRESS_E2E_TESTS_STATUS=" :x: :bangbang: Failure"
@@ -730,23 +730,23 @@ workflows:
     jobs:
       - pr_unit_tests
       - pr_astro_build:
-          context: radiojaune
+          context: justincurieux
           requires:
             - pr_unit_tests
-      - e2e_tests_radiojaune:
-          context: radiojaune
+      - e2e_tests_justincurieux:
+          context: justincurieux
           requires:
             - pr_astro_build
       - approve_deployment: # <<< A job that will require manual approval in the CircleCI web application.
           type: approval # <<< This key-value pair will set your workflow to a status of "On Hold"
           requires:
-            - e2e_tests_radiojaune
+            - e2e_tests_justincurieux
       - pr_deployment:
-          context: radiojaune
+          context: justincurieux
           requires:
             - approve_deployment
       # - pr_deployment:
-      #     context: radiojaune
+      #     context: justincurieux
       #     filters:
       #       branches:
       #         only:
