@@ -52,7 +52,8 @@ jobs:
       # BASH_ENV: /home/circleci/.profile
       # BASH_ENV: ~/.profile
       # BASH_ENV: ${HOME}/.profile
-      PNPM_VERSION: 7.5.1
+      # PNPM_VERSION: 7.5.1
+      PNPM_VERSION: 8.14.1
       SHELL: /bin/bash
     steps:
       # <<: *pokus-common-steps
@@ -103,7 +104,8 @@ jobs:
               echo "JBL POINT DEBUG 2 bis"
               # PNPM_VERSION
               # export PNPM_VERSION="7.5.1"
-              ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
+              # # ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
+              curl -fsSL https://get.pnpm.io/install.sh | sh -
               # 
               
               echo "JBL POINT DEBUG 3"
@@ -117,14 +119,9 @@ jobs:
               echo "JBL POINT DEBUG 7"
               cat ./.circleci/assets/pnpm/.bashrc.addon >> "$BASH_ENV"
               echo "JBL POINT DEBUG 8"
-              # install surge
               source $BASH_ENV
-              echo "JBL POINT DEBUG 9"
-              pnpm add -g surge
-              # bash -c 'pnpm add -g surge'
               pnpm --version
-              # bash -c 'pnpm --version'
-              surge --version
+
       - run:
           name: "Resolve Astro Project Dependencies"
           command: |
@@ -151,7 +148,8 @@ jobs:
     working_directory: /root/project
     # resource_class: pokusio/podman-small1
     environment:
-      PNPM_VERSION: 7.5.1
+      # PNPM_VERSION: 7.5.1
+      PNPM_VERSION: 8.14.1
       # BASH_ENV: /home/circleci/.profile
       # BASH_ENV: ~/.profile
       # BASH_ENV: ${HOME}/.profile
@@ -187,7 +185,8 @@ jobs:
               chmod +x ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
               # PNPM_VERSION
               # export PNPM_VERSION="7.5.1"
-              ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
+              # # ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
+              curl -fsSL https://get.pnpm.io/install.sh | sh -
               cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a /root/.bashrc
               cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a ~/.bashrc
               cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a /root/.profile
@@ -195,12 +194,12 @@ jobs:
               cat ./.circleci/assets/pnpm/.bashrc.addon >> "$BASH_ENV"
               # install surge
               source $BASH_ENV
-              pnpm add -g surge
-              # bash -c 'pnpm add -g surge'
               pnpm --version
-              # bash -c 'pnpm --version'
-              surge --version
+              # ---
+              # 
               npm install -g typescript
+              # ---
+              # Test that tsc is properly installed
               tsc --version
       - run:
           name: "Resolve Astro Project Dependencies"
@@ -214,6 +213,7 @@ jobs:
       - run:
           name: "Run Astro Build"
           command: |
+              pnpm add --save-dev sharp # this is dirty
               pnpm run build
       - run:
           name: "pnpm root path"
@@ -249,7 +249,8 @@ jobs:
       
     # resource_class: pokusio/podman-small1
     environment:
-      PNPM_VERSION: 7.5.1
+      # PNPM_VERSION: 7.5.1
+      PNPM_VERSION: 8.14.1
       SHELL: /bin/bash
       # BASH_ENV: /home/circleci/.profile
       # PR_BRANCH_NAME: ${CIRCLE_BRANCH}
@@ -257,8 +258,7 @@ jobs:
       # CI_WORKSPACE_ROOT: /.ci.workspace
       CI_WORKSPACE_ROOT: /root/project
       # ASTRO_BUILD_DIR: /<< pipeline.parameters.ci_workspace_root >>/workspace/dist/
-      # SURGE_USER: $SURGE_USER
-      # SURGE_SECRET: $SURGE_SECRET
+
       NETRC: /root/.netrc
     steps:
       # <<: *pokus-common-steps
@@ -291,108 +291,25 @@ jobs:
             chmod +x ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
             # PNPM_VERSION
             # export PNPM_VERSION="7.5.1"
-            ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
+            # # ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
+            curl -fsSL https://get.pnpm.io/install.sh | sh -
             cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a /root/.bashrc
             cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a ~/.bashrc
             cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a /root/.profile
             cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a ~/.profile
             cat ./.circleci/assets/pnpm/.bashrc.addon >> "$BASH_ENV"
-            # install surge
+
             source $BASH_ENV
-            pnpm add -g surge
             pnpm add -g vercel
             pnpm --version
-            surge --version
             vercel --version
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
           # at: /${CI_WORKSPACE_ROOT}/workspace/dist
           # at: /.ci.workspace/workspace
           at: /root/project/workspace
-      - run:
-          name: "Add surge CORS configuration (e.g. for twitch player)"
-          command: |
-            echo ' ------------------------------------------------------- '
-            echo "   "
-            # echo justincurieux_${PR_BRANCH_NAME}.surge.sh > CNAME
-            ls -alh ${ASTRO_BUILD_DIR} || true
-            # echo 'embed.twitch.tv' | tee -a ${ASTRO_BUILD_DIR}/CORS
-            # echo '*.twitch.tv' | tee -a ${ASTRO_BUILD_DIR}/CORS
-            echo '*' | tee -a ${ASTRO_BUILD_DIR}/CORS
-            echo "   "
-            echo ' ------------------------------------------------------- '
-            echo " Your deployment will allow CORS for : "
-            cat ${ASTRO_BUILD_DIR}/CORS
-            echo ' ------------------------------------------------------- '
 
-      - run:
-          name: "Display SURGE_USER"
-          command: |
-            echo $SURGE_USER
-            # echo $SURGE_USER | tee ./surge_user.user
-            # echo "SURGE_USER = [value next line]"
-            # cat ./surge_user.user
-      - run:
-          name: "Configure Auth for surge.sh"
-          command: |
-            # echo $SURGE_USER | tee ./surge_user.user
-            echo "SURGE_USER = [${SURGE_USER}]"
-            # cat ./surge_user.user
-            echo ' ------------------------------------------------------- '
-            echo " Content of the ASTRO_BUILD_DIR=[${ASTRO_BUILD_DIR}] : "
-            ls -alh ${ASTRO_BUILD_DIR}
-            echo ' ------------------------------------------------------- '
-            ls -alh ${ASTRO_BUILD_DIR}
-            rm ./.generated.netrc || true
-            cp ./.circleci/assets/surge/.template.netrc ./.generated.netrc
-            # export SURGE_USER='jean.baptiste.lasselle.pokus@gmail.com'
-            sed -i "s~SURGE_USER_PLACEHODER~${SURGE_USER}~g" ./.generated.netrc
-            sed -i "s~SURGE_SECRET_PLACEHODER~${SURGE_SECRET}~g" ./.generated.netrc
-            echo "DEBUG PIPELINE JBL"
-            mkdir -p ${HOME}
-            mkdir -p /home/$(whoami)
-            mkdir -p /root/
-            echo " whoami [$(whoami)]"
-            echo " HOME = [${HOME}]"
-            echo " NETRC = [${NETRC}]"
-            echo " PR_BRANCH_NAME = [${PR_BRANCH_NAME}]"
-            echo " pwd = [$(pwd)]"
-            
-            
-            # cat ./.generated.netrc | tee -a ~/.netrc
-            # cat ./.generated.netrc | tee ${HOME}/.netrc
-            # cat ./.generated.netrc | tee ~/.netrc
-            rm /root/.netrc || true
-            cat ./.generated.netrc | tee /root/.netrc
-            ls -alh ~/.netrc || true
-            ls -alh /root/.netrc || true
-            # export NETRC=/root/.netrc
-            surge token --token $SURGE_SECRET
-            echo ' ------------------------------------------------------- '
-            echo "   "
-            echo "surge whoami --token $SURGE_SECRET"
-            echo "   "
-            echo ' ------------------------------------------------------- '
-            echo "   "
-            surge whoami --token $SURGE_SECRET
-            echo "   "
-            echo ' ------------------------------------------------------- '
-      - run:
-          name: "Deploy PR to surge.sh"
-          command: |
-            echo ' ------------------------------------------------------- '
-            echo "   "
-            # echo justincurieux_${PR_BRANCH_NAME}.surge.sh > CNAME
-            ls -alh ${ASTRO_BUILD_DIR} || true
-            echo " PR_BRANCH_NAME = [${PR_BRANCH_NAME}]"
-            # export PR_BRANCH_NAME_SANITIZED=$(echo "${PR_BRANCH_NAME}" | sed "s#/#-#g")
-            export PR_BRANCH_NAME_SANITIZED=$(echo "${PR_BRANCH_NAME}" | sed "s#/#-#g" | sed "s#_#-#g")
-            echo " PR_BRANCH_NAME_SANITIZED = [${PR_BRANCH_NAME_SANITIZED}]"
-            surge ${ASTRO_BUILD_DIR} --domain justincurieux-${PR_BRANCH_NAME_SANITIZED}.surge.sh --token $SURGE_SECRET
-            echo "   "
-            echo ' ------------------------------------------------------- '
-            echo " Your deployment is ready at https://justincurieux_${PR_BRANCH_NAME_SANITIZED}.surge.sh "
-            echo ' ------------------------------------------------------- '
+
       - run:
           name: "Deploy PR to Vercel"
           command: |
@@ -412,9 +329,6 @@ jobs:
             export VERCEL_DEPLOYMENT_URL=$(cat ./VERCEL_DEPLOYMENT.out | grep vercel | awk '{print $1}')
             echo " VERCEL_DEPLOYMENT_URL=${VERCEL_DEPLOYMENT_URL}"
             echo "   "
-            echo ' ------------------------------------------------------- '
-            echo " Your deployment is ready at https://justincurieux-${PR_BRANCH_NAME_SANITIZED}.surge.sh "
-            echo ' ------------------------------------------------------- '
 
       - run:
           name: "Send Discord notification"
@@ -564,7 +478,8 @@ jobs:
       - image: node:<< pipeline.parameters.pokus_nodejs_version >>
     # resource_class: pokusio/podman-small1
     environment:
-      PNPM_VERSION: 7.5.1
+      # PNPM_VERSION: 7.5.1
+      PNPM_VERSION: 8.14.1
       SHELL: /bin/bash
       # BASH_ENV: /home/circleci/.profile
       MUSTACHE_VERSION: 4.2.0
@@ -604,19 +519,15 @@ jobs:
               chmod +x ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
               # PNPM_VERSION
               # export PNPM_VERSION="7.5.1"
-              ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
+              # # ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
+              curl -fsSL https://get.pnpm.io/install.sh | sh -
               cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a /root/.bashrc
               cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a ~/.bashrc
               cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a /root/.profile
               cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a ~/.profile
               cat ./.circleci/assets/pnpm/.bashrc.addon >> "$BASH_ENV"
-              # install surge
               source $BASH_ENV
-              pnpm add -g surge
-              # bash -c 'pnpm add -g surge'
               pnpm --version
-              # bash -c 'pnpm --version'
-              surge --version
       - run:
           name: "Install Tests Dependencies"
           command: |
@@ -712,7 +623,7 @@ jobs:
               export POKUS_COMMIT_HASH="${CIRCLE_SHA1}"              
               export POKUS_GIT_BRANCH="${CIRCLE_BRANCH}"
               export POKUS_GIT_REPO_URL="${CIRCLE_REPOSITORY_URL}"
-              export E2E_REPORT_DEPLOYMENT_URL="https://onverra.justin.dev"
+              export E2E_REPORT_DEPLOYMENT_URL="https://onverra.justincurieux.dev"
               export PLAYWRIGHT_E2E_TESTS_STATUS=" :x: :bangbang: Failure"
               export PLAYWRIGHT_E2E_TESTS_STATUS=" :heavy_check_mark: Success"
               export CYPRESS_E2E_TESTS_STATUS=" :x: :bangbang: Failure"
@@ -794,7 +705,8 @@ jobs:
       
     # resource_class: pokusio/podman-small1
     environment:
-      PNPM_VERSION: 7.5.1
+      # PNPM_VERSION: 7.5.1
+      PNPM_VERSION: 8.14.1
       SHELL: /bin/bash
       BASH_ENV: /home/circleci/.profile
       RELEASE_TAG: << pipeline.git.tag >>

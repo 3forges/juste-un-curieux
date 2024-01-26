@@ -28,25 +28,25 @@ const navItems: Array<NavItem> = [
   id="page-header"
   class="absolute bottom-0 z-20 flex flex-row w-full items-center justify-between border-b border-transparent 
     px-1 py-2 text-white sm:px-3 sm:py-2 xl:px-8 xl:py-4">
-  <a class="flex h-24 items-center gap-3 hover:!text-default" href="#">
+  <a class="flex h-12 md:h-24  items-center gap-3 hover:!text-default" href="#">
     <h1 class="sr-only">Justin Curieux</h1>
     <LogoSVG /> 
     <Icon name="wordmark" class="hidden h-5 md:flex" />
   </a>
   <div>
     <!-- HORIZONTAL MENU -->
-    <div class="flex items-center gap-6">
+    <div class="flex items-center md:gap-6">
 
       <nav class="hidden sm:block">
         <ul class="flex items-center justify-end gap-6">
-          <li class="group m-4 inline-flex overflow-hidden rounded bg-gray-900 text-white">
+          <!-- li class="group m-4 inline-flex overflow-hidden rounded bg-gray-900 text-white">
             <span class="flex items-center justify-center bg-gradient-to-r from-teal-200 to-lime-200 px-3.5 py-2 text-white hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200">
               <span class="relative flex animate-jump animate-duration-[2000ms] animate-infinite" >
                 <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
                 <span class="relative inline-flex h-3 w-3 animate-jump rounded-full bg-red-500 animate-duration-[2000ms] animate-infinite"></span>
               </span>
             </span>
-          </li>
+          </li -->
           { navItems.map(({ title, url }) => (
               <li>
                 <a class="text-sm" href={url}>
