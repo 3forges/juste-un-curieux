@@ -1,15 +1,18 @@
 ---
 import { Icon } from 'astro-icon/components'
-import ThemeSwitcher from "~/components/theme-switcher.astro";
-import type { NavItem } from "~/types";
-import LogoSVG from "~/components/LogoSVG";
+import ThemeSwitcher from "./theme-switcher.astro"
+import type { NavItem } from "../types";
+import LogoSVG from "./LogoSVG";
 import { Share2Icon } from "lucide-preact";
 import UpSideDownShare from "./UpSideDownShare"
+
+import { BsDiscord } from "react-icons/bs"
+import { FiYoutube, FiFacebook, FiTwitch } from "react-icons/fi"
 
 const navItems: Array<NavItem> = [
   { title: "Bientôt", url: "#features" },
   { title: "Vidéos", url: "#showcase" },
-];
+]
 ---
 
 <header
@@ -41,6 +44,11 @@ const navItems: Array<NavItem> = [
           <UpSideDownShare
             client:only="preact" 
           />
+            <FiYoutube />
+            <FiFacebook />
+            <FiTwitch />
+            <BsDiscord />
+          </UpSideDownShare>
         </li>
       </ul>
       <button
@@ -95,11 +103,6 @@ const navItems: Array<NavItem> = [
                   Partager:
                 </span>
               </li>
-              {/* 
-              <ul>
-                <SocialCornerUpBurgerChildren client:only="preact" />
-              </ul>
-              */}
             </ul>
           </nav>
         </div>
