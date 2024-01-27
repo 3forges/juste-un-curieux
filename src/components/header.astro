@@ -16,16 +16,16 @@ const navItems: Array<NavItem> = [
   id="page-header"
   class="absolute bottom-0 z-20 flex flex-row w-full items-center justify-between border-b border-transparent 
     px-1 py-2 text-white sm:px-3 sm:py-2 xl:px-8 xl:py-4">
-  <a class="flex h-12 md:h-24  items-center gap-3 hover:!text-default" href="#">
+  <a class="flex h-24  items-center hover:!text-default" href="#">
     <h1 class="sr-only">Justin Curieux</h1>
     <LogoSVG /> 
     <Icon name="wordmark" class="hidden h-5 md:flex" />
   </a>
-  <div>
+  <div class="border-2 border-white">
     <!-- HORIZONTAL MENU -->
-    <div class="flex items-center md:gap-6">
-      <nav class="hidden sm:block">
-        <ul class="flex items-center justify-end gap-6">
+    <div class="flex items-center gap-6 border-2">
+      <nav class="hidden sm:block ml-16 border-2">
+        <ul class="flex items-center gap-6 border-2">
           { navItems.map(({ title, url }) => (
               <li>
                 <a class="text-sm" href={url}>
@@ -36,19 +36,15 @@ const navItems: Array<NavItem> = [
           )}          
         </ul>
       </nav>
-      <ul class="flex items-center gap-6">
+      <ul class="flex place-items-center gap-6 mr-2 sm:mr-16 sm:ml-16 w-[110px] place-content-end ">
         <li class="">
-          <UpSideDownShare
-            client:only="preact" 
-          />
-
-          </UpSideDownShare>
+          <UpSideDownShare client:only="preact" />
         </li>
       </ul>
       <button
         id="open-nav-button"
         type="button"
-        class="sm:hidden -ml-12"
+        class="sm:hidden"
         aria-label="Navigation"
       >      
         <Icon name="menu" class="h-8" />

@@ -40,8 +40,8 @@ export default function UpSideDownShare(): JSX.Element {
         id={`social_corner_up`}
         class={`
           relative 
-          ml-6 px-2 m-3 mr-6  
-          scroll-ml-14 h-[48px]
+
+          h-[48px]
         `}
       > 
         <div>
@@ -49,7 +49,7 @@ export default function UpSideDownShare(): JSX.Element {
             onClick={onClickHandler} 
             type="button"
             class={`
-              hover:cursor-pointer p-1 relative flex rounded-full text-sm 
+              hover:cursor-pointer relative flex rounded-full text-sm 
               ${isOpen?`shadow-gray-400 shadow-lg bottom-1`:``}
             `}
             id={`user-menu-button-bottom-right`}
