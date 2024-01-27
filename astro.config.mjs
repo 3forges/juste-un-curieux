@@ -7,6 +7,6 @@ export const baseURL = `/juste-un-curieux`
 // https://astro.build/config
 export default defineConfig({
   site: "https://3forges.github.io",
-  base: `${baseURL}`,
+  //base: `${baseURL}`,
   integrations: [tailwind(), icon(), preact({ compat: true })]
 });
