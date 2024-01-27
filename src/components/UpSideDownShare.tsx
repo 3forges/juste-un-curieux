@@ -2,7 +2,7 @@ import type { JSX } from 'preact'
 import { useState, useRef, useEffect } from 'preact/hooks'
 import { Share2Icon } from 'lucide-preact'
 import { YoutubeIcon, TwitchIcon, FacebookIcon, DiscordIcon } from './ShareIcons'
-import { Children } from 'preact/compat'
+import React, { Children } from 'preact/compat'
 
 const doesButtonRoll = true
 const fixedElementHeight: number = document.querySelector('#page-header')?.clientHeight || 0
@@ -14,10 +14,7 @@ const effet: string = `
   duration-500
 `
 
-export default function UpSideDownShare({children}: any): JSX.Element {
-
-  //const icons = Children.toArray(children)
-  //console.log("icons: ", icons)
+export default function UpSideDownShare(): JSX.Element {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isUp, setIsUp] = useState<boolean>(true)
   const menuCompo = useRef<HTMLDivElement>(null)
@@ -90,7 +87,7 @@ export default function UpSideDownShare({children}: any): JSX.Element {
           `} 
           tabIndex={-1}
         >
-          {/* 
+
           <TwitchIcon  
             size={24}
             isUp={isUp}
@@ -115,7 +112,7 @@ export default function UpSideDownShare({children}: any): JSX.Element {
             urlOfLinkToShare="https://discord.com"
             tailwindcss='-bottom-[20px] -right-[60px]'
           />   
-        */}
+
         </div>        
       </div>
     </>
