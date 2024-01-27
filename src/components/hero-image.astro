@@ -2,10 +2,12 @@
 //import { Picture } from "@astrojs/image/components";
 import { Image } from 'astro:assets'
 import moonImage from "../assets/moon.jpg";
+import { baseURL } from '../../astro.config.mjs'
 
 const widths = [450, 800, 1200];
 const sizes = "100vw";
 ---
+
 <Image 
     src={moonImage}
     alt="The ridged surface of the moon" 
