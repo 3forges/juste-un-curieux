@@ -90,41 +90,25 @@ export default function UpSideDownShare(): JSX.Element {
         >
 
           <TwitchIcon  
-            size={32}
-            strokeWidth={2}
-            stroke="currentColor"
-            viewBox="-2 -4 32 32" 
-            alt="Share" 
+            size={24}
             isUp={isUp}
             urlOfLinkToShare="https://twitch.com"
-            tailwindcss='-bottom-[20px] right-[30px]'
+            tailwindcss='-bottom-[20px] right-[35px]'
           />
           <YoutubeIcon  
-            size={32}
-            strokeWidth={2}
-            stroke="currentColor"
-            viewBox="-2 -4 32 32" 
-            alt="Share" 
+            size={24}
             isUp={isUp}
             urlOfLinkToShare="https://youtube.com"
             tailwindcss='bottom-[20px] right-[10px]'
           />
           <FacebookIcon  
-            size={32}
-            strokeWidth={2}
-            stroke="currentColor"
-            viewBox="-2 -4 32 32" 
-            alt="Share" 
+            size={24}
             isUp={isUp}
             urlOfLinkToShare="https://facebook.com"
             tailwindcss='bottom-[20px] -right-[40px]'
           />  
           <DiscordIcon 
-            size={32}
-            strokeWidth={2}
-            stroke="currentColor"
-            viewBox="-2 -4 32 32" 
-            alt="Share" 
+            size={24}
             isUp={isUp}
             urlOfLinkToShare="https://discord.com"
             tailwindcss='-bottom-[20px] -right-[60px]'
