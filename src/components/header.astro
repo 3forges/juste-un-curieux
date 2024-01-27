@@ -21,11 +21,12 @@ const navItems: Array<NavItem> = [
     <LogoSVG /> 
     <Icon name="wordmark" class="hidden h-5 md:flex" />
   </a>
-  <div class="border-2 border-white">
+  <UpSideDownShare client:only="preact" />
+  <div>
     <!-- HORIZONTAL MENU -->
-    <div class="flex items-center gap-6 border-2">
-      <nav class="hidden sm:block ml-16 border-2">
-        <ul class="flex items-center gap-6 border-2">
+    <div class="flex flex-row-reverse items-center justify-items-end gap-6">
+      <nav class="hidden sm:block ml-16 ">
+        <ul class="flex items-center justify-items-end gap-6">
           { navItems.map(({ title, url }) => (
               <li>
                 <a class="text-sm" href={url}>
@@ -36,9 +37,9 @@ const navItems: Array<NavItem> = [
           )}          
         </ul>
       </nav>
-      <ul class="flex place-items-center gap-6 mr-2 sm:mr-16 sm:ml-16 w-[110px] place-content-end ">
+      <ul class="flex place-items-center gap-6 mr-2 sm:mr-16 sm:ml-16 w-[110px] place-content-end">
         <li class="">
-          <UpSideDownShare client:only="preact" />
+          
         </li>
       </ul>
       <button
