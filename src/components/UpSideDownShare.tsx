@@ -1,26 +1,12 @@
-import { useEffect } from 'preact/hooks'
-import { useState, useRef } from 'preact/compat'
+import type { JSX } from 'preact'
+import { useState, useRef, useEffect } from 'preact/hooks'
 import { Share2Icon } from 'lucide-preact'
-import type { FunctionalComponent } from 'preact'
-import type { JSX } from "preact/compat";
-//import { collections, social } from "~/content/config"
-import {
-  TwitchIcon,
-  YoutubeIcon,
-  FacebookIcon,
-} from './SocialListChildren'
-
-export interface SocialCornerUpChildrenProps {
-  name?: string
-  theme?: any,
-}
+import { YoutubeIcon, TwitchIcon, FacebookIcon, DiscordIcon } from './ShareIcons'
+// import { Children } from 'preact/compat'
 
 const doesButtonRoll = true
-/**
- * SOME CONF
- */
-// querySelector externilastion from preact functions
 const fixedElementHeight: number = document.querySelector('#page-header')?.clientHeight || 0
+
 const effet: string = `
   transition-rotate
   origin-bottom-center
@@ -28,7 +14,8 @@ const effet: string = `
   duration-500
 `
 
-export function SocialCornerUpChildren(): JSX.Element {
+export default function UpSideDownShare(): JSX.Element {
+
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isUp, setIsUp] = useState<boolean>(true)
   const menuCompo = useRef<HTMLDivElement>(null)
@@ -47,10 +34,10 @@ export function SocialCornerUpChildren(): JSX.Element {
     onScrolling()
     document.addEventListener("scroll", onScrolling)
   })
-
-  return (
+  
+  return(
     <>
-      <div 
+    <div 
         id={`social_corner_up`}
         class={`
           relative 
@@ -77,7 +64,7 @@ export function SocialCornerUpChildren(): JSX.Element {
               alt="Share"
               className={`
                 ${doesButtonRoll && "transition-rotate duration-500 ease-in-out"} 
-                z-10  h-18 w-18 m-1 p-1 rounded-full 
+                z-10 m-1 p-1 rounded-full 
                 ${isUp && doesButtonRoll?`rotate-[0deg]`:`-rotate-[180deg]`}
               `}
             />
@@ -89,45 +76,62 @@ export function SocialCornerUpChildren(): JSX.Element {
             absolute 
             origin-bottom
             right-[38px]
-            bottom-[38px]
+            bottom-[18px]
             flex
             mt-2 
             bg-transparent 
             py-1 
+            z-10
             ${effet} 
             ${isOpen?`scale-125`:`scale-0`} 
             ${isUp?`rotate-[0deg]`:`rotate-[-180deg]`}
           `} 
           tabIndex={-1}
         >
-          <YoutubeIcon  
-            size={48}
-            strokeWidth={2}
-            stroke="currentColor"
-            viewBox="-2 -4 32 32" 
-            alt="Share" 
-            className="h-20 w-20 m-1 items-center rounded-full p-1"
-          />
+
           <TwitchIcon  
-            size={48}
+            size={32}
             strokeWidth={2}
             stroke="currentColor"
             viewBox="-2 -4 32 32" 
             alt="Share" 
-            className="h-20 w-20 m-1 items-center rounded-full p-1"
+            isUp={isUp}
+            urlOfLinkToShare="https://twitch.com"
+            tailwindcss='-bottom-[20px] right-[30px]'
+          />
+          <YoutubeIcon  
+            size={32}
+            strokeWidth={2}
+            stroke="currentColor"
+            viewBox="-2 -4 32 32" 
+            alt="Share" 
+            isUp={isUp}
+            urlOfLinkToShare="https://youtube.com"
+            tailwindcss='bottom-[20px] right-[10px]'
           />
           <FacebookIcon  
-            size={48}
+            size={32}
             strokeWidth={2}
             stroke="currentColor"
             viewBox="-2 -4 32 32" 
             alt="Share" 
-            className="h-20 w-20 m-1 items-center rounded-full p-1"
-          />
-    
+            isUp={isUp}
+            urlOfLinkToShare="https://facebook.com"
+            tailwindcss='bottom-[20px] -right-[40px]'
+          />  
+          <DiscordIcon 
+            size={32}
+            strokeWidth={2}
+            stroke="currentColor"
+            viewBox="-2 -4 32 32" 
+            alt="Share" 
+            isUp={isUp}
+            urlOfLinkToShare="https://discord.com"
+            tailwindcss='-bottom-[20px] -right-[60px]'
+          />   
+
         </div>        
       </div>
     </>
   )
-
 }

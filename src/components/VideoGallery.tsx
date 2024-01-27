@@ -118,7 +118,7 @@ export default function VideoGallery() {
                 <div class="m-4 hover:cursor-pointer" onMouseDown={ () => {
                     // setPlayingVideo(item)
                     // window.location.href="#modal"
-                    setModalVideoState({
+                    setModalVideoState({ 
                       showModal: true,
                       video: videoItem
                     })

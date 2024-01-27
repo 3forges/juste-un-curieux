@@ -1,15 +1,66 @@
 //import { h } from 'preact'
 import type { JSX } from 'preact'
-import { TwitchIcon, YoutubeIcon, FacebookIcon } from 'lucide-preact'
+//import { Twitch, Youtube, Facebook } from 'lucide-preact'
 import DiscordIcon from "./DiscordIcon"
 import {v4 as uuidv4} from 'uuid';
 import { useState, useRef, useEffect } from 'preact/hooks';
 import { Icon } from 'astro-icon/components';
 
+
 const iconSize: number = 48
 const doesButtonRoll = true
 const fixedElementHeight: number = document.querySelector('#page-header')?.clientHeight || 0
 
+interface iconProps {
+  size: number,
+  strokeWidth: number,
+  stroke: string,
+  viewBox: string,
+  alt: string,
+  className: string,
+}
+
+export function YoutubeIcon( props: iconProps ): JSX.Element {
+  return(
+    <svg xmlns="http://www.w3.org/2000/svg" 
+      width={props.size} height={props.size} 
+      viewBox={props.viewBox} stroke-width={props.strokeWidth} 
+      class={`lucide lucide-youtube`}
+      fill="none" stroke="currentColor" 
+      stroke-linecap="round" stroke-linejoin="round" 
+    >
+      <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/>
+      <path d="m10 15 5-3-5-3z"/>
+    </svg>
+  )
+}
+
+export function FacebookIcon( props: iconProps ): JSX.Element {
+  return(
+    <svg xmlns="http://www.w3.org/2000/svg" width={props.size} height={props.size} 
+      viewBox={props.viewBox} 
+      fill="none" stroke="currentColor" 
+      stroke-width={props.strokeWidth} stroke-linecap="round" stroke-linejoin="round" 
+      class="lucide lucide-youtube"
+    >
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+    </svg>
+  )
+}
+
+
+export function TwitchIcon( props: iconProps ): JSX.Element {
+  return(
+    <svg xmlns="http://www.w3.org/2000/svg" width={props.size} height={props.size} 
+      viewBox={props.viewBox} 
+      fill="none" stroke="currentColor" 
+      stroke-width={props.strokeWidth} stroke-linecap="round" stroke-linejoin="round" 
+      class="lucide lucide-youtube"
+    >
+      <path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7"/>
+    </svg>
+  )
+}
 
 /**
  * 
@@ -17,7 +68,7 @@ const fixedElementHeight: number = document.querySelector('#page-header')?.clien
  * -- TwitchSocialMenuItem
  * ------------------------
  ****/
-
+/*
 export interface TwitchSocialMenuItemProps {
   urlOfLinkToShare?: string;
   size?: number,
@@ -60,7 +111,7 @@ export const TwitchSocialMenuItem = ({
       class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] -bottom-[20px] right-[20px]`}
       id={`user-menu-bottom-discord-${randomUuid}`}
     >
-      <TwitchIcon 
+      <Twitch 
         size={size}
         strokeWidth={strokeWidth}
         stroke={stroke}
@@ -72,7 +123,7 @@ export const TwitchSocialMenuItem = ({
     </a>
   )
 }
-
+*/
 /*
 size={(item.label!="Discord")?48:36}
 strokeWidth={2}
@@ -81,7 +132,7 @@ viewBox={(item.label!=="Discord")?"-2 -4 32 32":"0 0 640 512"}
 alt="Share"
 className={(item.label!=="Discord")?"h-20 w-20 m-1 items-center rounded-full p-1":"h-20 w-20 m-5 items-center rounded-full p-5"}
 */
-
+/*
 export const TwitchSocialBurgerMenuItem = ({
   urlOfLinkToShare = 'https://www.twitch.tv/Justin_Curieux',
   size=iconSize-12,
@@ -103,7 +154,7 @@ export const TwitchSocialBurgerMenuItem = ({
             id={`user-menu-bottom-twitch`}
           >
           <span class="flex flex-row items-center">
-            <TwitchIcon 
+            <Twitch 
             size={size}
             strokeWidth={strokeWidth}
             stroke={stroke}
@@ -117,7 +168,7 @@ export const TwitchSocialBurgerMenuItem = ({
         
   )
 }
-
+*/
 
 
 
@@ -131,7 +182,7 @@ export const TwitchSocialBurgerMenuItem = ({
  * -- YoutubeSocialMenuItem
  * ------------------------
  ****/
-
+/*
 export interface YoutubeSocialMenuItemProps {
   urlOfLinkToShare?: string;
   size?: number,
@@ -174,7 +225,7 @@ export const YoutubeSocialMenuItem = ({
         class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[10px] -right-[10px]`}
         id={`user-menu-bottom-discord-${randomUuid}`}
       >
-        <YoutubeIcon 
+        <Youtube 
           size={size}
           strokeWidth={strokeWidth}
           stroke={stroke}
@@ -187,7 +238,8 @@ export const YoutubeSocialMenuItem = ({
     
   )
 }
-
+*/
+/*
 export const YoutubeSocialBurgerMenuItem = ({
   urlOfLinkToShare = 'https://www.youtube.com/@justincurieux31',
   size=iconSize-12,
@@ -209,7 +261,7 @@ export const YoutubeSocialBurgerMenuItem = ({
             id={`user-menu-bottom-twitch`}
           >
           <span class="flex flex-row items-center">
-            <YoutubeIcon 
+            <Youtube 
             size={size}
             strokeWidth={strokeWidth}
             stroke={stroke}
@@ -223,6 +275,7 @@ export const YoutubeSocialBurgerMenuItem = ({
 
   )
 }
+*/
 
 /**
  * 
@@ -230,7 +283,7 @@ export const YoutubeSocialBurgerMenuItem = ({
  * -- FacebookSocialMenuItem
  * ------------------------
  ****/
-
+/*
 export interface FacebookSocialMenuItemProps {
   urlOfLinkToShare?: string;
   size?: number,
@@ -273,7 +326,7 @@ export const FacebookSocialMenuItem = ({
         class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[10px] -right-[50px]`}
         id={`user-menu-bottom-discord-${randomUuid}`}
       >
-        <FacebookIcon
+        <Facebook
           size={size}
           strokeWidth={strokeWidth}
           stroke={stroke}
@@ -308,7 +361,7 @@ export const FacebookSocialBurgerMenuItem = ({
             id={`user-menu-bottom-twitch`}
           >
           <span class="flex flex-row items-center">
-            <FacebookIcon 
+            <Facebook 
             size={size}
             strokeWidth={strokeWidth}
             stroke={stroke}
@@ -323,72 +376,10 @@ export const FacebookSocialBurgerMenuItem = ({
   )
 }
 
+*/
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * 
- * ------------------------
- * -- DiscordSocialMenuItem
- * ------------------------
- ****/
+/*
 
 export interface DiscordSocialMenuItemProps {
   urlOfLinkToShare?: string;
@@ -475,3 +466,4 @@ export const DiscordSocialBurgerMenuItem = ({
     </>
   )
 }
+*/
