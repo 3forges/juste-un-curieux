@@ -31,10 +31,11 @@ export default function UpSideDownShare(): JSX.Element {
     let scroll: number = document.body.scrollTop || document.documentElement.scrollTop
     const headerHeight: number = fixedElementHeight > 0 ? fixedElementHeight : menuCompo.current?.clientHeight || 0
     setIsUp( (window.innerHeight - scroll - headerHeight < 0) ? false : true )
+    setIsOpen(false)
   }
 
   useEffect(() => {
-    onScrolling()
+    //onScrolling()
     document.addEventListener("scroll", onScrolling)
   })
   
