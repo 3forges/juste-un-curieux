@@ -55,23 +55,16 @@ export default function VideoGallery() {
     }
     <VideoModal modalVideoState={modalVideoState} setModalVideoState={setModalVideoState} />
     <div class="grid place-items-center">
-      <div class="m-0 max-w-full">
+      <div class="m-0">
         {/* derniere video */}
-        {/* 
-        <div class="
-          text-white bg-black rounded-t-lg 
-          p-2 h-[46px] 
-          grid grid-cols-1 
-          place-items-start px-6
-        "> </div>  
-        */}
-        <div class="w-full margin-mx-auto flex flex-col place-content-center">
+        <div class="relative w-full flex flex-col place-content-center">
           <iframe 
             src={`https://www.youtube.com/embed/${lastVideo.url}?si=BUW-Hf9r-yCHLET&rel=0`} 
             title="YouTube video player" 
             frameBorder="0" 
+
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            class="p-4 shrink grow h-[700px]"
+            class="w-full aspect-video"
             allowFullScreen>
           </iframe>
           <div class="text-xs flex flex-raw mb-12">
@@ -131,6 +124,7 @@ export default function VideoGallery() {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                   style="pointer-events: none"
                   allowFullScreen
+                  class="w-full aspect-video"
                   >
                 </iframe>
                 <div class="text-xs w-max-[300px] min-w-[300px] mt-2">
