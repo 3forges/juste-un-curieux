@@ -28,11 +28,11 @@ const navItems: Array<NavItem> = [
   <ThemeSwitcher />
   <div>
     <!-- HORIZONTAL MENU -->
-    <div class="flex flex-row-reverse items-center gap-0 sm:gap-1 lg:gap-2">
+    <div class="flex flex-row-reverse items-center">
       <nav class="hidden sm:block">
-        <ul class="flex items-center gap-0 sm:gap-1 lg:gap-2">
+        <ul class="flex items-center">
           { navItems.map(({ title, url }) => (
-              <li>
+              <li class="ml-4">
                 <a class="text-sm" href={url}>
                   {title}
                 </a>
