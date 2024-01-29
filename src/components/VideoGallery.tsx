@@ -47,8 +47,6 @@ export default function VideoGallery() {
     dots.push(i)
   }
 
-  const modalTransition = ""
-
   return(
     <>
     {//<VideoModal />
