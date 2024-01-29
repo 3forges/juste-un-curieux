@@ -8,7 +8,7 @@ import { TwitterShareButton, TwitterIcon, VKShareButton, TelegramShareButton, Te
 const doesButtonRoll = true
 const fixedElementHeight: number = document.querySelector('#page-header')?.clientHeight || 0
 
-const site_url="https://website-ar7.pages.dev/"
+const site_url="https://juste-un-curieux.pages.dev/"
 const title="Le site de justin curieux"
 
 const effet: string = `
@@ -108,7 +108,7 @@ export default function UpSideDownShare(): JSX.Element {
             </WhatsappShareButton>
           </div>
           <div class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[20px] -right-[50px]`} >
-            <FacebookShareButton url={site_url} title={title} additionalProps={['aria-label="facebook"']}>  
+            <FacebookShareButton url={site_url} title={title} additionalProps={{"aria-label":"facebook"}}>  
               <FacebookIcon round="true" size="32" iconFillColor="currentColor"/>
             </FacebookShareButton>
           </div>
