@@ -93,22 +93,22 @@ export default function UpSideDownShare(): JSX.Element {
           tabIndex={-1}
         >
           <div class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] -bottom-[20px] right-[35px]`} >
-            <TwitterShareButton url={site_url} title={title}>
+            <TwitterShareButton url={site_url} title={title} additionalProps="{'aria-label': 'Twitter'}">
               <TwitterIcon round="true" size="32" iconFillColor="currentColor"/>
             </TwitterShareButton>
           </div>
           <div class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[20px] right-[10px]`} >
-            <TelegramShareButton url={site_url} title={title}>
+            <TelegramShareButton url={site_url} title={title} additionalProps="{'aria-label': 'Telegram'}">
               <TelegramIcon round="true" size="32" iconFillColor="currentColor"/>
             </TelegramShareButton>
           </div>
           <div class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] -bottom-[20px] -right-[70px]`} >
-            <WhatsappShareButton url={site_url} title={title}>
+            <WhatsappShareButton url={site_url} title={title} additionalProps="{'aria-label': 'WhatsApp'}">
               <WhatsappIcon round="true" size="32" iconFillColor="currentColor"/>
             </WhatsappShareButton>
           </div>
           <div class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[20px] -right-[50px]`} >
-            <FacebookShareButton url={site_url}>   
+            <FacebookShareButton url={site_url} title={title} additionalProps="{'aria-label': 'facebook'}">  
               <FacebookIcon round="true" size="32" iconFillColor="currentColor"/>
             </FacebookShareButton>
           </div>
