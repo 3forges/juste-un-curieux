@@ -98,7 +98,7 @@ export default function UpSideDownShare(): JSX.Element {
             </TwitterShareButton>
           </div>
           <div class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[20px] right-[10px]`} >
-            <TelegramShareButton url={site_url} title={title} aria-label="telegrm">
+            <TelegramShareButton url={site_url} title={title} aria-label="telegram">
               <TelegramIcon round="true" size="32" iconFillColor="currentColor"/>
             </TelegramShareButton>
           </div>
