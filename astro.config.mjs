@@ -6,7 +6,7 @@ import preact from "@astrojs/preact";
 export const baseURL = `/juste-un-curieux`
 // https://astro.build/config
 export default defineConfig({
-  site: "https://3forges.github.io",
+  site: "https://hurt-place.surge.sh",
   //base: `${baseURL}`,
   integrations: [tailwind(), icon(), preact({ compat: true })]
 });
