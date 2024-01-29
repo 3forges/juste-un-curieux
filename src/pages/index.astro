@@ -9,9 +9,9 @@ import Header from "~/components/header.astro";
 import Splash from "~/components/splash.astro";
 import "~/styles/index.css";
 import VideoGallery from "~/components/VideoGallery"
-
+import {robotsConfig} from '../config';
 const { generator, site } = Astro;
-const image = new URL("favicon.jpg", `https://justincurieux-boris-dropup-refined-52ms19bol.vercel.app/`);
+const image = new URL("Justin_Curieux-R1-01.webp", `${site}/`) 
 // const image = `https://justincurieux-boris-dropup-refined-52ms19bol.vercel.app/favicon.jpg`
 /*
 
@@ -28,8 +28,8 @@ const description =
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <!-- <link rel="icon" href="/favicon.svg" type="image/svg+xml" /> -->
-    <link rel="icon" href="/favicon.jpg" class="border" type="image/svg+xml" />
-    
+    <link rel="icon" href="/Justin_Curieux-R1-01.webp" type="image/webp" />
+
     <meta name="generator" content={generator} />
 
     <title>Astro Landing Page</title>
@@ -44,6 +44,7 @@ const description =
     <meta name="twitter:card" content="summary_large_image" />
 
     <meta property="og:image" content="https://mywebsite.net/assets/opengraph/theogimage.jpg"/>
+    <meta name="robots" content={robotsConfig.disableIndexing ? 'noindex, nofollow' : 'index, follow'} />
 
     <!-- initialize theme -->
     <script is:inline>
