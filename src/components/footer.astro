@@ -2,9 +2,20 @@
 import HeroImage from "~/components/hero-image.astro";
 import type { FooterLink } from "~/types";
 // import { socials } from "./SocialList"
-import { Twitch, YoutubeIcon, FacebookIcon } from 'lucide-preact'
-import { Icon } from "astro-icon/components";
+// import { TwitchIcon, YoutubeIcon, FacebookIcon, DiscordIcon } from './ShareIcons.tsx'
+import type { iconProps } from './ShareIcons'
+import { Icon } from "astro-icon/components"
+import { baseURL } from '../../astro.config.mjs'
+import type { JSX } from 'preact'
 
+/*
+const links: Array<iconProps> = [
+  <TwitchIcon urlOfLinkToShare="http://twitch.com" />, 
+  <FacebookIcon urlOfLinkToShare="http://twitch.com" />, 
+  <DiscordIcon urlOfLinkToShare="http://twitch.com" />, 
+  <YoutubeIcon urlOfLinkToShare="http://twitch.com" />,
+]
+*/
 
 const links: Array<FooterLink> = [
   {
@@ -28,6 +39,7 @@ const links: Array<FooterLink> = [
     icon: "fa-brands:twitter",
   },
 ];
+
 ---
 
 <footer class="relative flex h-64 items-center justify-center">
@@ -39,14 +51,16 @@ const links: Array<FooterLink> = [
       //links.map((link) => (
       links.map((item) => (
         <li>
+          {/* {item} */}
+          
           <a
             class="flex h-16 w-16 items-center justify-center rounded-full border-2 border-current p-4"
             href={item.url}
           >
             <span class="sr-only">{item.description}</span>
-            {/* <Icon class="h-full" name={item.name} /> */}
             <Icon class="h-full" name={item.icon} />
           </a>
+          
         </li>
       ))
     }

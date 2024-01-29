@@ -1,83 +1,56 @@
 ---
 import { Icon } from 'astro-icon/components'
-import ThemeSwitcher from "~/components/theme-switcher.astro";
-import type { NavItem } from "~/types";
-import SocialCornerUp from "~/components/SocialCornerUp";
-import LogoSVG from "~/components/LogoSVG";
-import { Share2Icon } from "lucide-preact";
-//import { collections } from "~/content/config";
-import {
-  TwitchSocialBurgerMenuItem,
-  TwitchSocialMenuItem,
-  YoutubeSocialBurgerMenuItem,
-  YoutubeSocialMenuItem,
-} from "~/components/SocialListChildren";
-// const menuItemsArray: JSX.Element[] = [<TwitchSocialMenuItem></TwitchSocialMenuItem>, <YoutubeSocialMenuItem></YoutubeSocialMenuItem>]
+import ThemeSwitcher from "./theme-switcher.astro"
+import type { NavItem } from "../types";
 
-import { SocialCornerUpChildren } from "./SocialCornerUpChildren";
-import { SocialCornerUpBurgerChildren } from "./SocialCornerUpChildrenBurger";
-import type { JSX } from "preact/compat";
+import LogoSVG from "./LogoSVG";
+import { Share2Icon } from "lucide-preact";
+import UpSideDownShare from "./UpSideDownShare"
 
 const navItems: Array<NavItem> = [
   { title: "Bientôt", url: "#features" },
   { title: "Vidéos", url: "#showcase" },
-];
+]
+
+// class="absolute bottom-0 z-20 flex flex-row w-full items-center justify-between border-b border-transparent px-1 py-2 text-white sm:px-3 sm:py-2 xl:px-8 xl:py-4"
+
 ---
 
 <header
   id="page-header"
-  class="absolute bottom-0 z-20 flex flex-row w-full items-center justify-between border-b border-transparent 
-    px-1 py-2 text-white sm:px-3 sm:py-2 xl:px-8 xl:py-4">
-  <a class="flex h-12 md:h-24  items-center gap-3 hover:!text-default" href="#">
+  class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-2 py-1 sm:px-4 sm:py-2 lg:px-8 lg:py-4 text-white"  >
+  <a class="flex items-center h-16 gap-0 sm:gap-1 lg:gap-2 hover:!text-default" href="#">
     <h1 class="sr-only">Justin Curieux</h1>
     <LogoSVG /> 
     <Icon name="wordmark" class="hidden h-5 md:flex" />
   </a>
+  <UpSideDownShare client:only="preact" />
+  <ThemeSwitcher />
   <div>
     <!-- HORIZONTAL MENU -->
-    <div class="flex items-center md:gap-6">
-
+    <div class="flex flex-row-reverse items-center">
       <nav class="hidden sm:block">
-        <ul class="flex items-center justify-end gap-6">
-          <!-- li class="group m-4 inline-flex overflow-hidden rounded bg-gray-900 text-white">
-            <span class="flex items-center justify-center bg-gradient-to-r from-teal-200 to-lime-200 px-3.5 py-2 text-white hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200">
-              <span class="relative flex animate-jump animate-duration-[2000ms] animate-infinite" >
-                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-                <span class="relative inline-flex h-3 w-3 animate-jump rounded-full bg-red-500 animate-duration-[2000ms] animate-infinite"></span>
-              </span>
-            </span>
-          </li -->
+        <ul class="flex items-center">
           { navItems.map(({ title, url }) => (
-              <li>
+              <li class="ml-4">
                 <a class="text-sm" href={url}>
                   {title}
                 </a>
               </li>
             )
-          )}
-          
+          )}          
         </ul>
       </nav>
-      <ul class="flex items-center gap-6">
-        <li class="mr-10">
-        <SocialCornerUpChildren
-          name="noburger"
-          urlOfLinkToShare={`https://www.twitch.tv/Justin_Curieux`}
-          client:only="preact"
-        />
-        </li>
-      </ul>
+      
       <button
         id="open-nav-button"
         type="button"
-        class="sm:hidden -ml-12"
+        class="sm:hidden"
         aria-label="Navigation"
-      >
-      
-      <Icon name="menu" class="h-8" />
+      >      
+        <Icon name="menu" class="h-8" />
       </button>
-      <ThemeSwitcher />
-
+      
     </div>
 
     <!-- HAMBURGER MENU MODAL -->
@@ -98,7 +71,7 @@ const navItems: Array<NavItem> = [
             <Icon name="logomark" class="h-16" />
           </div>
           <nav>
-            <ul class="flex flex-col place-items-center">
+            <ul class="flex flex-col">
               {
                 navItems.map(({ title, url }) => (
                   <li>
@@ -121,9 +94,6 @@ const navItems: Array<NavItem> = [
                   Partager:
                 </span>
               </li>
-              <ul>
-                <SocialCornerUpBurgerChildren client:only="preact" />
-              </ul>
             </ul>
           </nav>
         </div>
