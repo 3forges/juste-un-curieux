@@ -1,11 +1,15 @@
 import type { JSX } from 'preact'
 import { useState, useRef, useEffect } from 'preact/hooks'
 import { Share2Icon } from 'lucide-preact'
-import { RedditIcon, TwitterIcon, FacebookIcon, WhatsappIcon } from './ShareIcons'
+//import { RedditIcon, TwitterIcon, FacebookIcon, WhatsappIcon, TelegramIcon } from './ShareIcons'
 import React, { Children } from 'preact/compat'
+import { TwitterShareButton, TwitterIcon, VKShareButton, TelegramShareButton, TelegramIcon, WhatsappShareButton, WhatsappIcon, FacebookShareButton, FacebookIcon } from "react-share"
 
 const doesButtonRoll = true
 const fixedElementHeight: number = document.querySelector('#page-header')?.clientHeight || 0
+
+const site_url="https://website-ar7.pages.dev/"
+const title="Le site de justin curieux"
 
 const effet: string = `
   transition-rotate
@@ -73,8 +77,8 @@ export default function UpSideDownShare(): JSX.Element {
           ref={menuCompo} 
           class={`
             absolute 
-            origin-bottom
-            right-[38px]
+            origin-center 
+            right-[28px]
             bottom-[18px]
             flex
             mt-2 
@@ -87,32 +91,26 @@ export default function UpSideDownShare(): JSX.Element {
           `} 
           tabIndex={-1}
         >
-
-          <TwitterIcon  
-            size={24}
-            isUp={isUp}
-            urlOfLinkToShare="https://twitch.com"
-            tailwindcss='-bottom-[20px] right-[35px]'
-          />
-          <RedditIcon  
-            size={24}
-            isUp={isUp}
-            urlOfLinkToShare="https://youtube.com"
-            tailwindcss='bottom-[20px] right-[10px]'
-          />
-          <FacebookIcon  
-            size={24}
-            isUp={isUp}
-            urlOfLinkToShare="https://facebook.com"
-            tailwindcss='bottom-[20px] -right-[40px]'
-          />  
-          <WhatsappIcon 
-            size={24}
-            isUp={isUp}
-            urlOfLinkToShare="https://discord.com"
-            tailwindcss='-bottom-[20px] -right-[60px]'
-          />   
-
+          <div class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] -bottom-[20px] right-[35px]`} >
+            <TwitterShareButton url={site_url} title={title}>
+              <TwitterIcon round="true" size="32" iconFillColor="currentColor"/>
+            </TwitterShareButton>
+          </div>
+          <div class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[20px] right-[10px]`} >
+            <TelegramShareButton url={site_url} title={title}>
+              <TelegramIcon round="true" size="32" iconFillColor="currentColor"/>
+            </TelegramShareButton>
+          </div>
+          <div class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] -bottom-[20px] -right-[70px]`} >
+            <WhatsappShareButton url={site_url} title={title}>
+              <WhatsappIcon round="true" size="32" iconFillColor="currentColor"/>
+            </WhatsappShareButton>
+          </div>
+          <div class={`transition-rotate duration-0 ease-in-out absolute rotate-[${isUp?`0deg`:`-180deg`}] bottom-[20px] -right-[50px]`} >
+            <FacebookShareButton url={site_url}>   
+              <FacebookIcon round="true" size="32" iconFillColor="currentColor"/>
+            </FacebookShareButton>
+          </div>
         </div>        
       </div>
     </>
