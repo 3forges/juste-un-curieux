@@ -19,17 +19,18 @@ const navItems: Array<NavItem> = [
 <header
   id="page-header"
   class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-2 py-1 sm:px-4 sm:py-2 lg:px-8 lg:py-4 text-white"  >
-  <a class="flex items-center h-6 gap-3 hover:!text-default" href="#">
+  <a class="flex items-center h-16 gap-0 sm:gap-1 lg:gap-2 hover:!text-default" href="#">
     <h1 class="sr-only">Justin Curieux</h1>
     <LogoSVG /> 
     <Icon name="wordmark" class="hidden h-5 md:flex" />
   </a>
   <UpSideDownShare client:only="preact" />
+  <ThemeSwitcher />
   <div>
     <!-- HORIZONTAL MENU -->
-    <div class="flex flex-row-reverse items-center gap-2 sm:gap-4 lg:gap-6">
+    <div class="flex flex-row-reverse items-center gap-0 sm:gap-1 lg:gap-2">
       <nav class="hidden sm:block">
-        <ul class="flex items-center gap-6">
+        <ul class="flex items-center gap-0 sm:gap-1 lg:gap-2">
           { navItems.map(({ title, url }) => (
               <li>
                 <a class="text-sm" href={url}>
@@ -40,7 +41,7 @@ const navItems: Array<NavItem> = [
           )}          
         </ul>
       </nav>
-
+      
       <button
         id="open-nav-button"
         type="button"
@@ -49,7 +50,7 @@ const navItems: Array<NavItem> = [
       >      
         <Icon name="menu" class="h-8" />
       </button>
-      <ThemeSwitcher />
+      
     </div>
 
     <!-- HAMBURGER MENU MODAL -->
