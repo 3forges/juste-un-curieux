@@ -1,7 +1,7 @@
 import type { JSX } from 'preact'
 import { useState, useRef, useEffect } from 'preact/hooks'
 import { Share2Icon } from 'lucide-preact'
-import { YoutubeIcon, TwitchIcon, FacebookIcon, DiscordIcon } from './ShareIcons'
+import { RedditIcon, TwitterIcon, FacebookIcon, WhatsappIcon } from './ShareIcons'
 import React, { Children } from 'preact/compat'
 
 const doesButtonRoll = true
@@ -88,13 +88,13 @@ export default function UpSideDownShare(): JSX.Element {
           tabIndex={-1}
         >
 
-          <TwitchIcon  
+          <TwitterIcon  
             size={24}
             isUp={isUp}
             urlOfLinkToShare="https://twitch.com"
             tailwindcss='-bottom-[20px] right-[35px]'
           />
-          <YoutubeIcon  
+          <RedditIcon  
             size={24}
             isUp={isUp}
             urlOfLinkToShare="https://youtube.com"
@@ -106,7 +106,7 @@ export default function UpSideDownShare(): JSX.Element {
             urlOfLinkToShare="https://facebook.com"
             tailwindcss='bottom-[20px] -right-[40px]'
           />  
-          <DiscordIcon 
+          <WhatsappIcon 
             size={24}
             isUp={isUp}
             urlOfLinkToShare="https://discord.com"
