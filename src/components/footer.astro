@@ -5,9 +5,10 @@ import type { FooterLink } from "~/types";
 // import { TwitchIcon, YoutubeIcon, FacebookIcon, DiscordIcon } from './ShareIcons.tsx'
 import type { iconProps } from './ShareIcons'
 import { Icon } from "astro-icon/components"
-import { baseURL } from '../../astro.config.mjs'
+//import { baseURL } from '../../astro.config.mjs'
 import type { JSX } from 'preact'
 
+const { generator, site } = Astro;
 /*
 const links: Array<iconProps> = [
   <TwitchIcon urlOfLinkToShare="http://twitch.com" />, 

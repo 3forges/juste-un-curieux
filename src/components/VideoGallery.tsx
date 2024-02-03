@@ -67,17 +67,16 @@ export default function VideoGallery() {
           </iframe>
           <div class="text-xs flex flex-raw mb-12">
             <div class="mx-8">{lastVideo.title}</div>
-            <div class="mx-8">( il y as {lastVideo.elapsed} )</div>
+            <div class="mx-8">( Il y a {lastVideo.elapsed} )</div>
           </div>
         </div>
         {/* currentPageIndex navigation */}
         <div class="
-          text-white
           p-2 
           grid grid-cols-1 
           place-items-center md:px-6
         ">
-          <div class="flex flex-row rounded-xl p-2 bg-white">
+          <div class="flex flex-row rounded-xl p-2">
             <PaginationButtonLeft setPaginationState={setCurrentPageIndex} paginationState={currentPageIndex} />
             <span class="w-1"></span>
             { 
@@ -85,11 +84,15 @@ export default function VideoGallery() {
                 if (currentPageIndex == index)
                   return(<CircleDot onClick={() => {
                     setCurrentPageIndex(index)
-                  }} class="hover:cursor-pointer w-4 h-4 px-[1px] text-black bg-black rounded-xl translate-y-[4px] scale-75" />)
+                  }} class="hover:cursor-pointer w-4 h-4 px-[1px] rounded-xl translate-y-[4px]" 
+                  fill="currentColor"
+                  />)
                 else 
                   return(<Circle onClick={() => {
                     setCurrentPageIndex(index)
-                  }} class="hover:cursor-pointer w-4 px-[1px] text-black" />)
+                  }} class="hover:cursor-pointer w-4 px-[1px]" 
+                  stroke="currentColor"
+                  />)
               })
             }
             <span class="w-1"></span>
@@ -127,7 +130,7 @@ export default function VideoGallery() {
                 </iframe>
                 <div class="text-xs w-max-[300px] min-w-[300px] mt-2">
                   <div class="mx-2 text-xs w-[250px] whitespace-pre-wrap break-words" >{videoItem.title}</div>
-                  <div class="mx-2">( il y as {videoList[index].elapsed} )</div>
+                  <div class="mx-2">( Il y a {videoList[index].elapsed} )</div>
                 </div>
               </div>
             )
