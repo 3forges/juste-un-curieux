@@ -1,3 +1,44 @@
+# Justin Curieux
+
+## Locally run
+
+```bash
+pnpm run dev
+```
+
+## Release
+
+```bash
+export WHERE_I_WAS=$(pwd)
+export WHERE_I_WORK=$(mktemp -d -t "POKUS_WHERE_I_WORK_XXXXXXXX")
+git clone git@github.com:3forges/juste-un-curieux.git ${WHERE_I_WORK}
+cd ${WHERE_I_WORK}
+git checkout master
+git flow init --defaults
+
+# you  must be on develp : your feature branch must be suashed and merged
+
+export RELEASE_VERSION="0.0.87"
+
+git flow release start ${RELEASE_VERSION}
+export GH_PAGES_DEPLOYMENT_DIR='docs'
+export DEPLOYMENT_ASTRO_BASE_CONFIG="/juste-un-curieux"
+export DEPLOYMENT_ASTRO_SITE_CONFIG="https://3forges.github.io"
+export DEPLOYMENT_ASTRO_BASE_CONFIG=""
+export DEPLOYMENT_ASTRO_SITE_CONFIG="https://juste-un-curieux.pages.dev"
+
+export NO_CNAME="true"
+# export NO_CNAME="false"
+# export CNAME_VALUE="example.com"
+npm run build:prod:gh
+
+git add -A && git commit -m "release [${RELEASE_VERSION}] - release and deployment" && git push -u origin HEAD
+
+# git flow release finish ${RELEASE_VERSION} && git push -u origin --all  && git push -u origin --tags
+git flow release finish -s ${RELEASE_VERSION} && git push -u origin --all  && git push -u origin --tags
+```
+
+<!-- 
 # Astro Landing Page
 
 [![Built with Astro](https://astro.badg.es/v1/built-with-astro.svg)](https://astro.build)
@@ -38,3 +79,5 @@
 - moon image
   - source: https://unsplash.com/@nasa
 - other than that, a lot of material (showcase data, copy) was taken from official Astro sources, in particular https://astro.build/blog/introducing-astro/ and https://github.com/withastro/astro.build
+
+-->
