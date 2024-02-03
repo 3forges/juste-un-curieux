@@ -67,7 +67,7 @@ export default function VideoGallery() {
           </iframe>
           <div class="text-xs flex flex-raw mb-12">
             <div class="mx-8">{lastVideo.title}</div>
-            <div class="mx-8">( il y as {lastVideo.elapsed} )</div>
+            <div class="mx-8">( Il y a {lastVideo.elapsed} )</div>
           </div>
         </div>
         {/* currentPageIndex navigation */}
@@ -130,7 +130,7 @@ export default function VideoGallery() {
                 </iframe>
                 <div class="text-xs w-max-[300px] min-w-[300px] mt-2">
                   <div class="mx-2 text-xs w-[250px] whitespace-pre-wrap break-words" >{videoItem.title}</div>
-                  <div class="mx-2">( il y as {videoList[index].elapsed} )</div>
+                  <div class="mx-2">( Il y a {videoList[index].elapsed} )</div>
                 </div>
               </div>
             )

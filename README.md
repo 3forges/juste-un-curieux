@@ -3,7 +3,10 @@
 ## Locally run
 
 ```bash
-pnpm run dev
+export DEPLOYMENT_ASTRO_SITE_CONFIG="http://localhost:4321"
+export DEPLOYMENT_ASTRO_BASE_CONFIG="/website"
+
+pnpm i && pnpm run dev
 ```
 
 ## Release
