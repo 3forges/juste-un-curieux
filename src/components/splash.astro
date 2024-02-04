@@ -1,24 +1,31 @@
 ---
 import Ortf from "~/components/ortf.astro";
 // import { TwitchPlayer } from "~/components/TwitchPlayer"; // <TwitchPlayer client:only="preact"/>
-import { TwitchPlayerX } from "~/components/TwitchPlayerX";
-import GitHubCorner from "./github-corner.astro";
+// import { TwitchPlayerX } from "~/components/TwitchPlayerX";
+
+import { YoutubeLivestreamPlayer } from '~/components/YoutubeLivestreamPlayer'
+
+// import GitHubCorner from "./github-corner.astro";
 import TikTokCorner from "./tiktok-corner.astro"
 //import GitHubCorner from "~/components/GithubCorner";
 
 // //<GitHubCorner client:only="preact" />
 // import SocialCorner from "~/components/SocialCorner";
 // //<SocialCorner client:only="preact" />
-
+import { youtube, tests } from "./../config"
 ---
 
 <section class="relative h-full bg-black">
   <TikTokCorner />
   <div class="relative grid h-full place-items-center grid-cols-1">
     <Ortf />
-    <!-- // <TwitchPlayerX client:load /> -->
-    <!-- <TwitchPlayerX channel="Justin_Curieux" client:only="preact" /> -->
-    <TwitchPlayerX channel="Justin_Curieux" client:only="preact" />
+
+    {
+      // <TwitchPlayerX channel="Justin_Curieux" client:only="preact" />
+    }
+
+    <YoutubeLivestreamPlayer youtube_channel_id={tests.youtube.channel_id} client:only="preact" client:visible />
+    
    </div>
 </section>
 
