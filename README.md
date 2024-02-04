@@ -6,6 +6,11 @@
 export DEPLOYMENT_ASTRO_SITE_CONFIG="http://localhost:4321"
 export DEPLOYMENT_ASTRO_BASE_CONFIG="/website"
 
+export YOUTUBE_API_KEY="your google apis API KEY"
+export YOUTUBE_CHANNEL_ID="UCGymsagsg1lUxDb2qxjK6Lg"
+export DEFAULT_YOUTUBE_PLAYLIST_ID="B96JKl2IEv0"
+
+
 pnpm i && pnpm run dev
 ```
 

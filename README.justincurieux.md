@@ -20,7 +20,7 @@ pnpm dlx create astro@latest -- --template mhyfritz/astro-landing-page
 ```bash
 export YOUTUBE_API_KEY="your google apis API KEY"
 export YOUTUBE_CHANNEL_ID="UCGymsagsg1lUxDb2qxjK6Lg"
-export DEFAULT_YOUTUBE_PLAYLIST_ID=""
+export DEFAULT_YOUTUBE_PLAYLIST_ID="B96JKl2IEv0"
 
 curl https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${YOUTUBE_CHANNEL_ID}&type=video&eventType=live&key=${YOUTUBE_API_KEY} | jq .
 
