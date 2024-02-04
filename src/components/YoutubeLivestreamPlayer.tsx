@@ -37,3 +37,24 @@ export function YoutubeLivestreamPlayer({ youtube_channel_id }: YoutubeLivestrea
         </>
     )
 }
+
+export interface YoutubePlaylistProps {
+    playlist_id: string;
+    title?: string;
+    allowfullscreen?: boolean
+}
+export function YoutubePlaylist ({playlist_id, title = `YouTube Playlist`, allowfullscreen = true}: YoutubePlaylistProps) {
+    return (
+        <>
+        <iframe 
+         src={`https://www.youtube.com/embed/${playlist_id}`}
+         title={title}
+         frameborder="0"
+         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+         allowFullScreen={allowfullscreen}
+        >
+
+        </iframe>
+        </>
+    )
+}

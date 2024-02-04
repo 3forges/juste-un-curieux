@@ -3,7 +3,7 @@ import Ortf from "~/components/ortf.astro";
 // import { TwitchPlayer } from "~/components/TwitchPlayer"; // <TwitchPlayer client:only="preact"/>
 // import { TwitchPlayerX } from "~/components/TwitchPlayerX";
 
-import { YoutubeLivestreamPlayer } from '~/components/YoutubeLivestreamPlayer'
+import { YoutubeLivestreamPlayer, YoutubePlaylist } from '~/components/YoutubeLivestreamPlayer'
 
 // import GitHubCorner from "./github-corner.astro";
 import TikTokCorner from "./tiktok-corner.astro"
@@ -12,7 +12,28 @@ import TikTokCorner from "./tiktok-corner.astro"
 // //<GitHubCorner client:only="preact" />
 // import SocialCorner from "~/components/SocialCorner";
 // //<SocialCorner client:only="preact" />
-import { youtube, tests } from "./../config"
+import { youtube, tests, youtube_data_api, justin_curieux_channels } from "./../config"
+
+import axios from 'redaxios';
+// use as you would normally
+
+const HTTP_REQ_TO_GOOGLE_YOUTUBE_DATA_API = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${youtube_data_api.THE_YOUTUBE_CHANNEL_ID}&type=video&eventType=live&key=${youtube_data_api.THE_YOUTUBE_API_KEY}`
+
+let isTheYouTubeLiveOnGoing = false;
+try {
+  const response = await axios.get(`${HTTP_REQ_TO_GOOGLE_YOUTUBE_DATA_API}`);
+  console.log(`Fetching Youtube Data API - response.data : `,response.data);
+  console.log(`Fetching Youtube Data API - response.status : `, response.status);
+  console.log(`Fetching Youtube Data API - response.statusText : `, response.statusText);
+  console.log(`Fetching Youtube Data API - response.headers : `, response.headers);
+  console.log(`Fetching Youtube Data API - response.config : `, response.config);
+  isTheYouTubeLiveOnGoing = (response.data.items.length > 0)
+  console.log(`Fetching Youtube Data API - [isTheYouTubeLiveOnGoing] - in the try statement : `, isTheYouTubeLiveOnGoing);
+} catch (error) {
+  // Handle error
+  console.error(error);
+}
+console.log(`Fetching Youtube Data API - [isTheYouTubeLiveOnGoing] : `, isTheYouTubeLiveOnGoing);
 ---
 
 <section class="relative h-full bg-black">
@@ -23,8 +44,9 @@ import { youtube, tests } from "./../config"
     {
       // <TwitchPlayerX channel="Justin_Curieux" client:only="preact" />
     }
-
-    <YoutubeLivestreamPlayer youtube_channel_id={tests.youtube.channel_id} client:only="preact" client:visible />
+    {
+      isTheYouTubeLiveOnGoing?<YoutubeLivestreamPlayer youtube_channel_id={tests.youtube.channel_id} client:only="preact" client:visible />:<YoutubePlaylist playlist_id={justin_curieux_channels.histoire_russie.youtube.default_playlist_id} />
+    }
     
    </div>
 </section>
