@@ -1,5 +1,11 @@
 # Justin Curieux
 
+## NExt TODO: Astro build broken
+
+because astro imagetools is not well configured for typescript ?
+
+see example at https://github.com/RafidMuhymin/astro-imagetools/blob/main/demo/astro-imagetools.config.mjs
+
 ## Locally run
 
 ```bash
