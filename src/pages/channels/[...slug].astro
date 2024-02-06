@@ -1,0 +1,79 @@
+---
+const tailwindCssAnimated = `animate-jump-in animate-once animate-duration-[1250ms] animate-ease-in-out`  
+
+import { Picture } from "astro-imagetools/components";
+
+import { getCollection } from 'astro:content';
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const channelsEntries = await getCollection('channels');
+  return channelsEntries.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+// 2. For your template, you can get the entry directly from the prop
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+// const { generator, site } = Astro;
+//import logo_img from `${entry.data.logo_image.src}`;
+---
+<h1>{entry.data.display_name}</h1>
+<h2>{entry.data.social_platform}</h2>
+
+<Picture
+src={`${entry.data.logo_image.src}`}
+alt={entry.data.logo_image.alt|| ``}
+artDirectives={[
+  {
+    src: `${entry.data.logo_image.src}`,
+    media: "(orientation: portrait)",
+  },
+  {
+    src: `${entry.data.logo_image.src}`,
+    media: "(orientation: landscape)",
+  },
+]}
+/>
+<!-- style>
+  @keyframes ping {
+    0% { background-position: 0% 0%; }
+      17% { background-position: 0% 1%; }
+      83% { background-position: 1% 0%; }
+    100% { background-position: 0% 1%; }
+  }
+  </style -->
+  <div class={`${tailwindCssAnimated} relative grid justify-items-center items-center bg-black`}>
+
+
+    <!-- Image
+    src={entry.data.logo_image.src}
+    widths={[240, 335, 360, 640, 768, 1024, 2000]}
+    sizes={`(max-width: 240px) 200px, (max-width: 335px) 300px, (max-width: 360px) 320px, (max-width: 640px) 600px, (max-width: 768px) 720px, (max-width: 1024px) 800px, (max-width: 2000px) 900px`}
+    class="rounded-[50px] filter grayscale blur-[2px] z-1 xl:max-w-[80%]"
+    alt="L'Arc de Triomphe."
+    / -->
+
+    <!-- CRT BARS -->
+    <!-- div 
+        class="absolute z-2 rounded-[50px] opacity-10 min-w-[100%] min-h-full bg-gradient-to-b from-white to-black bg-[length:5px_5px] animate-ping"
+    ></div -->
+</div>
+
+<Content />
+
+<p>
+social_platform: youtube # "twitch" | "twitter" | "tiktok"
+display_name: "Histoire de la Russie"
+youtube_default_playlist_id: "B96JKl2IEv0"
+youtube_channel_id: "UCRCe4BKXU3gNhwAGwheHYyw"
+# logo_image: ./src/assets/youtube/channels/logos/histoire_de_l_empire.webp
+logo_image: 
+  src: ./src/assets/youtube/channels/logos/histoire_de_l_empire.png
+  alt: "Histoire de l'Empire"
+tags:
+  - usa
+  - france
+  - histoire
+  - empire
+
+</p>
