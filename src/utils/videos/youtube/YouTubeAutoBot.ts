@@ -85,11 +85,16 @@ export class YouTubeAutoBot {
   public async getDefaultUpcomingLiveStreamDetails(): Promise<YouTubeVideoDetailedInfos> {
     // let toReturn = undefined;
 
-    const upcomingLiveStreams: YouTubeVideoInfos[] =
+    const upcomingLiveStreams: YouTubeUpcomingVideoDetailedInfos[] =
       await this.getUpcomingLiveStreams();
+    console.log(` [getDefaultUpcomingLiveStreamDetails()] - upcomingLiveStreams : `, upcomingLiveStreams)
     if (upcomingLiveStreams.length > 0) {
-      const detailedInfos: YouTubeVideoDetailedInfos = await this.getUpcomingLiveStreamDetails(upcomingLiveStreams[0].id)
+      console.log(` [getDefaultUpcomingLiveStreamDetails()] - upcomingLiveStreams[0] : `, upcomingLiveStreams[0])
+      console.log(` [getDefaultUpcomingLiveStreamDetails()] - upcomingLiveStreams[0].id.videoId : `, upcomingLiveStreams[0].id.videoId)
+      const detailedInfos: YouTubeVideoDetailedInfos = await this.getUpcomingLiveStreamDetails(upcomingLiveStreams[0].id.videoId)
+      console.log(` [getDefaultUpcomingLiveStreamDetails()] - upcomingLiveStreams - detailedInfos : `, detailedInfos)
       return detailedInfos;
+
     } else {
       console.error(
         `There are no upcoming livestream for the channel of ID ${this.channel_id} : `,
@@ -284,7 +289,67 @@ export interface YouTubeVideoDetailedInfos {
     activeLiveChatId: string;
   };
 }
-
+//id: { kind: 'youtube#video', videoId: 'CJqx95lhnh8' },
+export interface YouTubeUpcomingVideoDetailedInfos {
+  kind: string;
+  etag: string;
+  id: { 
+    kind: string; 
+    videoId: string;
+  };
+  snippet: {
+    publishedAt: string; // {Year}-{Month}-{Day}T{Hours}:{Minutes}:{Seconds}Z
+    channelId: string;
+    title: string;
+    description: string;
+    thumbnails: {
+      default: {
+        url: string;
+        width: number;
+        height: number;
+      };
+      medium: {
+        url: string;
+        width: number;
+        height: number;
+      };
+      high: {
+        url: string;
+        width: number;
+        height: number;
+      };
+      standard: {
+        url: string;
+        width: number;
+        height: number;
+      };
+      maxres: {
+        url: string;
+        width: number;
+        height: number;
+      };
+    };
+    channelTitle: string;
+    categoryId: string;
+    liveBroadcastContent: string; // "upcoming" | "live"
+    localized: {
+      title: string;
+      description: string;
+    };
+  };
+  status: {
+    uploadStatus: string; // "uploaded" |
+    privacyStatus: string; // "public" | "private"
+    license: string; // "youtube" | "creativecommons"
+    embeddable: boolean;
+    publicStatsViewable: boolean;
+    madeForKids: boolean;
+  };
+  liveStreamingDetails: {
+    scheduledStartTime: string; // {Year}-{Month}-{Day}T{Hours}:{Minutes}:{Seconds}Z // "2024-02-05T19:00:00Z"
+    activeLiveChatId: string;
+  };
+}
 export const exampleYouTubeVideo = {
   kind: "youtube#video",
   etag: "GG6r2sAPFd074jXI9qn51wTCV1o",
