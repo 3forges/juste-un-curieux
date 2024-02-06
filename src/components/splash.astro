@@ -12,12 +12,12 @@ import TikTokCorner from "./tiktok-corner.astro"
 // //<GitHubCorner client:only="preact" />
 // import SocialCorner from "~/components/SocialCorner";
 // //<SocialCorner client:only="preact" />
-import { youtube, tests, youtube_data_api, justin_curieux_channels } from "./../config"
+import { youtube, tests, youtube_data_api, all_youtube_channels } from "./../config"
 
 import axios from 'redaxios';
 // use as you would normally
 
-const HTTP_REQ_TO_GOOGLE_YOUTUBE_DATA_API = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${youtube_data_api.THE_YOUTUBE_CHANNEL_ID}&type=video&eventType=live&key=${youtube_data_api.THE_YOUTUBE_API_KEY}`
+const HTTP_REQ_TO_GOOGLE_YOUTUBE_DATA_API = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${all_youtube_channels.histoire_russie.youtube.channel_id}&type=video&eventType=live&key=${youtube_data_api.THE_YOUTUBE_API_KEY}`
 
 let isTheYouTubeLiveOnGoing = false;
 try {
@@ -45,7 +45,7 @@ console.log(`Fetching Youtube Data API - [isTheYouTubeLiveOnGoing] : `, isTheYou
       // <TwitchPlayerX channel="Justin_Curieux" client:only="preact" />
     }
     {
-      isTheYouTubeLiveOnGoing?<YoutubeLivestreamPlayer youtube_channel_id={tests.youtube.channel_id} client:only="preact" client:visible />:<YoutubePlaylist playlist_id={justin_curieux_channels.histoire_russie.youtube.default_playlist_id} />
+      isTheYouTubeLiveOnGoing?<YoutubeLivestreamPlayer youtube_channel_id={tests.youtube.channel_id} client:only="preact" client:visible />:<YoutubePlaylist playlist_id={all_youtube_channels.histoire_russie.youtube.default_playlist_id} />
     }
     
    </div>

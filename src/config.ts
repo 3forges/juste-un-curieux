@@ -18,7 +18,10 @@ export const youtube_data_api = {
   THE_YOUTUBE_CHANNEL_ID: `${process.env.YOUTUBE_CHANNEL_ID}`
 }
 
-export const justin_curieux_channels = {
+/**
+ * should be replaced by [src/content/channels] content collection
+ */
+export const all_youtube_channels = {
   histoire_russie: {
     display_name: `Histoire de la Russie`,
     youtube: {
