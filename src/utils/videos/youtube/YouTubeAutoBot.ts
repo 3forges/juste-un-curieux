@@ -68,7 +68,7 @@ export class YouTubeAutoBot {
    * This method returns an array containing the Upcoming Livestreams. That array is empty, iff there is no Upcoming livestream.
    * @returns an array containing the Upcoming Livestreams. That array is empty, iff there is no Upcoming livestream.
    */
-  public async getUpcomingLiveStreams(): Promise<YouTubeVideoInfos[]> {
+  public async getUpcomingLiveStreams(): Promise<YouTubeUpcomingVideoDetailedInfos[]> {
     // let toReturn = undefined;
 
     const response: YouTubeDataApiResponse =
