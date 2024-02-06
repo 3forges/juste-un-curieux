@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "logs\\.8122822e598749c47a3527edb629ec66dd94bcb9-audit.json",
+    "files": [
+        {
+            "date": 1707180397254,
+            "name": "logs\\astro_build_errors_2024-02-06.log",
+            "hash": "0293c4994efcff97ea65f56be1953457d3d026d8472bf365a3e02ac910d049af"
+        }
+    ],
+    "hashType": "sha256"
+}

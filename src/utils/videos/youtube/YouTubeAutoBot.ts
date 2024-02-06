@@ -1,29 +1,26 @@
 import {
   youtube,
-  tests,
   youtube_data_api,
   all_youtube_channels,
 } from "./../../../config";
 
 import axios from "redaxios";
-import { autobotLogger as logger  } from './logger';
+import { autobotLogger as logger } from "./logger";
 
-const loggerMsgPrefix = ` > YouTubeAutoBot > `
-
-
+const loggerMsgPrefix = ` > YouTubeAutoBot > `;
 
 export class YouTubeAutoBot {
   // static pi: number = 3.14;
   static CLIENT_TIMEOUT: number = 3000; // in milliseconds
+  private youTubeDataApiClient: any;
   constructor(
     readonly channel_id: string,
     // readonly google_api_key: string, // the Google APIs key will be read from the configuration, which reads astro build-time environment variables
-    private youTubeDataApiClient: any,
   ) {
     this.channel_id = channel_id;
     // this.google_api_key = google_api_key;
     this.youTubeDataApiClient = axios.create({
-      baseURL: "https://www.googleapis.com/youtube/v3/",
+      baseURL: "https://www.googleapis.com/youtube/v3",
       // timeout: 3000,
       headers: {
         // 'Accept': 'application/vnd.GitHub.v3+json',
@@ -37,12 +34,34 @@ export class YouTubeAutoBot {
    */
   public async getOngoingLiveStream(): Promise<YouTubeVideoInfos[]> {
     // let toReturn = undefined;
-
+    console.log(`[getOngoingLiveStream()] - start `);
     const response: YouTubeDataApiResponse =
       await this.youTubeDataApiClient.get(
         `search?part=snippet&channelId=${this.channel_id}&type=video&eventType=live&key=${youtube_data_api.THE_YOUTUBE_API_KEY}`,
         { timeout: YouTubeAutoBot.CLIENT_TIMEOUT },
       );
+    console.log(
+      `[getOngoingLiveStream()] - response.data : `,
+      response.data,
+    );
+    console.log(
+      `[getOngoingLiveStream()] - response.status : `,
+      response.status,
+    );
+    console.log(
+      `[getOngoingLiveStream()] - response.statusText : `,
+      response.statusText,
+    );
+    console.log(
+      `[getOngoingLiveStream()] - response.headers : `,
+      response.headers
+    );
+    console.log(
+      `[getOngoingLiveStream()] - response.config : `,
+      response.config
+    );
+    /*
+    */
     return response.data.items;
   }
   /**
@@ -60,6 +79,28 @@ export class YouTubeAutoBot {
     return response.data.items;
   }
   /**
+   * Returns the detailed infos of the default upcoming livestream. The default livestream is the one of index zero, in the 'items' array returned by YouTube Data API, when searching for upocming videos.
+   * @returns The DetailedInformations of the default Upcoming Livestream, if it exists
+   */
+  public async getDefaultUpcomingLiveStreamDetails(): Promise<YouTubeVideoDetailedInfos> {
+    // let toReturn = undefined;
+
+    const upcomingLiveStreams: YouTubeVideoInfos[] =
+      await this.getUpcomingLiveStreams();
+    if (upcomingLiveStreams.length > 0) {
+      const detailedInfos: YouTubeVideoDetailedInfos = await this.getUpcomingLiveStreamDetails(upcomingLiveStreams[0].id)
+      return detailedInfos;
+    } else {
+      console.error(
+        `There are no upcoming livestream for the channel of ID ${this.channel_id} : `,
+        upcomingLiveStreams
+      );
+      throw new Error(
+        `There are no upcoming livestream for the channel of ID ${this.channel_id} : `
+      );
+    }
+  }
+  /**
    * This method returns the detailed informations of a given Upcoming Livestream, provided its videoID. In particular, you can use this method to find out the scheduled start date / time of an upcoming livestream, and its "active live chat id"
    * @param upcomingLivestreamVideoID the video ID of the Upcoming Livestream, for which you want detailed informations
    * @returns the detailed informations of the upcoming livestream, as a (promise of a) {@YouTubeVideoDetailedInfos } Object
@@ -75,26 +116,42 @@ export class YouTubeAutoBot {
       );
     return response.data.items[0];
   }
+
   /**
-   * This method checks is there is an ongoing Livestream, and if so, returns the video ID of that livestream video.
-   * @returns the video ID of the Ongoing LiveStream, if there is an ongoing livestream, and {undefined} otherwise (if there is no ongoing livestream).
+   * This method checks if there is an Ongoing Livestream, and if so, returns the video ID of that livestream video.
+   * @returns false is there is no Ongoing LiveStream, true if there is an Ongoing livestream.
    */
   public async isThereAnOngoingLiveStream(): Promise<boolean> {
-    const fetchedOngoingLivestreams = await this.getOngoingLiveStream()
+    console.log(`[isThereAnOngoingLiveStream()] - start `);
+    const fetchedOngoingLivestreams = await this.getOngoingLiveStream();
+    console.log(
+      `[isThereAnOngoingLiveStream] - fetchedOngoingLivestreams : `,
+      fetchedOngoingLivestreams,
+    );
     if (fetchedOngoingLivestreams.length > 1) {
-      console.error(` There is an unexpected error, there were more than one ongoing livestream for the channel of ID ${this.channel_id} : `, fetchedOngoingLivestreams)
-      throw new Error(` There is an unexpected error, there were more than one ongoing livestream for the channel of ID ${this.channel_id}`)
+      console.error(
+        ` There is an unexpected error, there were more than one ongoing livestream for the channel of ID ${this.channel_id} : `,
+        fetchedOngoingLivestreams,
+      );
+      throw new Error(
+        ` There is an unexpected error, there were more than one ongoing livestream for the channel of ID ${this.channel_id}`,
+      );
     }
     return fetchedOngoingLivestreams.length > 0;
   }
+  
   /**
-   * This method checks is there is an Upcoming Livestream, and if so, returns the video ID of that livestream video.
-   * Note there might be several upcoming videos, in which case this method returns the one pointed by <code>items[0]</code>
-   * @returns the video ID of the Upcoming LiveStream, if there is an upcoming livestream, and {undefined} otherwise (if there is no Upcoming livestream).
+   * This method checks if there is an Upcoming Livestream, and if so, returns the video ID of that livestream video.
+   * @returns false is there is no Upcoming LiveStream, true if there is an Upcoming livestream.
    */
-  public isThereAnUpcomingLiveStream(): string | undefined {
-    let toReturn = undefined;
-    return toReturn;
+  public async isThereAnUpcomingLiveStream(): Promise<boolean> {
+    console.log(`[isThereAnUpcomingLiveStream()] - start `);
+    const fetchedUpcomingLivestreams = await this.getUpcomingLiveStreams();
+    console.log(
+      `[isThereAnUpcomingLiveStream] - fetchedUpcomingLivestreams : `,
+      fetchedUpcomingLivestreams,
+    );
+    return fetchedUpcomingLivestreams.length > 0;
   }
 }
 
@@ -102,6 +159,10 @@ export interface YouTubeDataApiResponse {
   data: {
     items: YouTubeVideoInfos[];
   };
+  status: string;
+  statusText: string;
+  headers: any;
+  config: any;
 }
 export interface YouTubeDataApiDetailedResponse {
   data: {
@@ -285,13 +346,13 @@ export const exampleYouTubeVideo = {
   },
 };
 
-logger.info(`info.message` || 'Calling YouTube Data API endpoint', {
+logger.info(`info.message` || "Calling YouTube Data API endpoint", {
   youtubeApiEndpoint: `api endpoint path`,
   invokedMethod: `Example mehod could be [getOngoingLiveStream(): Promise<YouTubeVideoInfos[]>]`,
   apiResponse: {
     httpStatusCode: 200,
     httpStatusMessage: `OK`,
-    rawResponse: {...exampleYouTubeVideo}
+    rawResponse: { ...exampleYouTubeVideo },
   },
-  message: `my message`
+  message: `my message`,
 });
