@@ -3,6 +3,8 @@ import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import preact from "@astrojs/preact";
 import robotsTxt from "astro-robots-txt";
+// import { astroImageTools } from "astro-imagetools";
+
 let ASTRO_BASE_CONFIG_ARRAY = process.env.DEPLOYMENT_ASTRO_BASE_CONFIG.split(`/`);
 export const myDEPLOYMENT_ASTRO_SITE_CONFIG = process.env.DEPLOYMENT_ASTRO_SITE_CONFIG;
 export const myDEPLOYMENT_ASTRO_BASE_CONFIG = `/${ASTRO_BASE_CONFIG_ARRAY[ASTRO_BASE_CONFIG_ARRAY.length - 1]}`;
@@ -17,5 +19,5 @@ export default defineConfig({
   base: `${myDEPLOYMENT_ASTRO_BASE_CONFIG || ''}`,
   integrations: [tailwind(), icon(), preact({
     compat: true
-  }), robotsTxt()]
+  }), robotsTxt()/*, astroImageTools*/]
 });

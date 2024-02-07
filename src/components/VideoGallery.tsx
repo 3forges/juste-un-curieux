@@ -4,7 +4,7 @@ import { videos, type VideoItem } from "./videosGalleryConfig"
 import { Circle, CircleDot, XCircle, ChevronRightCircle, ChevronLeftCircle } from 'lucide-preact'
 import PaginationButtonRight from './pagination/PaginationRightButton'
 import PaginationButtonLeft from './pagination/PaginationLeftButton'
-import getPlusGrosseUniteEnFrancais, { type SplittedPeriodFR } from '../utils/videos/getPlusGrosseUniteEnFrancais'
+import getPlusGrosseUniteEnFrancais, { type SplittedPeriodFR } from '../utils/videos/gallery/getPlusGrosseUniteEnFrancais'
 import {
   LocalDate, 
   Period,  

@@ -6,9 +6,22 @@ import type { NavItem } from "../types";
 import LogoSVG from "./LogoSVG";
 import { Share2Icon } from "lucide-preact";
 import UpSideDownShare from "./UpSideDownShare"
+import { getCollection } from 'astro:content';
+
+
+const channelsEntries = await getCollection('channels');
+
+/*
+channelsEntries.map(entry: any => ({
+  params: { slug: entry.slug }, props: { entry },
+}));
+*/
+const { site } = Astro;
+
+import {myDEPLOYMENT_ASTRO_BASE_CONFIG} from './../../astro.config.mjs'
 
 const navItems: Array<NavItem> = [
-  { title: "Bientôt", url: "#features" },
+  { title: "Bientôt", url: "/channels/libre_et_souverain" },
   { title: "Vidéos", url: "#showcase" },
 ]
 
@@ -31,14 +44,27 @@ const navItems: Array<NavItem> = [
     <div class="flex flex-row-reverse items-center">
       <nav class="hidden sm:block">
         <ul class="flex items-center">
-          { navItems.map(({ title, url }) => (
+          {
+          /* navItems.map(({ title, url }) => (
               <li class="ml-4">
                 <a class="text-sm" href={url}>
                   {title}
                 </a>
               </li>
             )
-          )}          
+          )
+            */
+            }
+
+{
+  channelsEntries.map((entry) => (
+  <li class="ml-4">
+                <a class="text-sm" href={`${myDEPLOYMENT_ASTRO_BASE_CONFIG}/channels/${entry.slug}`}>
+                  {entry.data.display_name}
+                </a>
+              </li>
+  ))
+}
         </ul>
       </nav>
       
