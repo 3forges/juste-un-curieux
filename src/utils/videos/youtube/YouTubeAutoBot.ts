@@ -71,7 +71,7 @@ export class YouTubeAutoBot {
   public async getUpcomingLiveStreams(): Promise<YouTubeUpcomingVideoDetailedInfos[]> {
     // let toReturn = undefined;
 
-    const response: YouTubeDataApiResponse =
+    const response: YouTubeDataApiUpcomingVideoDetailedResponse =
       await this.youTubeDataApiClient.get(
         `search?part=snippet&channelId=${this.channel_id}&type=video&eventType=upcoming&key=${youtube_data_api.THE_YOUTUBE_API_KEY}`,
         { timeout: YouTubeAutoBot.CLIENT_TIMEOUT },
@@ -173,6 +173,19 @@ export interface YouTubeDataApiDetailedResponse {
   data: {
     items: YouTubeVideoDetailedInfos[];
   };
+  status: string;
+  statusText: string;
+  headers: any;
+  config: any;
+}
+export interface YouTubeDataApiUpcomingVideoDetailedResponse {
+  data: {
+    items: YouTubeUpcomingVideoDetailedInfos[];
+  };
+  status: string;
+  statusText: string;
+  headers: any;
+  config: any;
 }
 export interface YouTubeVideoInfos {
   kind: string;

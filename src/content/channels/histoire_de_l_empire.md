@@ -1,6 +1,6 @@
 ---
 social_platform: youtube # "twitch" | "twitter" | "tiktok"
-display_name: "Histoire de la Russie"
+display_name: "Histoire de l'Empire"
 youtube_default_playlist_id: "B96JKl2IEv0"
 youtube_channel_id: "UCRCe4BKXU3gNhwAGwheHYyw"
 # logo_image: ./src/assets/youtube/channels/logos/histoire_de_l_empire.webp

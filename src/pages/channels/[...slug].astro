@@ -1,7 +1,7 @@
 ---
 const tailwindCssAnimated = `animate-jump-in animate-once animate-duration-[1250ms] animate-ease-in-out`  
 
-import { Picture } from "astro-imagetools/components";
+// import { Picture } from "astro-imagetools/components";
 
 import { getCollection } from 'astro:content';
 // 1. Generate a new path for every collection entry
@@ -20,7 +20,7 @@ const { Content } = await entry.render();
 <h1>{entry.data.display_name}</h1>
 <h2>{entry.data.social_platform}</h2>
 
-<Picture
+<!-- Picture
 src={`${entry.data.logo_image.src}`}
 alt={entry.data.logo_image.alt|| ``}
 artDirectives={[
@@ -33,7 +33,7 @@ artDirectives={[
     media: "(orientation: landscape)",
   },
 ]}
-/>
+/ -->
 <!-- style>
   @keyframes ping {
     0% { background-position: 0% 0%; }
