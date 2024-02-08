@@ -1,4 +1,4 @@
-import styles from './PlayLiveButton.module.css'
+import './PlayLiveButton.module.css'
 import { Play } from 'lucide-preact'
 /**
  * Astro Icon cannot be used into 
