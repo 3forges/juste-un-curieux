@@ -8,10 +8,6 @@
         "src/*"
       ]
     },
-    "lib": [
-      // ... other libs
-      "ES2021.String"
-    ],
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
   }

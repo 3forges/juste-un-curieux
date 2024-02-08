@@ -6,7 +6,6 @@ import { Play } from 'lucide-preact'
  * designed to be compiled as an 
  * '*.astro', not as an '*.tsx' 
  */
-// import { Icon } from 'astro-icon/components'
 
 export interface PlayLiveButtonProps {
     onClick: any;

@@ -1,5 +1,7 @@
 ---
-import { Icon } from 'astro-icon/components'
+import { WordMarkLogo } from './WordMarkLogo'
+import { IoMenu } from "react-icons/io5";
+import { IoMdClose } from "react-icons/io";
 import ThemeSwitcher from "./theme-switcher.astro"
 import type { NavItem } from "../types";
 
@@ -22,7 +24,7 @@ const navItems: Array<NavItem> = [
   <a class="flex items-center h-16 gap-0 sm:gap-1 lg:gap-2 hover:!text-default" href="#">
     <h1 class="sr-only">Justin Curieux</h1>
     <LogoSVG /> 
-    <Icon name="wordmark" class="hidden h-5 md:flex" />
+    <WordMarkLogo className="hidden h-5 md:flex" client:only="preact" />
   </a>
   <UpSideDownShare client:only="preact" />
   <ThemeSwitcher />
@@ -48,7 +50,8 @@ const navItems: Array<NavItem> = [
         class="sm:hidden"
         aria-label="Navigation"
       >      
-        <Icon name="menu" class="h-8" />
+        <!-- IoMenu class:list="h-8" / -->
+        <IoMenu client:only="preact"/>
       </button>
       
     </div>
@@ -64,11 +67,12 @@ const navItems: Array<NavItem> = [
               class="btn"
               aria-label="Close navigation"
             >
-              <Icon name="close" class="h-8" />
+            <!-- IoMdClose class:list="h-8" / -->
+            <IoMdClose  client:only="preact" />
             </button>
           </header>
           <div class="flex justify-center">
-            <Icon name="logomark" class="h-16" />
+            <WordMarkLogo className="h-16" client:only="preact" />
           </div>
           <nav>
             <ul class="flex flex-col">

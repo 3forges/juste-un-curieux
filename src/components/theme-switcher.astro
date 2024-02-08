@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components'
+import { ThemeSwitcherMoonIcon } from './ThemeSwitcherMoonIcon';
 ---
 
 <!--
@@ -12,11 +12,13 @@ import { Icon } from 'astro-icon/components'
   class="-ml-0 origin-[right_center] scale-0 transition-scale duration-500"
 >
   <div id="icon-theme-light">
-    <Icon name="theme/light" class="h-8" />
+    <!-- Icon name="theme/light" class="h-8" / -->
+    <ThemeSwitcherMoonIcon className='h-8' client:only="preact" />
     <span class="sr-only">Use light theme</span>
   </div>
   <div id="icon-theme-dark" class="hidden">
-    <Icon name="theme/dark" class="h-8" />
+    <!-- Icon name="theme/dark" class="h-8" / -->
+    <ThemeSwitcherMoonIcon className='h-8' client:only="preact" />
     <span class="sr-only">Use dark theme</span>
   </div>
 </button>

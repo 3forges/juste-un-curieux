@@ -1,6 +1,5 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-import icon from "astro-icon";
 import preact from "@astrojs/preact";
 import robotsTxt from "astro-robots-txt";
 let ASTRO_BASE_CONFIG_ARRAY = process.env.DEPLOYMENT_ASTRO_BASE_CONFIG.split(`/`);
@@ -15,7 +14,7 @@ export default defineConfig({
   // site: "https://astro-moon-landing.netlify.app/",
   site: `${myDEPLOYMENT_ASTRO_SITE_CONFIG || ''}`,
   base: `${myDEPLOYMENT_ASTRO_BASE_CONFIG || ''}`,
-  integrations: [tailwind(), icon(), preact({
+  integrations: [tailwind(), preact({
     compat: true
   }), robotsTxt()]
 });
