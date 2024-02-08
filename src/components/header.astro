@@ -9,10 +9,13 @@ import LogoSVG from "./LogoSVG";
 import { Share2Icon } from "lucide-preact";
 import UpSideDownShare from "./UpSideDownShare"
 
-const navItems: Array<NavItem> = [
-  { title: "Bientôt", url: "#features" },
-  { title: "Vidéos", url: "#showcase" },
-]
+import {myDEPLOYMENT_ASTRO_BASE_CONFIG} from './../config.ts'
+
+import { getCollection } from 'astro:content';
+
+
+const channelsEntries = await getCollection('channels');
+
 
 // class="absolute bottom-0 z-20 flex flex-row w-full items-center justify-between border-b border-transparent px-1 py-2 text-white sm:px-3 sm:py-2 xl:px-8 xl:py-4"
 
@@ -33,14 +36,15 @@ const navItems: Array<NavItem> = [
     <div class="flex flex-row-reverse items-center">
       <nav class="hidden sm:block">
         <ul class="flex items-center">
-          { navItems.map(({ title, url }) => (
-              <li class="ml-4">
-                <a class="text-sm" href={url}>
-                  {title}
-                </a>
-              </li>
-            )
-          )}          
+          {
+            channelsEntries.map((entry) => (
+            <li class="ml-4">
+                          <a class="text-sm" href={`${myDEPLOYMENT_ASTRO_BASE_CONFIG}/channels/${entry.slug}`}>
+                            {entry.data.display_name}
+                          </a>
+                        </li>
+            ))
+          }        
         </ul>
       </nav>
       
@@ -77,12 +81,12 @@ const navItems: Array<NavItem> = [
           <nav>
             <ul class="flex flex-col">
               {
-                navItems.map(({ title, url }) => (
-                  <li>
-                    <a class="block py-4 text-center text-xl" href={url}>
-                      {title}
-                    </a>
-                  </li>
+                channelsEntries.map((entry) => (
+                <li class="ml-4">
+                              <a class="text-sm" href={`${myDEPLOYMENT_ASTRO_BASE_CONFIG}/channels/${entry.slug}`}>
+                                {entry.data.display_name}
+                              </a>
+                            </li>
                 ))
               }
               <li class="block py-4 text-center text-xl">
